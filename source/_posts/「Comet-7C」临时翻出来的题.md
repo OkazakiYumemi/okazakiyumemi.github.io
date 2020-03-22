@@ -1,0 +1,138 @@
+---
+title: '「Comet#7C」临时翻出来的题'
+date: 2019-11-08 07:51:58
+tags: 状压dp
+categories: 题解
+top:
+---
+
+状压好题。
+
+[[CometOJ contest#7 C]](https://cometoj.com/contest/52/problem/C)
+
+## 题意简述
+
+给出一个 $1$ 至 $n$ 的排列 $a_i$ 。定义一个排列 $\{p_i\}$ 是合法的，要满足 $p_i\ne a_i$ 。
+
+一个排列 $\{p_i\}$ 的权值可以这样计算：对于每一个逆序对 $(i,j)$ ($p_i > p_j$) ，贡献为 $(j - i)\times(p_i - p_j)$ ，这个排列的权值即所有逆序对的贡献和。
+
+求每一个合法的排列的权值和。
+
+$case$ 组数据， $case \le 10, n \le 16$ 。
+
+<!-- more -->
+
+## 主要思路
+
+首先先把下标和值域都转换成 $[0,n-1]$ 。
+
+这么小的数据范围，猜测复杂度大概是指数级别的。
+
+按照从小到大往排列里放数，这样每个数在放入排列时，必定所有在其后的已经在排列中的数都会对其产生贡献。
+
+考虑集合 $S$ 为放了数的位置，已经放了 $0,1,\dots,|S|-1$ 这些数，此时的合法排列（仅考虑已经放的数）方案。
+
+记合法排列总数为 $t(S)$ ，贡献总和为 $f(S)$ ，位置 $pos$ 上的数在**所有合法排列中的总和**为 $g(S, pos)$ 。
+
+如何转移？对于一个集合 $S$ ，枚举下一个数即( $|S|$ )放的位置 $x,x\ne a_{|S|}$ 。
+
+设 $T = S\ \cup\ \{x\}$ ，考虑 $S$ 转移至 $T$ 。
+
+对 $f(T)$ 的贡献为： $f(S) + \sum\limits_{i>x,i\in S}(|S|\times t(S) - g(S,i))\times (i - x)$ 。（枚举与数 $|S|$ 形成逆序对的位置）
+
+对 $t(T)$ 的贡献为： $t(S)$ 。（数 $|S|$ 只有一种放法）
+
+对 $g(T,x)$ 的贡献为： $t(S)\times |S|$ 。
+
+对 $g(T,i)$ 的贡献为： $g(S,i)$ ( $i\ne x$ ) 。
+
+初始状态是 $|S|=\{k\}$ 的状态 ( $0\le k\le n - 1$ ) ，如果 $a_0\ne k$ ， $f(\{k\})=0,g(\{k\},k)=0,t(\{k\})=1$ 。
+
+## 参考代码
+
+然后不知道为什么代码写得特别丑……~~为了卡常~~
+
+{% fold %}
+```cpp
+#include<bits/stdc++.h>
+namespace my_std{
+	using namespace std;
+	#define reg register
+	#define Rint register int
+	#define FOR(i,a,b) for(register int i=(a),ed_##i=(b);i<=ed_##i;++i)
+	#define ROF(i,a,b) for(register int i=(a),ed_##i=(b);i>=ed_##i;--i)
+	#define FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a),*ed_##i=(arr)+(b)+1;i!=ed_##i;++i)
+	#define ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a),*ed_##i=(arr)+(b)-1;i!=ed_##i;--i)
+	#define GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)
+	#define MEM(x,v) memset(x,v,sizeof(x))
+	#define fir first
+	#define sec second
+	#define pq priority_queue
+	#define MP make_pair
+	typedef long long LL;
+	typedef double DB;
+	typedef pair<int,int> PII;
+	#define Templ(T) template<typename T>
+	inline int read(){
+		int ans=0,f=1;char c=getchar();
+		while(!isdigit(c)){ f^=(c=='-'); c=getchar(); }
+		for(;isdigit(c);c=getchar()) ans=(ans<<1)+(ans<<3)+(c^48); return f?ans:-ans;
+	}
+	Templ(_Tp) inline int chkmin(_Tp &x,_Tp y){ return x>y?x=y,1:0; }
+	Templ(_Tp) inline int chkmax(_Tp &x,_Tp y){ return x<y?x=y,1:0; }
+	#define using_mod
+	const int mod = 998244353, N = 20, MX = 65550;
+	#ifdef using_mod
+	inline void inc(int &x,const int &y){ x+=y; if(x>=mod) x-=mod; }
+	inline int ksm(int x,LL y){ int res=1; for(;y;y>>=1,x=1ll*x*x%mod) if(y&1) res=1ll*res*x%mod; return res;}
+	#endif
+	Templ(_Tp) inline _Tp gcd(_Tp x,_Tp y){ return y?gcd(y,x%y):x; }
+	#define FILE(s) freopen(s".in","r",stdin),freopen(s".out","w",stdout)
+	#define PBTXDY
+}
+using namespace my_std;
+
+int n, a[N], U, count_[MX], loog[MX] = {-1};
+LL f[MX], g[MX][N], t[MX];
+
+inline void Summer_Pockets(){
+	n = read(), U = (1 << n) - 1;
+	FOR(i, 0, n - 1) a[i] = read() - 1;
+	FOR(S, 0, U) f[S] = 0, t[S] = 0;
+	FOR(S, 0, U) FOR(i, 0, n - 1) g[S][i] = 0;
+	FOR(S, 1, U){
+		if(count_[S] == 1){
+			if(a[0] == loog[S]) continue;
+			f[S] = 0, g[S][loog[S]] = 0, t[S] = 1;
+			continue;
+		}
+		Rint cnt = count_[S] - 1, T, pos;
+		reg LL res;
+		for(Rint rS = S, x = S & (-S); x; rS ^= x, x = rS & (-rS)){
+			T = S ^ x, res = 0, pos = loog[x];
+			if(a[cnt] == pos) continue;
+			for(Rint rrS = rS ^ (rS & (-rS)), i = rrS & (-rrS); i; rrS ^= i, i = rrS & (-rrS)){
+				res += (t[T] * cnt - g[T][loog[i]]) * (loog[i] - pos);
+			}
+			f[S] += res + f[T];
+			for(Rint rT = T, i = T & (-T); i; rT ^= i, i = rT & (-rT)){
+				g[S][loog[i]] += g[T][loog[i]];
+			}
+			g[S][pos] += t[T] * cnt;
+			t[S] += t[T];
+		}
+	}
+	printf("%lld\n", f[U]);
+}
+
+int main(){
+	U = 65535;
+	FOR(i, 1, U) count_[i] = count_[i >> 1] + (i & 1), loog[i] = loog[i >> 1] + 1;
+	Rint esac = read();
+	while(esac --) Summer_Pockets();
+	return 0;
+}
+```
+{% endfold %}
+
+CometOJ 其实有很多高质量题目，比如状压 dp 就还有「Comet#1C」,「Comet#4F」。~~等我不咕了一定把「Comet#4F」肝出来。~~
