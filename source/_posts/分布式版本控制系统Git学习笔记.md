@@ -17,7 +17,7 @@ Windows 下直接[官网](https://git-scm.com/)下，Linux 下可以直接 `sudo
 
 使用下面的命令来设置本地的账户名字与邮箱地址。
 
-```bash
+```sql
 git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
 ```
@@ -47,7 +47,7 @@ git config --global user.email "email@example.com"
 
 1. 把文件添加或更新到仓库：
 
-```bash
+```sql
 git add <file>
 git add <file1> <file2> ...
 ```
@@ -56,7 +56,7 @@ git add <file1> <file2> ...
 
 2. 把文件提交(commit)到仓库：
 
-```bash
+```sql
 git commit -m "massage"
 ```
 
@@ -68,7 +68,7 @@ git commit -m "massage"
 
 就比如说原博客给的一个例子：
 
-```bash
+```sql
 $ git status
 On branch master
 Changes not staged for commit:
@@ -86,7 +86,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 例如原博客给的一个例子：
 
-```bash
+```sql
 $ git diff readme.txt 
 diff --git a/readme.txt b/readme.txt
 index 46d49bf..9247db6 100644
@@ -121,7 +121,7 @@ index 46d49bf..9247db6 100644
 
 所以说回退版本的命令就是：
 
-```bash
+```sql
 git reset --hard <commit_id>
 ```
 
