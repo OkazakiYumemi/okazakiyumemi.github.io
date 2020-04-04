@@ -10,6 +10,8 @@ top:
 
 ~~然而最后也没有成功对抗限速。~~
 
+<!-- more -->
+
 ## aria2
 
 [aria2 GitHub仓库](https://github.com/aria2/aria2)
@@ -208,3 +210,17 @@ CreateObject("WScript.Shell").Run "aria2c.exe --conf-path=aria2.conf",0
 >Q：为什么选择 qBittorrent ？
 >A：大佬推荐的。
 
+[qbittorrent](https://www.qbittorrent.org/)
+
+### 下载
+
+官网下载所需版本即可。个人使用`4.1.9`。
+
+然后相信大部分操作应该都一看就会了。
+
+### trackers
+
+[ngosang](https://github.com/ngosang/trackerslist)
+[newtrackon](https://newtrackon.com/list)
+
+在 `工具>选项>BitTorrent` 里添加即可。
