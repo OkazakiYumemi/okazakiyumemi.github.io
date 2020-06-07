@@ -3,6 +3,7 @@ title: 「Ynoi2010」y-fast trie
 categories: 题解
 date: 2020-06-07 16:45:34
 tags:
+- Ynoi
 top:
 ---
 
