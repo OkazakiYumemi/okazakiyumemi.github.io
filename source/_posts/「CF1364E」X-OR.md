@@ -3,6 +3,7 @@ title: 「CF1364E」X-OR
 categories: 题解
 date: 2020-06-25 11:23:12
 tags:
+- Codeforces
 - 交互题
 - 随机算法
 top:
@@ -11,6 +12,8 @@ top:
 手造 rand 太烂，换成`mt19937`过了。
 
 ## 题意简述
+
+[[CF 1364E]](https://codeforces.com/problemset/problem/1364/E)
 
 你需要猜一个 $0$ 到 $n - 1$ 的排列 $\langle a_n\rangle$，每次可以询问二元组 $(x, y)$($x\neq y$) ，表示询问 $a_x | a_y$ 的值，其中 $|$ 为按位或。
 
