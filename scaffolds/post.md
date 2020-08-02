@@ -4,5 +4,5 @@ date: {{ date }}
 tags:
 categories:
 top:
-urlname:
+urlname: {{ title }}
 ---

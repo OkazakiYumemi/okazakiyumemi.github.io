@@ -4,7 +4,7 @@ date: {{ date }}
 tags:
 categories: 题解
 top:
-urlname:
+urlname: {{ title }}
 ---
 
 ## 题意简述
