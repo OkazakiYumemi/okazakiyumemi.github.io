@@ -13,6 +13,16 @@ urlname: Hello-World
 
 <!-- more -->
 
+# 安装
+
+`sudo npm install hexo-cli -g`装 hexo。
+
+`hexo init`创建 blog。
+
+改的各种东西到 source 分支去找就行。
+
+然后用的是 v6.6.0 的 NexT 主题。
+
 # 目前实现的功能
 
 ## 常用命令
