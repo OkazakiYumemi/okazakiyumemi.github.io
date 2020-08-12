@@ -3,7 +3,7 @@ title: 「CF793F」Julia the snail
 date: 2020-05-16 16:12:35
 categories: 题解
 tags:
-- 数据结构
+- log数据结构
 - 线段树
 - 莫队
 - Codeforces
