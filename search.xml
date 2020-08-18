@@ -62,7 +62,7 @@
   <entry>
     <title><![CDATA[在Vim里摸爬滚打]]></title>
     <url>%2Fblog%2F%E5%9C%A8Vim%E9%87%8C%E6%91%B8%E7%88%AC%E6%BB%9A%E6%89%93%2F</url>
-    <content type="text"><![CDATA[你校曾经全是 Emacs 党，直到近两年出现了我这个用 Vim 的沙雕，和某个进队的 Gedit 神必壬。 至于为什么使用 Vim，一方面是想改善你校只有 Emacs 人的环境，一方面是想找点乐子。 于是开始看简明 Vim 练级攻略，顺便把基本操作扔到自己博客里。 简易使用安装 Vim 并启动后在 Normal 模式下，这个模式下所有的键就是功能键。 注意&lt;Ctrl&gt;-λ我会写成C-λ，以:开始的命令需要回车执行，&lt;n&gt;表示该处应输入一个数。 从 Normal 模式转至 Insert 模式 i：在光标前插入。a：在光标后插入。o/O：在当前行后/前插入一个新行并将光标跳到行头处。 删除字符 &lt;delete&gt;：真忘了怎么删就 delete 键。x：删除当前光标所在位置的一个字符。 复制粘贴 dd：删除当前行，并存入剪贴板里。p/P：在当前位置之后/前粘贴。yy：拷贝当前行。 怎么从外部剪贴板粘贴或复制到外部剪贴板呢？目前记住&quot;+p和&quot;+y就够了。 撤销恢复 u：Undo.&lt;C-r&gt;：Redo. 打开/保存/退出/改变文件 :e &lt;path/to/file&gt;：打开一个文件。:w：存盘。:saveas &lt;path/to/file&gt;：将当前文件另存为&lt;path/to/file&gt;。ZZ/:wq：保存并退出。:x：保存（仅在需要时）并退出。:q：退出，若选择不保存则需后附!强制执行（即命令为:q!），强制退出所有的文件可以使用:qa!。:bn/:bp：若打开了多个文件，使用其来切换到上/下一个文件。 移动光标 所谓 blank 字符，就是空格、tab、换行等。 hjkl：向左下上右移动光标。0：到行头。^：到本行第一个不是 blank 字符的位置。$：到本行行尾。g_：到本行最后一个不是 blank 字符的位置。:&lt;n&gt;：到第&lt;n&gt;行。 自动补全 &lt;C-n&gt;：体验不算太好，也许我没找到真正的使用方法（ 选择 v：选择一段。&lt;Shift-v&gt;：按行选择。 一些基本配置Vim 安装目录和用户主目录下有.vimrc，那是配置文件。 设置编码123set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936set termencoding=utf-8set encoding=utf-8 显示行号1set number nu是缩写。 突出显示当前行1set cursorline cul是缩写。 突出显示当前列1set cursorcolumn cuc是缩写。 启用鼠标123set mouse=aset selection=exclusiveset selectmode=mouse,key 不过其实没啥人愿意用鼠标，毕竟大部分人都是为了解放鼠标才来玩 Vim 的（ 缩进与 tab以下分别为设置将输入的 tab 转为空格、设置 tab 长度为 4 空格、设置自动缩进长度为 4 空格、继承前一行的缩进方式、 1234set expandtabset tabstop=4set shiftwidth=4set autoindent 对于我来说，暂时已经能够在 Vim 下存活了。]]></content>
+    <content type="text"><![CDATA[你校曾经全是 Emacs 党，直到近两年出现了我这个用 Vim 的沙雕，和某个进队的 Gedit 神必壬。 至于为什么使用 Vim，一方面是想改善你校只有 Emacs 人的环境，一方面是想找点乐子。 于是开始看简明 Vim 练级攻略，顺便把基本操作扔到自己博客里。 简易使用安装 Vim 并启动后在 Normal 模式下，这个模式下所有的键就是功能键。 注意&lt;Ctrl&gt;-λ我会写成C-λ，以:开始的命令需要回车执行，&lt;n&gt;表示该处应输入一个数。 从 Normal 模式转至 Insert 模式 i：在光标前插入。a：在光标后插入。o/O：在当前行后/前插入一个新行并将光标跳到行头处。 删除字符 &lt;delete&gt;：真忘了怎么删就 delete 键。x：删除当前光标所在位置的一个字符。 复制粘贴 dd：删除当前行，并存入剪贴板里。p/P：在当前位置之后/前粘贴。yy：拷贝当前行。 怎么从外部剪贴板粘贴或复制到外部剪贴板呢？目前记住&quot;+p和&quot;+y就够了。 其实选中一部分内容后，y就是复制，d就是删除。 撤销恢复 u：Undo.&lt;C-r&gt;：Redo. 打开/保存/退出/改变文件 :e &lt;path/to/file&gt;：打开一个文件。:w：存盘。:saveas &lt;path/to/file&gt;：将当前文件另存为&lt;path/to/file&gt;。ZZ/:wq：保存并退出。:x：保存（仅在需要时）并退出。:q：退出，若选择不保存则需后附!强制执行（即命令为:q!），强制退出所有的文件可以使用:qa!。:bn/:bp：若打开了多个文件，使用其来切换到上/下一个文件。 移动光标 所谓 blank 字符，就是空格、tab、换行等。 hjkl：向左下上右移动光标。0：到行头。^：到本行第一个不是 blank 字符的位置。$：到本行行尾。g_：到本行最后一个不是 blank 字符的位置。:&lt;n&gt;：到第&lt;n&gt;行。 自动补全 &lt;C-n&gt;：体验不算太好，也许我没找到真正的使用方法（ 选择 v：选择一段。&lt;Shift-v&gt;：按行选择。 一些基本配置Vim 安装目录和用户主目录下有.vimrc，那是配置文件。 设置编码123set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936set termencoding=utf-8set encoding=utf-8 显示行号1set number nu是缩写。 突出显示当前行1set cursorline cul是缩写。 突出显示当前列1set cursorcolumn cuc是缩写。 启用鼠标123set mouse=aset selection=exclusiveset selectmode=mouse,key 不过其实没啥人愿意用鼠标，毕竟大部分人都是为了解放鼠标才来玩 Vim 的（ 缩进与 tab以下分别为设置将输入的 tab 转为空格、设置 tab 长度为 4 空格、设置自动缩进长度为 4 空格、继承前一行的缩进方式、 1234set expandtabset tabstop=4set shiftwidth=4set autoindent 对于我来说，暂时已经能够在 Vim 下存活了。]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -329,8 +329,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>AtCoder</tag>
+        <tag>数学</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -429,8 +429,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>字符串</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -442,8 +442,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>找规律</tag>
         <tag>AtCoder</tag>
+        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
@@ -502,8 +502,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>bitset</tag>
         <tag>Ynoi</tag>
+        <tag>bitset</tag>
       </tags>
   </entry>
   <entry>
@@ -525,8 +525,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Ynoi</tag>
         <tag>log数据结构</tag>
+        <tag>Ynoi</tag>
       </tags>
   </entry>
   <entry>
