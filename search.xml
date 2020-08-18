@@ -8,8 +8,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>构造</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -62,7 +62,7 @@
   <entry>
     <title><![CDATA[在Vim里摸爬滚打]]></title>
     <url>%2Fblog%2F%E5%9C%A8Vim%E9%87%8C%E6%91%B8%E7%88%AC%E6%BB%9A%E6%89%93%2F</url>
-    <content type="text"><![CDATA[你校曾经全是 Emacs 党，直到近两年出现了我这个用 Vim 的沙雕，和某个进队的 Gedit 神必壬。 至于为什么使用 Vim，一方面是想改善你校只有 Emacs 人的环境，一方面是想找点乐子。 于是开始看简明 Vim 练级攻略，顺便把基本操作扔到自己博客里。 简易使用安装 Vim 并启动后在 Normal 模式下，这个模式下所有的键就是功能键。 注意&lt;Ctrl&gt;-λ我会写成C-λ，以:开始的命令需要回车执行，&lt;n&gt;表示该处应输入一个数。 从 Normal 模式转至 Insert 模式 i：在光标前插入。a：在光标后插入。o/O：在当前行后/前插入一个新行并将光标跳到行头处。 删除字符 &lt;delete&gt;：真忘了怎么删就 delete 键。x：删除当前光标所在位置的一个字符。 复制粘贴 dd：删除当前行，并存入剪贴板里。p/P：在当前位置之后/前粘贴。yy：拷贝当前行。 怎么从外部剪贴板粘贴或复制到外部剪贴板呢？目前记住&quot;+p和&quot;+y就够了。 撤销恢复 u：Undo.&lt;C-r&gt;：Redo. 打开/保存/退出/改变文件 :e &lt;path/to/file&gt;：打开一个文件。:w：存盘。:saveas &lt;path/to/file&gt;：将当前文件另存为&lt;path/to/file&gt;。ZZ/:wq：保存并退出。:x：保存（仅在需要时）并退出。:q：退出，若选择不保存则需后附!强制执行（即命令为:q!），强制退出所有的文件可以使用:qa!。:bn/:bp：若打开了多个文件，使用其来切换到上/下一个文件。 移动光标 所谓 blank 字符，就是空格、tab、换行等。 hjkl：向左下上右移动光标。0：到行头。^：到本行第一个不是 blank 字符的位置。$：到本行行尾。g_：到本行最后一个不是 blank 字符的位置。 自动补全 &lt;C-n&gt;：体验不算太好，也许我没找到真正的使用方法（ 选择 v:选择一段。&lt;Shift-v&gt;:按行选择。 一些基本配置Vim 安装目录和用户主目录下有.vimrc，那是配置文件。 设置编码123set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936set termencoding=utf-8set encoding=utf-8 显示行号1set number nu是缩写。 突出显示当前行1set cursorline cul是缩写。 突出显示当前列1set cursorcolumn cuc是缩写。 启用鼠标123set mouse=aset selection=exclusiveset selectmode=mouse,key 不过其实没啥人愿意用鼠标，毕竟大部分人都是为了解放鼠标才来玩 Vim 的（ 缩进与 tab以下分别为设置将输入的 tab 转为空格、设置 tab 长度为 4 空格、设置自动缩进长度为 4 空格、继承前一行的缩进方式、 1234set expandtabset tabstop=4set shiftwidth=4set autoindent 对于我来说，暂时已经能够在 Vim 下存活了。]]></content>
+    <content type="text"><![CDATA[你校曾经全是 Emacs 党，直到近两年出现了我这个用 Vim 的沙雕，和某个进队的 Gedit 神必壬。 至于为什么使用 Vim，一方面是想改善你校只有 Emacs 人的环境，一方面是想找点乐子。 于是开始看简明 Vim 练级攻略，顺便把基本操作扔到自己博客里。 简易使用安装 Vim 并启动后在 Normal 模式下，这个模式下所有的键就是功能键。 注意&lt;Ctrl&gt;-λ我会写成C-λ，以:开始的命令需要回车执行，&lt;n&gt;表示该处应输入一个数。 从 Normal 模式转至 Insert 模式 i：在光标前插入。a：在光标后插入。o/O：在当前行后/前插入一个新行并将光标跳到行头处。 删除字符 &lt;delete&gt;：真忘了怎么删就 delete 键。x：删除当前光标所在位置的一个字符。 复制粘贴 dd：删除当前行，并存入剪贴板里。p/P：在当前位置之后/前粘贴。yy：拷贝当前行。 怎么从外部剪贴板粘贴或复制到外部剪贴板呢？目前记住&quot;+p和&quot;+y就够了。 撤销恢复 u：Undo.&lt;C-r&gt;：Redo. 打开/保存/退出/改变文件 :e &lt;path/to/file&gt;：打开一个文件。:w：存盘。:saveas &lt;path/to/file&gt;：将当前文件另存为&lt;path/to/file&gt;。ZZ/:wq：保存并退出。:x：保存（仅在需要时）并退出。:q：退出，若选择不保存则需后附!强制执行（即命令为:q!），强制退出所有的文件可以使用:qa!。:bn/:bp：若打开了多个文件，使用其来切换到上/下一个文件。 移动光标 所谓 blank 字符，就是空格、tab、换行等。 hjkl：向左下上右移动光标。0：到行头。^：到本行第一个不是 blank 字符的位置。$：到本行行尾。g_：到本行最后一个不是 blank 字符的位置。:&lt;n&gt;：到第&lt;n&gt;行。 自动补全 &lt;C-n&gt;：体验不算太好，也许我没找到真正的使用方法（ 选择 v：选择一段。&lt;Shift-v&gt;：按行选择。 一些基本配置Vim 安装目录和用户主目录下有.vimrc，那是配置文件。 设置编码123set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936set termencoding=utf-8set encoding=utf-8 显示行号1set number nu是缩写。 突出显示当前行1set cursorline cul是缩写。 突出显示当前列1set cursorcolumn cuc是缩写。 启用鼠标123set mouse=aset selection=exclusiveset selectmode=mouse,key 不过其实没啥人愿意用鼠标，毕竟大部分人都是为了解放鼠标才来玩 Vim 的（ 缩进与 tab以下分别为设置将输入的 tab 转为空格、设置 tab 长度为 4 空格、设置自动缩进长度为 4 空格、继承前一行的缩进方式、 1234set expandtabset tabstop=4set shiftwidth=4set autoindent 对于我来说，暂时已经能够在 Vim 下存活了。]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -229,7 +229,7 @@
   <entry>
     <title><![CDATA[瞎搞Hexo博客]]></title>
     <url>%2Fblog%2F%E7%9E%8E%E6%90%9EHexo%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[没错我又开始瞎搞我的 blog 了。 源码问题看了 yansheng836 的 README.md （smwy）和某个 issue ，觉得自己也应该把源码一并传到 github 上。 我在 git 仓库里开了个名为 source 的 branch，本地也开了个仓库，现在每次更改之后就将源码推送到 source 。 然后每次搞完 blog 在 commit 的时候就要多写几行。 1234hexo cl &amp;&amp; hexo g &amp;&amp; hexo dgit add *git commit -m "~"git push origin master:source 不妨顺便把 .gitignore 也贴在这里： 12345678.DS_StoreThumbs.dbdb.json*.lognode_modules/public/.deploy*/.gitignore 渲染问题总有时候不想让 hexo 渲染某些 blog 里的 html 或者 md 文件。 于是可以改根目录下的 _config.yml 。 查了一下，发现只用改 skip_render 即可。 好像路径匹配用的是 glob 表达式，感觉和正则表达式有些相像，但规则简单得多。 这里就不放了，可以去阮一峰的博客学习。 隐藏博文大概知道怎么搞了，然而咕了。 怎么我老是咕啊 多地编辑经笔者尝试多地编辑后，出现了一些小问题。 不用hexo init！啊，git clone -b source &lt;my_repo&gt;之后，可以不用hexo init。 不如说不应该用，否则会多出令人烦躁的一些初始化的产物。 直接 12npm installnpm install hexo-deployer-git --save 就好了。 拯救自定义排序首先，我的自定义排序没了。 这是因为原本自定义排序是通过更改node_modules\hexo-generator-index\lib\generator.js实现的。 123456789101112131415161718192021222324252627282930313233'use strict';var pagination = require('hexo-pagination');module.exports = function(locals) &#123; var config = this.config; var posts = locals.posts.sort(config.index_generator.order_by); posts.data = posts.data.sort(function (a, b) &#123;//这里是排序 if (a.top &amp;&amp; b.top) &#123; if (a.top == b.top) return b.date - a.date; else return b.top - a.top; &#125; else if (a.top &amp;&amp; !b.top) &#123; return -1; &#125; else if (!a.top &amp;&amp; b.top) &#123; return 1; &#125; else return b.date - a.date; &#125;); var paginationDir = config.pagination_dir || 'page'; var path = config.index_generator.path || ''; return pagination(path, posts, &#123; perPage: config.index_generator.per_page, layout: ['index', 'archive'], format: paginationDir + '/%d/', data: &#123; __index: true &#125; &#125;);&#125;; 恢复font-awesome咋 font-awesome 也没了。 一看，这东西在public\lib，现已将整个文件夹打包到lib.zip。]]></content>
+    <content type="text"><![CDATA[没错我又开始瞎搞我的 blog 了。 源码问题看了 yansheng836 的 README.md （smwy）和某个 issue ，觉得自己也应该把源码一并传到 github 上。 我在 git 仓库里开了个名为 source 的 branch，本地也开了个仓库，现在每次更改之后就将源码推送到 source 。 然后每次搞完 blog 在 commit 的时候就要多写几行。 1234hexo cl &amp;&amp; hexo g &amp;&amp; hexo dgit add *git commit -m "~"git push origin master:source 不妨顺便把 .gitignore 也贴在这里： 12345678.DS_StoreThumbs.dbdb.json*.lognode_modules/public/.deploy*/.gitignore 渲染问题总有时候不想让 hexo 渲染某些 blog 里的 html 或者 md 文件。 于是可以改根目录下的 _config.yml 。 查了一下，发现只用改 skip_render 即可。 好像路径匹配用的是 glob 表达式，感觉和正则表达式有些相像，但规则简单得多。 这里就不放了，可以去阮一峰的博客学习。 隐藏博文大概知道怎么搞了，然而咕了。 怎么我老是咕啊 多地编辑经笔者尝试多地编辑后，出现了一些小问题。 不用hexo init！啊，git clone -b source &lt;my_repo&gt;之后，可以不用hexo init。 不如说不应该用，否则会多出令人烦躁的一些初始化的产物。 直接 123npm installnpm install hexo-cli -gnpm install hexo-deployer-git --save 就好了。 拯救自定义排序首先，我的自定义排序没了。 这是因为原本自定义排序是通过更改node_modules\hexo-generator-index\lib\generator.js实现的。 123456789101112131415161718192021222324252627282930313233'use strict';var pagination = require('hexo-pagination');module.exports = function(locals) &#123; var config = this.config; var posts = locals.posts.sort(config.index_generator.order_by); posts.data = posts.data.sort(function (a, b) &#123;//这里是排序 if (a.top &amp;&amp; b.top) &#123; if (a.top == b.top) return b.date - a.date; else return b.top - a.top; &#125; else if (a.top &amp;&amp; !b.top) &#123; return -1; &#125; else if (!a.top &amp;&amp; b.top) &#123; return 1; &#125; else return b.date - a.date; &#125;); var paginationDir = config.pagination_dir || 'page'; var path = config.index_generator.path || ''; return pagination(path, posts, &#123; perPage: config.index_generator.per_page, layout: ['index', 'archive'], format: paginationDir + '/%d/', data: &#123; __index: true &#125; &#125;);&#125;; 恢复font-awesome咋 font-awesome 也没了。 一看，这东西在public\lib，现已将整个文件夹打包到lib.zip。 拉取更新啊这个大概不用提吧。 12git fetch origin sourcegit merge origin/source]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -267,9 +267,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
         <tag>图论</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -317,8 +317,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -329,8 +329,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>数学</tag>
+        <tag>AtCoder</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -502,8 +502,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Ynoi</tag>
         <tag>bitset</tag>
+        <tag>Ynoi</tag>
       </tags>
   </entry>
   <entry>
@@ -525,8 +525,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>log数据结构</tag>
         <tag>Ynoi</tag>
+        <tag>log数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -548,8 +548,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>构造</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -594,8 +594,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>构造</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -662,9 +662,9 @@
         <category>题解</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>猜结论</tag>
         <tag>dp</tag>
-        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -675,8 +675,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>构造</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
