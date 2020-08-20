@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="欧拉回路和欧拉路径的学习笔记。 例题：[UOJ 117] 、 [LOJ 10105] 、 [Luogu 2731] 。">
-<meta name="keywords" content="图论">
+  <meta name="description" content="莫队二次离线很久之前学了，但是没写。 题意简述给定序列，离线查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。">
+<meta name="keywords" content="分块,Ynoi,莫队">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欧拉回路学习笔记与Hierholzer算法">
-<meta property="og:url" content="http://okazakiyumemi.github.io/blog/欧拉回路与Hierholzer算法学习笔记/index.html">
+<meta property="og:title" content="「Ynoi2019模拟赛」Yuno loves sqrt technology II">
+<meta property="og:url" content="http://okazakiyumemi.github.io/blog/Ynoi2019模拟赛-Yuno-loves-sqrt-technology-II/index.html">
 <meta property="og:site_name" content="Okazaki Yumemi&#39;s blog">
-<meta property="og:description" content="欧拉回路和欧拉路径的学习笔记。 例题：[UOJ 117] 、 [LOJ 10105] 、 [Luogu 2731] 。">
+<meta property="og:description" content="莫队二次离线很久之前学了，但是没写。 题意简述给定序列，离线查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-18T16:04:12.159Z">
+<meta property="og:updated_time" content="2020-08-20T13:51:25.901Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欧拉回路学习笔记与Hierholzer算法">
-<meta name="twitter:description" content="欧拉回路和欧拉路径的学习笔记。 例题：[UOJ 117] 、 [LOJ 10105] 、 [Luogu 2731] 。">
+<meta name="twitter:title" content="「Ynoi2019模拟赛」Yuno loves sqrt technology II">
+<meta name="twitter:description" content="莫队二次离线很久之前学了，但是没写。 题意简述给定序列，离线查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://okazakiyumemi.github.io/blog/欧拉回路与Hierholzer算法学习笔记/">
+  <link rel="canonical" href="http://okazakiyumemi.github.io/blog/Ynoi2019模拟赛-Yuno-loves-sqrt-technology-II/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>欧拉回路学习笔记与Hierholzer算法 | Okazaki Yumemi's blog</title>
+  <title>「Ynoi2019模拟赛」Yuno loves sqrt technology II | Okazaki Yumemi's blog</title>
   
 
 
@@ -385,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/欧拉回路与Hierholzer算法学习笔记/">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/Ynoi2019模拟赛-Yuno-loves-sqrt-technology-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Okazaki Yumemi">
@@ -402,7 +402,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">欧拉回路学习笔记与Hierholzer算法
+          <h1 class="post-title" itemprop="name headline">「Ynoi2019模拟赛」Yuno loves sqrt technology II
               
             
           </h1>
@@ -427,24 +427,12 @@
                 
               
 
-              <time title="创建时间：2019-11-09 21:59:47" itemprop="dateCreated datePublished" datetime="2019-11-09T21:59:47+08:00">2019-11-09</time>
+              <time title="创建时间：2020-08-20 15:26:03 / 修改时间：21:51:25" itemprop="dateCreated datePublished" datetime="2020-08-20T15:26:03+08:00">2020-08-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
               
             
           </span>
@@ -461,7 +449,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
 
                 
                 
@@ -502,47 +490,11 @@
       
 
       
-        <p>欧拉回路和欧拉路径的学习笔记。</p>
-<p>例题：<a href="http://uoj.ac/problem/117" target="_blank" rel="noopener">[UOJ 117]</a> 、 <a href="https://loj.ac/problem/10105" target="_blank" rel="noopener">[LOJ 10105]</a> 、 <a href="https://www.luogu.org/problem/P2731" target="_blank" rel="noopener">[Luogu 2731]</a> 。</p>
+        <p>莫队二次离线很久之前学了，但是没写。</p>
+<h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>给定序列，离线查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。</p>
 <a id="more"></a>
 
-<h1 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a>一些定义</h1><p>一个图，若能够找到一条路径，使得可以遍历完所有的边且不重复，则这样的图称为欧拉图，这条路径称为欧拉路径，若路径闭合也称为欧拉回路。</p>
-<h1 id="一些定理"><a href="#一些定理" class="headerlink" title="一些定理"></a>一些定理</h1><p>以下大量文字摘自维基百科。</p>
-<h2 id="定理一"><a href="#定理一" class="headerlink" title="定理一"></a>定理一</h2><ul>
-<li>连通的无向图有欧拉路径的充要条件是：图中度数是奇数的顶点数量是 $0$ 或 $2$ 。</li>
-<li>连通的无向图有欧拉回路的充要条件是：图中所有点的度数都是偶数。</li>
-</ul>
-<h3 id="证明一"><a href="#证明一" class="headerlink" title="证明一"></a>证明一</h3><ul>
-<li>必要性：如果一个图能够一笔画成，那么对于除了起点和终点的其他顶点，总有路径中连向点的边数与这个点的出边数相同，即这个点的度数为偶数。而对于起点和终点，若起点和终点相同，则这个点的度数也为偶数；否则这两个点的度数为奇数。即图中度数为奇数的点的数量是 $0$ 或 $2$ 。</li>
-<li>充分性：<ol>
-<li>如果图中没有度数为奇数的点，则任选一点出发，连一个环。如果这个环就是原图则结束。若不是，由于图是连通的，该环与原图的其他部分必然有公共顶点，从该点出发，在原图的剩余部分中重复上述步骤。由于原图是连通图，经过若干步后，全图被分为一些环。由于两个相连的环就是一个环，原来的图也就是一条欧拉回路。</li>
-<li>如果图中有两个度数为奇数的顶点 $u$ 和 $v$ ，那么将他们连边后，得到一个无奇数度数的点的连通无向图，由上知这是一个环，因此去掉新加的边后，成为一条路径，起点和终点是 $u$ 与 $v$ 。至此证毕。</li>
-</ol>
-</li>
-</ul>
-<h2 id="定理二"><a href="#定理二" class="headerlink" title="定理二"></a>定理二</h2><p>如果连通无向图有 $2k$ 个奇数度数的顶点，那么它可以且至少可以用 $k$ 笔画成。</p>
-<h3 id="证明二"><a href="#证明二" class="headerlink" title="证明二"></a>证明二</h3><p>将这 $2k$ 个奇数度数的顶点分成 $k$ 对后分别连起，则得到一个无奇数度数顶点的连通图。由上知这个图是一个环，因此去掉新加的边后至多成为 $k$ 条欧拉路径，因此必然可以用 $k$ 笔画成。但是假设全图可以分为 $q$ 条欧拉路径，则由定理一知，每条链中只有不多于两个奇顶点，于是 $2q\ge 2k$。因此必定至少要 $k$ 笔画成。</p>
-<h2 id="有向图的欧拉路径"><a href="#有向图的欧拉路径" class="headerlink" title="有向图的欧拉路径"></a>有向图的欧拉路径</h2><ul>
-<li>一个连通的有向图可以表示为一条欧拉回路的充要条件是：每个顶点的出度和入度都相等。</li>
-<li>一个连通的有向图可以表示为一条不闭合的欧拉路径的充要条件是：某一个点的出度比入度多 $1$ ，另一个点的出度比入度少 $1$ ，前者为起点而后者为终点。</li>
-</ul>
-<p>证明方式类似证明一。</p>
-<p><br><br></p>
-<h1 id="Hierholzer算法"><a href="#Hierholzer算法" class="headerlink" title="Hierholzer算法"></a>Hierholzer算法</h1><p>Hierholzer算法是一种可以在时间复杂度 $O(|E|)$ 内求出无向图或有向图的欧拉路径（如果有的话）的算法。</p>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>首先要判断这个图有没有欧拉路径，判断方法就是前面的定理。</p>
-<p>然后，任选择一个顶点 $u$ 开始 <strong>dfs</strong> 。枚举 $u$ 的每条出边（若是无向图则为无向边） $e=(u,v)$ ，将这条边删去并 <strong>dfs</strong> 点 $v$ ，结束后将这条边加入答案序列。</p>
-<p>最后再判断答案是否合法（指图是否不连通，图只要连通则必定合法），若合法，该序列倒序即为欧拉路径。</p>
-<p>无论是否为欧拉回路均可以找到。</p>
-<p>由于选择了一条边之后便将其删去，所以时间复杂度是 $O(|E|)$ 。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><div><div class="fold_hider"><div class="close hider_title">细节比较多，详见代码。</div></div><div class="fold">
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a),ed_##i=(b);i&lt;=ed_##i;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a),ed_##i=(b);i&gt;=ed_##i;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a),*ed_##i=(arr)+(b)+1;i!=ed_##i;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a),*ed_##i=(arr)+(b)-1;i!=ed_##i;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; PII;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Templ(T) template<span class="meta-string">&lt;typename T&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    Templ(_Tp) <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">chkmin</span><span class="params">(_Tp &amp;x,_Tp y)</span></span>&#123; <span class="keyword">return</span> x&gt;y?x=y,<span class="number">1</span>:<span class="number">0</span>; &#125;</span><br><span class="line">    Templ(_Tp) <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">chkmax</span><span class="params">(_Tp &amp;x,_Tp y)</span></span>&#123; <span class="keyword">return</span> x&lt;y?x=y,<span class="number">1</span>:<span class="number">0</span>; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> using_mod</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span>, N = <span class="number">100010</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> using_mod</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    Templ(_Tp) <span class="keyword">inline</span> _<span class="function">Tp <span class="title">gcd</span><span class="params">(_Tp x,_Tp y)</span></span>&#123; <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PBTXDY</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, ecnt, stk[N &lt;&lt; <span class="number">2</span>], stop;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> link, to, id, vis;</span><br><span class="line">&#125;e[N &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vertice</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> head, ind, outd, vis;</span><br><span class="line">&#125;p[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    e[++ecnt] = (Edge)&#123; p[u].head, v, i &#125;;</span><br><span class="line">    p[u].head = ecnt, ++p[u].outd, ++p[v].ind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Output_path</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(stop &lt; m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">    ROF(i, stop, <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%d "</span>, stk[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs_directed_graph</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;<span class="comment">//做有向图</span></span><br><span class="line">    <span class="keyword">for</span>(Rint &amp;i = p[u].head, v, real_i; i; i = e[i].link)&#123;<span class="comment">//&amp;i 是为了保证这条边不会再被遍历到</span></span><br><span class="line">        real_i = i, v = e[real_i].to;</span><br><span class="line">        <span class="keyword">if</span>(!e[real_i].vis)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!p[v].vis) p[v].vis = <span class="number">1</span>;</span><br><span class="line">            e[real_i].vis = <span class="number">1</span>;</span><br><span class="line">            dfs_directed_graph(v);</span><br><span class="line">            stk[++stop] = e[real_i].id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs_undirected_graph</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;<span class="comment">//做无向图</span></span><br><span class="line">    <span class="keyword">for</span>(Rint &amp;i = p[u].head, v, real_i; i; i = e[i].link)&#123;</span><br><span class="line">        real_i = i, v = e[real_i].to;</span><br><span class="line">        <span class="keyword">if</span>(!e[(real_i + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>].vis)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!p[v].vis) p[v].vis = <span class="number">1</span>;</span><br><span class="line">            e[(real_i + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>].vis = <span class="number">1</span>;</span><br><span class="line">            dfs_undirected_graph(v);</span><br><span class="line">            stk[++stop] = e[real_i].id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work_directed_graph</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read(), m = read();</span><br><span class="line">    Rint u, v;</span><br><span class="line">    FOR(i, <span class="number">1</span>, m) u = read(), v = read(), add_edge(u, v, i);</span><br><span class="line">    FOR(i, <span class="number">1</span>, n) <span class="keyword">if</span>(p[i].ind != p[i].outd) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>), <span class="number">0</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n) <span class="keyword">if</span>(!p[i].vis)&#123;</span><br><span class="line">        p[i].vis = <span class="number">1</span>, dfs_directed_graph(i);</span><br><span class="line">        <span class="keyword">if</span>(Output_path()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        stop = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work_undirected_graph</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read(), m = read();</span><br><span class="line">    Rint u, v;</span><br><span class="line">    FOR(i, <span class="number">1</span>, m) u = read(), v = read(), add_edge(u, v, i), add_edge(v, u, -i);</span><br><span class="line">    FOR(i, <span class="number">1</span>, n) <span class="keyword">if</span>(((p[i].ind + p[i].outd) &gt;&gt; <span class="number">1</span>) &amp; <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>), <span class="number">0</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n) <span class="keyword">if</span>(!p[i].vis)&#123;</span><br><span class="line">        p[i].vis = <span class="number">1</span>, dfs_undirected_graph(i);</span><br><span class="line">        <span class="keyword">if</span>(Output_path()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        stop = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> test_type = read() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> test_type ? work_directed_graph() : work_undirected_graph();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div></div>
-
-<h1 id="一些套路"><a href="#一些套路" class="headerlink" title="一些套路"></a>一些套路</h1><p>哈密顿路径和欧拉路径相对，指的是遍历一个图的所有点且不重复的路径，可以不经过所有的边。</p>
-<p>有时一个题目可以转化成哈密顿路径或欧拉路径。</p>
-<p>然而图上找哈密顿路径是 NP 问题，所以基本是用欧拉路径做。</p>
-
+<h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2>
       
     </div>
 
@@ -565,7 +517,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图论/" rel="tag"># 图论</a>
+            <a href="/tags/分块/" rel="tag"># 分块</a>
+          
+            <a href="/tags/Ynoi/" rel="tag"># Ynoi</a>
+          
+            <a href="/tags/莫队/" rel="tag"># 莫队</a>
           
         </div>
       
@@ -578,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/CometOJ-7C/" rel="next" title="「Comet#7C」临时翻出来的题">
-                <i class="fa fa-chevron-left"></i> 「Comet#7C」临时翻出来的题
+              <a href="/blog/CF506E/" rel="next" title="「CF506E」Mr. Kitayuta's Gift">
+                <i class="fa fa-chevron-left"></i> 「CF506E」Mr. Kitayuta's Gift
               </a>
             
           </div>
@@ -587,10 +543,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/CometOJ-13F/" rel="prev" title="「Comet#13F」「蓬莱的弹枝 -七色的弹幕-」">
-                「Comet#13F」「蓬莱的弹枝 -七色的弹幕-」 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1045,7 +997,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些定义"><span class="nav-number">1.</span> <span class="nav-text">一些定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些定理"><span class="nav-number">2.</span> <span class="nav-text">一些定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定理一"><span class="nav-number">2.1.</span> <span class="nav-text">定理一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#证明一"><span class="nav-number">2.1.1.</span> <span class="nav-text">证明一</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定理二"><span class="nav-number">2.2.</span> <span class="nav-text">定理二</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#证明二"><span class="nav-number">2.2.1.</span> <span class="nav-text">证明二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有向图的欧拉路径"><span class="nav-number">2.3.</span> <span class="nav-text">有向图的欧拉路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hierholzer算法"><span class="nav-number">3.</span> <span class="nav-text">Hierholzer算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">3.1.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.2.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些套路"><span class="nav-number">4.</span> <span class="nav-text">一些套路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意简述"><span class="nav-number">1.</span> <span class="nav-text">题意简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要思路"><span class="nav-number">2.</span> <span class="nav-text">主要思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
             
 
           </div>

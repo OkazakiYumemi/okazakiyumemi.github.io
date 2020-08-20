@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「Ynoi2019模拟赛」Yuno loves sqrt technology II]]></title>
+    <url>%2Fblog%2FYnoi2019%E6%A8%A1%E6%8B%9F%E8%B5%9B-Yuno-loves-sqrt-technology-II%2F</url>
+    <content type="text"><![CDATA[莫队二次离线很久之前学了，但是没写。 题意简述给定序列，离线查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。 主要思路参考代码]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>分块</tag>
+        <tag>Ynoi</tag>
+        <tag>莫队</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「CF506E」Mr. Kitayuta's Gift]]></title>
     <url>%2Fblog%2FCF506E%2F</url>
     <content type="text"><![CDATA[队爷的 pdf 题解根本看不懂，，， 题意简述给定一个小写字符串 $s$ 与正整数 $n$。$|s|\le 200, n\le 10^9$。 要求在 $s$ 中插入恰好 $n$ 个小写字符使其为回文串的方案数，对 $10^4 + 7$ 取模。 主要思路在这里只考虑 $n + |s|$ 为偶数的情况（因为实际上两者差不多）。 考虑 dp。设 $f(i, l, r)$ 为只考虑最终回文串的前 $i$ 与后 $i$ 个字符，它们与 $s$ 尽可能匹配后还剩下 $[l, r]$ 这段区间的方案数。然后顺便设 $g(i)$ 为只考虑最终回文串的前 $i$ 与后 $i$ 个字符已经将 $s$ 完全匹配的方案数。 显然转移有： $s_l = s_r, r - l\le 1$:$$\begin{aligned} g(i + 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 25\cdot f(i, l, r)\end{aligned}$$ $s_l = s_r, r - l &gt; 1$:$$\begin{aligned} f(i + 1, l + 1, r - 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 25\cdot f(i, l, r)\end{aligned}$$ $s_l \ne s_r$:$$\begin{aligned} f(i + 1, l + 1, r)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r - 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 24\cdot f(i, l, r)\end{aligned}$$ $g$:$$g(i + 1)\leftarrow 26\cdot g(i)$$ 把这个状态数 $O(|s|^2)$ 的 dp 强行矩乘优化可得到 $O(|s|^6\log n)$ 的复杂度，但显然无法通过此题。 观察，可以发现这个 dp 可以表示为在一个有限状态自动机上匹配的过程。我们不妨将终点设为 $T$，转移过程的点设为 $(l, r)$。 例如如下为abaac的转移图： 令对于所有 $(l, r)$ 满足 $s_l = s_r$，设其为一类点（上图粉色），否则设为二类点（上图蓝色）。 由于除了 $l = r$ 以外，经过一个一类点会使得未匹配长度减少 $2$，故若一条链上经过了 $x$ 个二类点，则应经过 $\lceil\frac{|s| - i}{2}\rceil$ 个一类点。所以本质不同的链只有 $O(|s|)$ 条。 不妨设 $h(i, l, r)$ 为起点到 $(l, r)$ 经过 $i$ 个二类点的路径的数量。显然 $h(i, l, r)$ 可以 $O(|s|^3)$ 记忆化搜索求出。 此时对每一条链矩乘优化即可得到 $O(|s|^4\log n)$ 的总复杂度，仍无法通过此题。 考虑能否将这 $O(|s|)$ 条链压缩成 $O(|s|)$ 个点。 答案是能的。只要我们先各作一条一类点、二类点的链，再将每两个二类点连向一个对应的一类点即可。 转移系数等类似地可以 $O(|s|^3)$ 求出。故矩乘优化总时间复杂度为 $O(|s|^3\log n)$。 不要忘记上述讨论均基于 $n + |s|$ 为偶数。若 $n + |s|$ 为奇数如何？ 不难发现，除了最后一步转移（即最终串只剩中间位没有确定时）不能从 $s_l = s_r, l + 1 = r$ 的点转移过来其他均相同。 故在上述图中去掉 $T$ 的自环，并仅保留最后从未匹配长度为 $2$ 的一类点转移至终点的链，再做一次矩乘优化即得到多算的方案数。 参考代码难写，，， （作上面两幅图的素材被扔到graph.7z里了，不过都是 mspaint 手撸大概也没什么保存的必要）]]></content>
@@ -268,8 +281,8 @@
       </categories>
       <tags>
         <tag>Codeforces</tag>
-        <tag>图论</tag>
         <tag>dp</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -429,8 +442,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>字符串</tag>
         <tag>AtCoder</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -442,8 +455,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>找规律</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
