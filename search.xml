@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[「Ynoi2019模拟赛」Yuno loves sqrt technology II]]></title>
     <url>%2Fblog%2FYnoi2019%E6%A8%A1%E6%8B%9F%E8%B5%9B-Yuno-loves-sqrt-technology-II%2F</url>
-    <content type="text"><![CDATA[莫队二次离线很久之前学了，但是没写。 题意简述给定序列，离线查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。 主要思路参考代码]]></content>
+    <content type="text"><![CDATA[莫队二次离线很久之前学了，但是没写。 题意简述给定长 $O(n)$ 序列，离线 $O(n)$ 次查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。 主要思路参考代码]]></content>
       <categories>
         <category>题解</category>
       </categories>
@@ -64,7 +64,7 @@
   <entry>
     <title><![CDATA[摆脱辣鸡cmd]]></title>
     <url>%2Fblog%2F%E6%91%86%E8%84%B1%E8%BE%A3%E9%B8%A1cmd%2F</url>
-    <content type="text"><![CDATA[我，一直有个梦想，就是在 Windows 下摆脱 cmd。 终于我这一天被它弄得心态崩溃，整了一个 cmder 来玩。 这啥这里有个详细的初步介绍。 好吧，这大概是个 Win 下的可移植的终端的整合包，让你随身携带命令别名、颜色主题之类的。 然后这里主要用来记录使用 cmder 遇到的一些问题。 λ很炫，但也很屑由于 cmder 将λ作为命令提示符，稍微上下键查看下前后的命令就会多出来一个无法删除的符号，令人谔谔。 于是vendor\clink.lua里面把某一行（因版本不同而不同，行开头是local cmder_prompt =）中的{lamb}改为$即可解决 cmd 的命令提示符问题。 bash 的命令提示符就麻烦些，要在vendor\git-for-windows\etc\profile.d\git-prompt.sh把某一行PS1=&quot;$PS1&quot;&#39;λ &#39; # prompt: always λ改为PS1=&quot;$PS1&quot;&#39;$ &#39; # prompt: always $就好了。]]></content>
+    <content type="text"><![CDATA[我，一直有个梦想，就是在 Windows 下摆脱 cmd。 终于我这一天被它弄得心态崩溃，整了一个 cmder 来玩。 这啥这里有个详细的初步介绍。 好吧，这大概是个 Win 下的可移植的终端的整合包，让你随身携带命令别名、颜色主题之类的。 然后这里主要用来记录使用 cmder 遇到的一些问题。 λ很炫，但也很屑由于 cmder 将λ作为命令提示符，稍微上下键查看下前后的命令就会多出来一个无法删除的符号，令人谔谔。 于是vendor\clink.lua里面把某一行（因版本不同而不同，行开头是local cmder_prompt =）中的{lamb}改为$即可解决 cmd 的命令提示符问题。 bash 的命令提示符就麻烦些，要在vendor\git-for-windows\etc\profile.d\git-prompt.sh把某一行PS1=&quot;$PS1&quot;&#39;λ &#39; # prompt: always λ改为PS1=&quot;$PS1&quot;&#39;$ &#39; # prompt: always $就好了。 输入中文光标出问题若使用的是 Git，在vendor\profile.ps1里找到下面这一行： 1Microsoft.PowerShell.Utility\Write-Host &quot;`nλ &quot; -NoNewLine -ForegroundColor &quot;DarkGray&quot; λ改成$就好了。]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -342,8 +342,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>数学</tag>
+        <tag>AtCoder</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -442,8 +442,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>字符串</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -455,8 +455,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>找规律</tag>
         <tag>AtCoder</tag>
+        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
