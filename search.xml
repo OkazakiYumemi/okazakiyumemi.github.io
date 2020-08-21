@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「CF356E」Xenia and String Problem]]></title>
+    <url>%2Fblog%2FCF356E%2F</url>
+    <content type="text"><![CDATA[大型分类讨论。 题意简述称字符串 $s$ 为Gray的串，仅当满足以下所有条件： $|s|$ 为奇数。 串正中间的字符仅在 $s$ 中出现一次。 要么 $|s| = 1$，要么删去中间的字符，左右是相等的Gray。 给一个字符串 $|S|$，一个字串 $s$ 若为Gray，贡献为 $|s|^2$，否则贡献为 $0$。求更改最多 $1$ 个字符后整个串的最大总贡献。 $|S|\le 10^5$。 [CF 356E] 主要思路设 $n = |S|$。不难发现Gray的长度均为 $2^k - 1$，故总共只有 $O(n\log n)$ 个可能成为Gray的字串。先考虑不修改求总贡献。 考虑 $[s_l, e_r]$ 是否为Gray，假设 $[s_l, e_r] = [s_r, e_r]$ 且均为Gray，则只需判断 $s_{s_r - 1}$ 是否字串 $[s_l, e_r]$ 中只出现一次即可。 求两个字串是否相等，后缀数组求 lcp 即可。 考虑将 $s_i$ 改为 $v$ 会发生什么：减掉先前所有包含 $i$ 的Gray的贡献，再加上所有更改为 $v$ 后新的贡献。 包含 $i$ 的贡献 $c(i)$ 好求，维护差分，每次判断到一个Gray更新即可。 而 $s_i$ 改为 $v$ 后的新贡献 $f(i, v)$ 不好直接求，考虑枚举每个可能为Gray的字串是否更改 $1$ 个字符可变为Gray。 对于一个Gray，仅可能更改中间的位置。 对于左半边右半边均非Gray的串，仅更改一个位置不可能。 对于左右均为Gray且相等，可能可更改中间位置。 对于左右至少有一个为Gray且左右字串仅相差 1 个字符的，可能可以更改该位置，注意同时保证中间位置的字符仅出现一次。 就结束了。使用后缀数组 $O(1)$ lcp，复杂度 $O(\Sigma n\log n)$。 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154#include &lt;bits/stdc++.h&gt;namespace my_std &#123;using namespace std;#define reg register#define Rint register int#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)typedef long long LL;#define Templ(T) template &lt;typename T&gt;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;&#125; // namespace my_stdusing namespace my_std;const int N = 100010;int n;char str[N];int l2g[N];int g[N][26], s[N][26];LL f[N][26], c[N], ans;int a[N];namespace SA&#123;int sa[N], rk[N], oldrk[N &lt;&lt; 1], cnt[N], px[N], id[N], ht[N];int st[20][N];inline int cmp(const int &amp;x, const int &amp;y, const int &amp;w)&#123; return oldrk[x] == oldrk[y] &amp;&amp; oldrk[x + w] == oldrk[y + w];&#125;inline void build()&#123; Rint m = 127, p = 0, w = 0; FOR(i, 1, n) ++cnt[rk[i] = str[i]]; FOR(i, 1, m) cnt[i] += cnt[i - 1]; ROF(i, n, 1) sa[cnt[rk[i]]--] = i; for(w = 1; p &lt; n; w &lt;&lt;= 1, m = p)&#123; p = 0; ROF(i, n, n - w + 1) id[++p] = i; FOR(i, 1, n) if(sa[i] &gt; w) id[++p] = sa[i] - w; memset(cnt, 0, sizeof(cnt)); FOR(i, 1, n) ++cnt[px[i] = rk[id[i]]]; FOR(i, 1, m) cnt[i] += cnt[i - 1]; ROF(i, n, 1) sa[cnt[px[i]]--] = id[i]; p = 0; memcpy(oldrk, rk, sizeof(rk)); FOR(i, 1, n)&#123; rk[sa[i]] = cmp(sa[i], sa[i - 1], w) ? p : ++p; &#125; &#125; //build sa[], rk[] p = 0; FOR(i, 1, n)&#123; if(p) --p; while(str[i + p] == str[sa[rk[i] - 1] + p]) ++p; ht[rk[i]] = p; &#125; //build ht[] //ht[i] = lcp(sa[i], sa[i - 1]) FOR(i, 1, n) st[0][i] = ht[i]; FOR(i, 2, n + 1) l2g[i] = l2g[i &gt;&gt; 1] + 1; FOR(i, 1, l2g[n])&#123; FOR(j, 1, n - (1 &lt;&lt; i) + 1)&#123; st[i][j] = min(st[i - 1][j], st[i - 1][j + (1 &lt;&lt; (i - 1))]); &#125; &#125; // FOR(i, 1, n)&#123; // FOR(j, sa[i], n) putchar(str[j]); // putchar('\n'); // &#125;&#125;inline int st_q(Rint x, Rint y)&#123; Rint k = l2g[y - x + 1]; y -= (1 &lt;&lt; k) - 1; return min(st[k][x], st[k][y]);&#125;inline int lcp(Rint x, Rint y)&#123; if(x == y) return n - x + 1; x = rk[x], y = rk[y]; if(x &gt; y) swap(x, y); // if(!x || !y) return 0; return st_q(x + 1, y);&#125;&#125;#define lsp(x, y) SA::lcp(x, y)#define len ((1 &lt;&lt; (t - 1)) - 1)#define ls (i)#define rs (i + (1 &lt;&lt; (t - 1)))#define le (i + (1 &lt;&lt; (t - 1)) - 2)#define re (i + (1 &lt;&lt; t) - 2)#define LEN ((1 &lt;&lt; t) - 1)inline int S(int l, int r, int o)&#123; return s[r][o] - s[l - 1][o];&#125;inline LL sqr(int x)&#123; return (LL)x * x;&#125;int main() &#123; scanf("%s", str + 1); n = strlen(str + 1); FOR(i, 1, n) g[i][1] = 1, a[i] = str[i] - 'a'; SA::build(); FOR(i, 1, n) FOR(o, 0, 25)&#123; s[i][o] = s[i - 1][o] + (a[i] == o); &#125; const int lim = l2g[n + 1]; c[1] = 1; ans = n; FOR(t, 2, lim) FOR(i, 1, n - (1 &lt;&lt; t) + 2)&#123; if(g[ls][t - 1] &amp;&amp; g[rs][t - 1] &amp;&amp; lsp(ls, rs) &gt;= len &amp;&amp; S(ls, re, a[rs - 1]) == 1)&#123; g[ls][t] = 1; c[ls] += sqr(LEN), c[re + 1] -= sqr(LEN); ans += sqr(LEN); FOR(o, 0, 25) if(a[rs - 1] != o &amp;&amp; S(ls, re, o) == 0) f[rs - 1][o] += sqr(LEN); &#125; &#125;//get g[][], c[], ans // FOR(t, 1, lim) FOR(i, 1, n - (1 &lt;&lt; t) + 2)&#123; // if(g[i][t]) printf(":%d %d\n", i, t); // &#125; FOR(t, 2, lim) FOR(i, 1, n - (1 &lt;&lt; t) + 2) if(!g[i][t])&#123; if(g[ls][t - 1] &amp;&amp; g[rs][t - 1])&#123; if(lsp(ls, rs) &gt;= len)&#123; FOR(o, 0, 25) if(a[rs - 1] != o &amp;&amp; S(ls, re, o) == 0) f[rs - 1][o] += sqr(LEN); // printf("1: %d %d\n", i, t); &#125;else&#123; int h = lsp(ls, rs); if((h == len - 1 || lsp(ls + h + 1, rs + h + 1) + h + 1 &gt;= len) &amp;&amp; S(ls, re, a[rs - 1]) == int(a[rs + h] == a[rs - 1] || a[ls + h] == a[rs - 1]) + 1)&#123; // printf("3: %d %d %d %d\n", i, t, ls + h, rs + h); f[ls + h][a[rs + h]] += sqr(LEN), f[rs + h][a[ls + h]] += sqr(LEN); if(a[ls + h] == a[rs - 1]) f[rs + h][a[ls + h]] -= sqr(LEN); if(a[rs + h] == a[rs - 1]) f[ls + h][a[rs + h]] -= sqr(LEN); &#125; &#125; &#125;else if(g[ls][t - 1] + g[rs][t - 1] == 1)&#123; int h = lsp(ls, rs); if((h == len - 1 || (lsp(ls + h + 1, rs + h + 1) + h + 1 &gt;= len)) &amp;&amp; S(ls, re, a[rs - 1]) == (((g[ls][t - 1] ? a[rs + h] : a[ls + h]) == a[rs - 1]) ? 2 : 1))&#123; // printf("2: %d %d %d\n", i, t, (g[ls][t - 1] ? rs : ls) + h); (g[ls][t - 1] ? f[rs + h][a[ls + h]] : f[ls + h][a[rs + h]]) += sqr(LEN); &#125; &#125; &#125;//get f[][] FOR(i, 1, n) c[i] += c[i - 1]; reg LL res = ans; // printf("%lld\n", ans); FOR(i, 1, n) FOR(o, 0, 25) if(a[i] != o)&#123; chkmax(res, ans - c[i] + 1 + f[i][o]); &#125; printf("%lld\n", res); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>后缀数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「CF1063E」Lasers and Mirrors]]></title>
     <url>%2Fblog%2FCF1063E%2F</url>
     <content type="text"><![CDATA[题意简述一个 $n\times n$ 的网格，在每列上方各有一个激光发射器，下方各有一个激光接收器。 第 $i$ 个接收器希望接收来自第 $p_i$ 个发射器的激光。你可以在一些位置 45 度放置镜子，使得最多的接收器满足其需求。 求出最多数量并给出一种放置镜子的方案，保证 ${a_n}$ 为排列，$n\le 1000$。 [CF 1063E] 主要思路简单构造题。 容易发现除非对于任意 $i$ 均有 $i = p_i$ 时答案为 $n$，其余答案均为 $n - 1$。 等价地，设第 $i$ 个发射器希望射到 $a_i$ 列。 不妨钦定第 $1$ 个发射器无法满足，则对于点 $1$ 所在的环 $S$，容易使用 $|S| - 1$ 行对该环中的其他元素均满足，从第 $a_1$ 个发射器开始，依次处理即可。 对任意其他环 $T$，可以使用 $|T|$ 行使其中所有元素均满足：找到一个位置使得 $x &gt; a_x, a_x &lt; a_{a_x}$，则可以利用第一列满足该环——从第 $a_x$ 发射器开始依次处理即可。 以下是一个简单例子： 123456789a:4 6 2 7 3 5 1. . . . . . ./ . / . . . .. . / . / . .. . . . / / .\ \ . . . \ ./ . . . . . /. . . \ . . \ 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119#include &lt;bits/stdc++.h&gt;namespace my_std &#123;using namespace std;#define reg register#define Rint register int#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)inline int read() &#123; Rint ans = 0, f = 1; reg char c = getchar(); while (!isdigit(c)) &#123; f ^= (c == '-'); c = getchar(); &#125; for (; isdigit(c); c = getchar()) ans = ans * 10 + c - '0'; return f ? ans : -ans;&#125;&#125; // namespace my_stdusing namespace my_std;const int N = 1010;#define pcr(x) putchar(x)#define pb push_backinline void write(int x)&#123; static char tmp[10], *t = tmp; do&#123; *++t = (x % 10) ^ 48, x /= 10; &#125;while(x); while(t != tmp) pcr(*t--); pcr(10);&#125;int n, a[N], b[N];vector&lt;int&gt; v[N];char g[N][N];// '\' -// '/' +inline bool Identity()&#123; FOR(i, 1, n) if(a[i] != i) return 0; return 1;&#125;inline int Check(int i)&#123; int x = i; ROF(j, n, 1) if(g[j][x] != '.')&#123; if(g[j][x] == '/')&#123; ++x; while(x &lt;= n &amp;&amp; g[j][x] != '/') ++x; if(x &gt; n)&#123; printf("%d %d: %d +\n", i, b[i], j); return 0; &#125; &#125; else&#123; --x; while(x &gt; 0 &amp;&amp; g[j][x] != '\\') --x; if(x &lt; 1)&#123; printf("%d %d: %d -\n", i, b[i], j); return 0; &#125; &#125; &#125; if(x != b[i]) printf("%d %d %d\n", i, b[i], x); return x == b[i];&#125;inline void Check()&#123; FOR(i, 1, n) b[a[i]] = i; FOR(i, 1, n) Check(i);&#125;int main() &#123; n = read(); FOR(i, 1, n) a[read()] = i; if(Identity())&#123; write(n); FOR(i, 1, n)&#123; FOR(i, 1, n) pcr('.'); pcr(10); &#125; return 0; &#125; write(n - 1); Rint c = n; &#123; int x = a[1]; while(x != 1)&#123; if(x &lt; a[x]) v[c].pb(-x), v[c].pb(-a[x]); else v[c].pb(x), v[c].pb(a[x]); b[x] = 1, x = a[x], --c; &#125; &#125; FOR(i, 2, n) if(!b[i] &amp;&amp; i != a[i])&#123; const int t = c; int y = i; while(y &lt; a[y] || a[y] &gt; a[a[y]]) y = a[y]; int x = a[y]; while(x != y)&#123; if(x &lt; a[x]) v[c].pb(-x), v[c].pb(-a[x]); else v[c].pb(x), v[c].pb(a[x]); b[x] = 1, x = a[x], --c; &#125; v[c].pb(1), v[c].pb(x); v[t].pb(-1); b[y] = 1, --c; &#125; FOR(i, 1, n) FOR(j, 1, n) g[i][j] = '.'; FOR(i, 1, n)&#123; for(int x: v[i])&#123; x &gt; 0 ? g[i][x] = '/' : g[i][-x] = '\\'; &#125; &#125; FOR(i, 1, n)&#123; FOR(j, 1, n) pcr(g[i][j]); pcr(10); &#125; // Check(); return 0;&#125;]]></content>
@@ -32,8 +44,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>dp</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -138,8 +150,8 @@
       <tags>
         <tag>字符串</tag>
         <tag>线段树</tag>
-        <tag>省选</tag>
         <tag>后缀数组</tag>
+        <tag>省选</tag>
       </tags>
   </entry>
   <entry>
@@ -291,8 +303,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -341,8 +353,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -353,8 +365,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>AtCoder</tag>
+        <tag>数学</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -526,8 +538,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Ynoi</tag>
         <tag>bitset</tag>
+        <tag>Ynoi</tag>
       </tags>
   </entry>
   <entry>
@@ -549,8 +561,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>log数据结构</tag>
         <tag>Ynoi</tag>
+        <tag>log数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -572,8 +584,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -618,8 +630,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -686,9 +698,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>猜结论</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -699,8 +711,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
