@@ -32,8 +32,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>dp</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -253,7 +253,7 @@
   <entry>
     <title><![CDATA[瞎搞Hexo博客]]></title>
     <url>%2Fblog%2F%E7%9E%8E%E6%90%9EHexo%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[没错我又开始瞎搞我的 blog 了。 源码问题看了 yansheng836 的 README.md （smwy）和某个 issue ，觉得自己也应该把源码一并传到 github 上。 我在 git 仓库里开了个名为 source 的 branch，本地也开了个仓库，现在每次更改之后就将源码推送到 source 。 然后每次搞完 blog 在 commit 的时候就要多写几行。 1234hexo cl &amp;&amp; hexo g &amp;&amp; hexo dgit add *git commit -m "~"git push origin master:source 不妨顺便把 .gitignore 也贴在这里： 12345678.DS_StoreThumbs.dbdb.json*.lognode_modules/public/.deploy*/.gitignore 渲染问题总有时候不想让 hexo 渲染某些 blog 里的 html 或者 md 文件。 于是可以改根目录下的 _config.yml 。 查了一下，发现只用改 skip_render 即可。 好像路径匹配用的是 glob 表达式，感觉和正则表达式有些相像，但规则简单得多。 这里就不放了，可以去阮一峰的博客学习。 隐藏博文大概知道怎么搞了，然而咕了。 怎么我老是咕啊 多地编辑经笔者尝试多地编辑后，出现了一些小问题。 不用hexo init！啊，git clone -b source &lt;my_repo&gt;之后，可以不用hexo init。 不如说不应该用，否则会多出令人烦躁的一些初始化的产物。 直接 123npm installnpm install hexo-cli -gnpm install hexo-deployer-git --save 就好了。 拯救自定义排序首先，我的自定义排序没了。 这是因为原本自定义排序是通过更改node_modules\hexo-generator-index\lib\generator.js实现的。 123456789101112131415161718192021222324252627282930313233'use strict';var pagination = require('hexo-pagination');module.exports = function(locals) &#123; var config = this.config; var posts = locals.posts.sort(config.index_generator.order_by); posts.data = posts.data.sort(function (a, b) &#123;//这里是排序 if (a.top &amp;&amp; b.top) &#123; if (a.top == b.top) return b.date - a.date; else return b.top - a.top; &#125; else if (a.top &amp;&amp; !b.top) &#123; return -1; &#125; else if (!a.top &amp;&amp; b.top) &#123; return 1; &#125; else return b.date - a.date; &#125;); var paginationDir = config.pagination_dir || 'page'; var path = config.index_generator.path || ''; return pagination(path, posts, &#123; perPage: config.index_generator.per_page, layout: ['index', 'archive'], format: paginationDir + '/%d/', data: &#123; __index: true &#125; &#125;);&#125;; 恢复font-awesome咋 font-awesome 也没了。 一看，这东西在public\lib，现已将整个文件夹打包到lib.zip。 拉取更新啊这个大概不用提吧。 12git fetch origin sourcegit merge origin/source]]></content>
+    <content type="text"><![CDATA[没错我又开始瞎搞我的 blog 了。 源码问题看了 yansheng836 的 README.md （smwy）和某个 issue ，觉得自己也应该把源码一并传到 github 上。 我在 git 仓库里开了个名为 source 的 branch，本地也开了个仓库，现在每次更改之后就将源码推送到 source 。 然后每次搞完 blog 在 commit 的时候就要多写几行。 1234hexo cl &amp;&amp; hexo g &amp;&amp; hexo dgit add *git commit -m "~"git push origin master:source 不妨顺便把 .gitignore 也贴在这里： 12345678.DS_StoreThumbs.dbdb.json*.lognode_modules/public/.deploy*/.gitignore 渲染问题总有时候不想让 hexo 渲染某些 blog 里的 html 或者 md 文件。 于是可以改根目录下的 _config.yml 。 查了一下，发现只用改 skip_render 即可。 好像路径匹配用的是 glob 表达式，感觉和正则表达式有些相像，但规则简单得多。 这里就不放了，可以去阮一峰的博客学习。 隐藏博文大概知道怎么搞了，然而咕了。 怎么我老是咕啊 多地编辑经笔者尝试多地编辑后，出现了一些小问题。 不用hexo init！啊，git clone -b source &lt;my_repo&gt;之后，可以不用hexo init。 不如说不应该用，否则会多出令人烦躁的一些初始化的产物。 直接 123npm installnpm install hexo-cli -gnpm install hexo-deployer-git --save 就好了。 拯救自定义排序首先，我的自定义排序没了。 这是因为原本自定义排序是通过更改node_modules\hexo-generator-index\lib\generator.js实现的。 123456789101112131415161718192021222324252627282930313233'use strict';var pagination = require('hexo-pagination');module.exports = function(locals) &#123; var config = this.config; var posts = locals.posts.sort(config.index_generator.order_by); posts.data = posts.data.sort(function (a, b) &#123;//这里是排序 if (a.top &amp;&amp; b.top) &#123; if (a.top == b.top) return b.date - a.date; else return b.top - a.top; &#125; else if (a.top &amp;&amp; !b.top) &#123; return -1; &#125; else if (!a.top &amp;&amp; b.top) &#123; return 1; &#125; else return b.date - a.date; &#125;); var paginationDir = config.pagination_dir || 'page'; var path = config.index_generator.path || ''; return pagination(path, posts, &#123; perPage: config.index_generator.per_page, layout: ['index', 'archive'], format: paginationDir + '/%d/', data: &#123; __index: true &#125; &#125;);&#125;; 恢复font-awesome咋 font-awesome 也没了。 尝试了各种方法，最后直接在/themes/next/_config.yml里加了下面这句： 1fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css 然后现在就是在线拉取 font-awesome 了（ 拉取更新啊这个大概不用提吧。 12git fetch origin sourcegit merge origin/source]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -291,8 +291,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -341,8 +341,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -353,8 +353,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>AtCoder</tag>
+        <tag>数学</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -453,8 +453,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>字符串</tag>
         <tag>AtCoder</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -466,8 +466,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>找规律</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -572,8 +572,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -618,8 +618,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -686,9 +686,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>猜结论</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -699,8 +699,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
