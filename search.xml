@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「CF1063E」Lasers and Mirrors]]></title>
+    <url>%2Fblog%2FCF1063E%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>构造</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[莫队二次离线学习笔记]]></title>
     <url>%2Fblog%2F%E8%8E%AB%E9%98%9F%E4%BA%8C%E6%AC%A1%E7%A6%BB%E7%BA%BF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[在进行莫队时，若不能快速地在线计算移动区间后的贡献变化，可以考虑将 $O(n\sqrt{n})$ 个移动再次离线，每次 $O(1)$ 求出贡献变化。 这就是所谓莫队二次离线。 注意这里贡献要求具有可减性，因为我们每次求的是贡献变化。 例题「Ynoi2019模拟赛」Yuno loves sqrt technology IILuogu 5047 给定长 $O(n)$ 序列，离线 $O(n)$ 次查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。 主要思路显然利用树状数组有复杂度 $O(n\sqrt{n}\log n)$ 的莫队。 瓶颈在于计算移动区间后的贡献变化。 设 $S([l_1, r_1], [l_2, r_2])$ 为前面的数在 $[l_1, r_1]$ 位置，后面的数在 $[l_2, r_2]$ 位置所组成的逆序对数。 考虑从上一个区间 $[l_1, r_1]$ 转移至当前需求区间 $[l_2, r_2]$ 的过程。不失一般性地，设 $l_1 &lt; l_2, r_1 &lt; r_2$（其他情况可类似推出）。 $$\begin{aligned} &amp;\ S([l_2, r_2], [l_2, r_2]) - S([l_1, r_1], [l_1, r_1])\\ &amp;= S([l_2, r_2], [r_1 + 1, r_2]) - S([l_1, l_2 - 1], [l_1, r_1])\\ &amp;= (S([1, r_2], [r_1 + 1, r_2]) - S([1, l_1 - 1], [r_1 + 1, r_2]))\\ &amp;- (S([l_1, l_2 - 1], [l_1, n]) - S([l_1, l_2 - 1], [r_2 + 1, n]))\\ &amp;= S([1, r_2], [1, r_2]) - S([1, r_1], [1, r_1]) - S([l_1, n], [l_1, n]) + S([l_2, n], [l_2, n]) \\ &amp;- S([1, l_1 - 1], [r_1 + 1, r_2]) + S([l_1, l_2 - 1], [r_2 + 1, n])\end{aligned}$$ $S([1, r], [1, r])$ 和 $S([l, n], [l, n])$ 可以直接使用树状数组求出。 故，不失一般性地，只需考虑 $S([1, l_1 - 1], [r_1 + 1, r_2])$ 的求法。 不妨为每个位置开一个vector。将一个 $S([1, l_1 - 1], [r_1 + 1, r_2])$ 的询问记录在第 $l_1 - 1$ 个vector上。 我们可以用类似扫描线的做法：依次处理每个vector上的询问，则问题转化为维护可重集，要求 $O(n\sqrt{n})$ 次查询比某数小的元素个数且有 $O(n)$ 次加点。 利用一个值域分块即可做到 $O(\sqrt{n})$ 加点，$O(1)$ 查询。 故总时间复杂度 $O(n\sqrt{n})$，空间 $O(n)$。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140#include &lt;bits/stdc++.h&gt;namespace my_std &#123;using namespace std;#define reg register#define Rint register int#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)#define Templ(T) template &lt;typename T&gt;typedef long long i64;#define MMR (1 &lt;&lt; 23)static char InB[MMR], *In_s = InB;static char OutB[MMR], *Out_s = OutB;inline void F_In()&#123; fread(InB, 1, MMR, stdin); &#125;inline void F_Out()&#123; fwrite(OutB, 1, Out_s - OutB, stdout); &#125;inline int read()&#123; Rint res = 0; for(; *In_s &lt; 48; ++In_s); for(; *In_s &gt; 47;) res = res * 10 + (*In_s++ &amp; 15); return res;&#125;inline void write(reg i64 x)&#123; static char tmp[20], *t = tmp; do&#123; *++t = (x % 10) ^ 48, x /= 10; &#125;while(x); while(t != tmp) *Out_s++ = *t--; *Out_s++ = 10;&#125;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;&#125; // namespace my_stdusing namespace my_std;#define N 100010#define BN 330#define M 317#define PB push_backint n, m;int a[N], bl[N], Lb[BN], Rb[BN];i64 ans[N];i64 sumL[N], sumR[N];//前/后 i 个有多少逆序对int Sb[BN], Cb[N];//块前/后缀和，点在块内前/后缀和struct BiT&#123; int a[N]; inline void upd(int x)&#123; for(; x &lt;= n; x += x &amp; (-x)) ++a[x]; &#125; inline int qry(int x)&#123; Rint res = 0; for(; x; x ^= x &amp; (-x)) res += a[x]; return res; &#125;&#125;T;struct Q&#123; int l, r, id; inline bool operator &lt;(const Q &amp;rhs)const&#123; return bl[l] == bl[rhs.l] ? ((bl[l] &amp; 1) ? r &gt; rhs.r : r &lt; rhs.r) : l &lt; rhs.l; &#125;&#125;q[N];struct Node&#123; int l, r, i, v;&#125;;vector&lt;Node&gt; vL[N], vR[N];void init()&#123; n = read(), m = read(); int *aa = new int[N]; FOR(i, 1, n) aa[i] = a[i] = read(); sort(aa + 1, aa + n + 1); FOR(i, 1, n) a[i] = lower_bound(aa + 1, aa + n + 1, a[i]) - aa; delete aa; Rint c = M; FOR(i, 1, n)&#123; bl[i] = bl[i - 1], ++c; if(c &gt; M) Rb[bl[i]] = i - 1, Lb[++bl[i]] = i, c = 1; &#125; Rb[bl[n]] = n; FOR(i, 1, m) q[i].l = read(), q[i].r = read(), q[i].id = i; sort(q + 1, q + m + 1); q-&gt;l = 1; FOR(i, 1, n) sumL[i] = sumL[i - 1] + i - 1 - T.qry(a[i]), T.upd(a[i]); memset(T.a, 0, sizeof(T.a)); ROF(i, n, 1) sumR[i] = sumR[i + 1] + T.qry(a[i] - 1), T.upd(a[i]);&#125;int main() &#123; F_In(); init(); FOR(i, 1, m)&#123; ans[i] = sumL[q[i].r] - sumL[q[i - 1].r] + sumR[q[i].l] - sumR[q[i - 1].l]; if(q[i].r &gt; q[i - 1].r)&#123; vR[q[i - 1].l - 1].PB((Node)&#123;q[i - 1].r + 1, q[i].r, i, -1&#125;); &#125; else if(q[i].r &lt; q[i - 1].r)&#123; vR[q[i - 1].l - 1].PB((Node)&#123;q[i].r + 1, q[i - 1].r, i, 1&#125;); &#125; if(q[i].l &lt; q[i - 1].l)&#123; vL[q[i].r + 1].PB((Node)&#123;q[i].l, q[i - 1].l - 1, i, -1&#125;); &#125; else if(q[i].l &gt; q[i - 1].l)&#123; vL[q[i].r + 1].PB((Node)&#123;q[i - 1].l, q[i].l - 1, i, 1&#125;); &#125; &#125;//二次离线 FOR(i, 1, n)&#123; reg const int p = bl[a[i]]; FOR(v, 1, p - 1) ++Sb[v]; FOR(v, Lb[p], a[i]) ++Cb[v]; for(reg Node &amp;x: vR[i])&#123; reg i64 res = 0; FOR(j, x.l, x.r) res += Sb[bl[a[j] + 1]] + Cb[a[j] + 1]; x.v &gt; 0 ? (ans[x.i] += res) : (ans[x.i] -= res); &#125; &#125; memset(Cb, 0, sizeof(Cb)), memset(Sb, 0, sizeof(Sb)); ROF(i, n, 1)&#123; reg const int p = bl[a[i]]; ROF(v, M, p + 1) ++Sb[v]; ROF(v, Rb[p], a[i]) ++Cb[v]; for(reg Node &amp;x: vL[i])&#123; reg i64 res = 0; FOR(j, x.l, x.r) res += Sb[bl[a[j] - 1]] + Cb[a[j] - 1]; x.v &gt; 0 ? (ans[x.i] += res) : (ans[x.i] -= res); &#125; &#125; reg i64 *res = new i64[N]; FOR(i, 1, m) res[q[i].id] = ans[i] += ans[i - 1]; FOR(i, 1, m) write(res[i]); delete res; F_Out(); return 0;&#125;]]></content>
@@ -370,8 +381,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>计数</tag>
         <tag>AtCoder</tag>
+        <tag>计数</tag>
       </tags>
   </entry>
   <entry>
@@ -429,8 +440,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>计数</tag>
         <tag>AtCoder</tag>
+        <tag>计数</tag>
       </tags>
   </entry>
   <entry>
@@ -455,8 +466,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>找规律</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -515,8 +526,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>bitset</tag>
         <tag>Ynoi</tag>
+        <tag>bitset</tag>
       </tags>
   </entry>
   <entry>
@@ -538,8 +549,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Ynoi</tag>
         <tag>log数据结构</tag>
+        <tag>Ynoi</tag>
       </tags>
   </entry>
   <entry>
