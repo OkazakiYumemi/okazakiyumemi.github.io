@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[「CF1063E」Lasers and Mirrors]]></title>
     <url>%2Fblog%2FCF1063E%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[题意简述一个 $n\times n$ 的网格，在每列上方各有一个激光发射器，下方各有一个激光接收器。 第 $i$ 个接收器希望接收来自第 $p_i$ 个发射器的激光。你可以在一些位置 45 度放置镜子，使得最多的接收器满足其需求。 求出最多数量并给出一种放置镜子的方案，保证 ${a_n}$ 为排列，$n\le 1000$。 [CF 1063E] 主要思路简单构造题。 容易发现除非对于任意 $i$ 均有 $i = p_i$ 时答案为 $n$，其余答案均为 $n - 1$。 等价地，设第 $i$ 个发射器希望射到 $a_i$ 列。 不妨钦定第 $1$ 个发射器无法满足，则对于点 $1$ 所在的环 $S$，容易使用 $|S| - 1$ 行对该环中的其他元素均满足，从第 $a_1$ 个发射器开始，依次处理即可。 对任意其他环 $T$，可以使用 $|T|$ 行使其中所有元素均满足：找到一个位置使得 $x &gt; a_x, a_x &lt; a_{a_x}$，则可以利用第一列满足该环——从第 $a_x$ 发射器开始依次处理即可。 以下是一个简单例子： 123456789a:4 6 2 7 3 5 1. . . . . . ./ . / . . . .. . / . / . .. . . . / / .\ \ . . . \ ./ . . . . . /. . . \ . . \ 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119#include &lt;bits/stdc++.h&gt;namespace my_std &#123;using namespace std;#define reg register#define Rint register int#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)inline int read() &#123; Rint ans = 0, f = 1; reg char c = getchar(); while (!isdigit(c)) &#123; f ^= (c == '-'); c = getchar(); &#125; for (; isdigit(c); c = getchar()) ans = ans * 10 + c - '0'; return f ? ans : -ans;&#125;&#125; // namespace my_stdusing namespace my_std;const int N = 1010;#define pcr(x) putchar(x)#define pb push_backinline void write(int x)&#123; static char tmp[10], *t = tmp; do&#123; *++t = (x % 10) ^ 48, x /= 10; &#125;while(x); while(t != tmp) pcr(*t--); pcr(10);&#125;int n, a[N], b[N];vector&lt;int&gt; v[N];char g[N][N];// '\' -// '/' +inline bool Identity()&#123; FOR(i, 1, n) if(a[i] != i) return 0; return 1;&#125;inline int Check(int i)&#123; int x = i; ROF(j, n, 1) if(g[j][x] != '.')&#123; if(g[j][x] == '/')&#123; ++x; while(x &lt;= n &amp;&amp; g[j][x] != '/') ++x; if(x &gt; n)&#123; printf("%d %d: %d +\n", i, b[i], j); return 0; &#125; &#125; else&#123; --x; while(x &gt; 0 &amp;&amp; g[j][x] != '\\') --x; if(x &lt; 1)&#123; printf("%d %d: %d -\n", i, b[i], j); return 0; &#125; &#125; &#125; if(x != b[i]) printf("%d %d %d\n", i, b[i], x); return x == b[i];&#125;inline void Check()&#123; FOR(i, 1, n) b[a[i]] = i; FOR(i, 1, n) Check(i);&#125;int main() &#123; n = read(); FOR(i, 1, n) a[read()] = i; if(Identity())&#123; write(n); FOR(i, 1, n)&#123; FOR(i, 1, n) pcr('.'); pcr(10); &#125; return 0; &#125; write(n - 1); Rint c = n; &#123; int x = a[1]; while(x != 1)&#123; if(x &lt; a[x]) v[c].pb(-x), v[c].pb(-a[x]); else v[c].pb(x), v[c].pb(a[x]); b[x] = 1, x = a[x], --c; &#125; &#125; FOR(i, 2, n) if(!b[i] &amp;&amp; i != a[i])&#123; const int t = c; int y = i; while(y &lt; a[y] || a[y] &gt; a[a[y]]) y = a[y]; int x = a[y]; while(x != y)&#123; if(x &lt; a[x]) v[c].pb(-x), v[c].pb(-a[x]); else v[c].pb(x), v[c].pb(a[x]); b[x] = 1, x = a[x], --c; &#125; v[c].pb(1), v[c].pb(x); v[t].pb(-1); b[y] = 1, --c; &#125; FOR(i, 1, n) FOR(j, 1, n) g[i][j] = '.'; FOR(i, 1, n)&#123; for(int x: v[i])&#123; x &gt; 0 ? g[i][x] = '/' : g[i][-x] = '\\'; &#125; &#125; FOR(i, 1, n)&#123; FOR(j, 1, n) pcr(g[i][j]); pcr(10); &#125; // Check(); return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
       </categories>
@@ -27,13 +27,13 @@
   <entry>
     <title><![CDATA[「CF506E」Mr. Kitayuta's Gift]]></title>
     <url>%2Fblog%2FCF506E%2F</url>
-    <content type="text"><![CDATA[队爷的 pdf 题解根本看不懂，，， 题意简述给定一个小写字符串 $s$ 与正整数 $n$。$|s|\le 200, n\le 10^9$。 要求在 $s$ 中插入恰好 $n$ 个小写字符使其为回文串的方案数，对 $10^4 + 7$ 取模。 主要思路在这里只考虑 $n + |s|$ 为偶数的情况（因为实际上两者差不多）。 考虑 dp。设 $f(i, l, r)$ 为只考虑最终回文串的前 $i$ 与后 $i$ 个字符，它们与 $s$ 尽可能匹配后还剩下 $[l, r]$ 这段区间的方案数。然后顺便设 $g(i)$ 为只考虑最终回文串的前 $i$ 与后 $i$ 个字符已经将 $s$ 完全匹配的方案数。 显然转移有： $s_l = s_r, r - l\le 1$:$$\begin{aligned} g(i + 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 25\cdot f(i, l, r)\end{aligned}$$ $s_l = s_r, r - l &gt; 1$:$$\begin{aligned} f(i + 1, l + 1, r - 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 25\cdot f(i, l, r)\end{aligned}$$ $s_l \ne s_r$:$$\begin{aligned} f(i + 1, l + 1, r)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r - 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 24\cdot f(i, l, r)\end{aligned}$$ $g$:$$g(i + 1)\leftarrow 26\cdot g(i)$$ 把这个状态数 $O(|s|^2)$ 的 dp 强行矩乘优化可得到 $O(|s|^6\log n)$ 的复杂度，但显然无法通过此题。 观察，可以发现这个 dp 可以表示为在一个有限状态自动机上匹配的过程。我们不妨将终点设为 $T$，转移过程的点设为 $(l, r)$。 例如如下为abaac的转移图： 令对于所有 $(l, r)$ 满足 $s_l = s_r$，设其为一类点（上图粉色），否则设为二类点（上图蓝色）。 由于除了 $l = r$ 以外，经过一个一类点会使得未匹配长度减少 $2$，故若一条链上经过了 $x$ 个二类点，则应经过 $\lceil\frac{|s| - i}{2}\rceil$ 个一类点。所以本质不同的链只有 $O(|s|)$ 条。 不妨设 $h(i, l, r)$ 为起点到 $(l, r)$ 经过 $i$ 个二类点的路径的数量。显然 $h(i, l, r)$ 可以 $O(|s|^3)$ 记忆化搜索求出。 此时对每一条链矩乘优化即可得到 $O(|s|^4\log n)$ 的总复杂度，仍无法通过此题。 考虑能否将这 $O(|s|)$ 条链压缩成 $O(|s|)$ 个点。 答案是能的。只要我们先各作一条一类点、二类点的链，再将每两个二类点连向一个对应的一类点即可。 转移系数等类似地可以 $O(|s|^3)$ 求出。故矩乘优化总时间复杂度为 $O(|s|^3\log n)$。 不要忘记上述讨论均基于 $n + |s|$ 为偶数。若 $n + |s|$ 为奇数如何？ 不难发现，除了最后一步转移（即最终串只剩中间位没有确定时）不能从 $s_l = s_r, l + 1 = r$ 的点转移过来其他均相同。 故在上述图中去掉 $T$ 的自环，并仅保留最后从未匹配长度为 $2$ 的一类点转移至终点的链，再做一次矩乘优化即得到多算的方案数。 参考代码难写，，， （作上面两幅图的素材被扔到graph.7z里了，不过都是 mspaint 手撸大概也没什么保存的必要）]]></content>
+    <content type="text"><![CDATA[队爷的 pdf 题解根本看不懂，，， 题意简述给定一个小写字符串 $s$ 与正整数 $n$。$|s|\le 200, n\le 10^9$。 要求在 $s$ 中插入恰好 $n$ 个小写字符使其为回文串的方案数，对 $10^4 + 7$ 取模。 [CF 506E] 主要思路在这里只考虑 $n + |s|$ 为偶数的情况（因为实际上两者差不多）。 考虑 dp。设 $f(i, l, r)$ 为只考虑最终回文串的前 $i$ 与后 $i$ 个字符，它们与 $s$ 尽可能匹配后还剩下 $[l, r]$ 这段区间的方案数。然后顺便设 $g(i)$ 为只考虑最终回文串的前 $i$ 与后 $i$ 个字符已经将 $s$ 完全匹配的方案数。 显然转移有： $s_l = s_r, r - l\le 1$:$$\begin{aligned} g(i + 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 25\cdot f(i, l, r)\end{aligned}$$ $s_l = s_r, r - l &gt; 1$:$$\begin{aligned} f(i + 1, l + 1, r - 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 25\cdot f(i, l, r)\end{aligned}$$ $s_l \ne s_r$:$$\begin{aligned} f(i + 1, l + 1, r)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r - 1)&amp;\leftarrow f(i, l, r)\\ f(i + 1, l, r)&amp;\leftarrow 24\cdot f(i, l, r)\end{aligned}$$ $g$:$$g(i + 1)\leftarrow 26\cdot g(i)$$ 把这个状态数 $O(|s|^2)$ 的 dp 强行矩乘优化可得到 $O(|s|^6\log n)$ 的复杂度，但显然无法通过此题。 观察，可以发现这个 dp 可以表示为在一个有限状态自动机上匹配的过程。我们不妨将终点设为 $T$，转移过程的点设为 $(l, r)$。 例如如下为abaac的转移图： 令对于所有 $(l, r)$ 满足 $s_l = s_r$，设其为一类点（上图粉色），否则设为二类点（上图蓝色）。 由于除了 $l = r$ 以外，经过一个一类点会使得未匹配长度减少 $2$，故若一条链上经过了 $x$ 个二类点，则应经过 $\lceil\frac{|s| - i}{2}\rceil$ 个一类点。所以本质不同的链只有 $O(|s|)$ 条。 不妨设 $h(i, l, r)$ 为起点到 $(l, r)$ 经过 $i$ 个二类点的路径的数量。显然 $h(i, l, r)$ 可以 $O(|s|^3)$ 记忆化搜索求出。 此时对每一条链矩乘优化即可得到 $O(|s|^4\log n)$ 的总复杂度，仍无法通过此题。 考虑能否将这 $O(|s|)$ 条链压缩成 $O(|s|)$ 个点。 答案是能的。只要我们先各作一条一类点、二类点的链，再将每两个二类点连向一个对应的一类点即可。 转移系数等类似地可以 $O(|s|^3)$ 求出。故矩乘优化总时间复杂度为 $O(|s|^3\log n)$。 不要忘记上述讨论均基于 $n + |s|$ 为偶数。若 $n + |s|$ 为奇数如何？ 不难发现，除了最后一步转移（即最终串只剩中间位没有确定时）不能从 $s_l = s_r, l + 1 = r$ 的点转移过来其他均相同。 故在上述图中去掉 $T$ 的自环，并仅保留最后从未匹配长度为 $2$ 的一类点转移至终点的链，再做一次矩乘优化即得到多算的方案数。 参考代码难写，，， （作上面两幅图的素材被扔到graph.7z里了，不过都是 mspaint 手撸大概也没什么保存的必要）]]></content>
       <categories>
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>构造</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -291,8 +291,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -341,8 +341,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -353,8 +353,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>数学</tag>
+        <tag>AtCoder</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -572,8 +572,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>构造</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -618,8 +618,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>构造</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -686,9 +686,9 @@
         <category>题解</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>猜结论</tag>
         <tag>dp</tag>
-        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -699,8 +699,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>构造</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
