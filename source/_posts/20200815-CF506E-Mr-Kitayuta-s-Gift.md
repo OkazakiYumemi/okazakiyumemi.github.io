@@ -17,6 +17,8 @@ top:
 
 要求在 $s$ 中插入恰好 $n$ 个小写字符使其为回文串的方案数，对 $10^4 + 7$ 取模。
 
+[[CF 506E]](https://codeforces.com/problemset/problem/506/E)
+
 <!-- more -->
 
 ## 主要思路
