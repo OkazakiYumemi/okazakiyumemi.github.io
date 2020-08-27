@@ -4,6 +4,7 @@ categories: 题解
 urlname: CF650E
 date: 2020-08-26 21:19:50
 tags:
+- Codeforces
 - 树论
 - 并查集
 top:

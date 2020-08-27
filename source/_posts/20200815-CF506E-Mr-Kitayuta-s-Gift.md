@@ -4,6 +4,7 @@ categories: 题解
 urlname: CF506E
 date: 2020-08-15 23:18:17
 tags:
+- Codeforces
 - dp
 - 构造
 top:

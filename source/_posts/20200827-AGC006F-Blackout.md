@@ -4,12 +4,15 @@ categories: 题解
 urlname: AGC006F
 date: 2020-08-27 17:08:46
 tags:
+- AtCoder
 - 图论
 - 猜结论
 top:
 ---
 
 ## 题意简述
+
+[AGC 006F](https://atcoder.jp/contests/agc006/tasks/agc006_f)
 
 给定平面上的 $m$ 个整点 $(x, y), x, y\in[1, n]$，将这 $n$ 个点染黑。然后任取两个黑色的点 $(a, b), (b, c)$ 并将点 $(c, a)$ 染黑，直至无法再染黑任何点为止。
 

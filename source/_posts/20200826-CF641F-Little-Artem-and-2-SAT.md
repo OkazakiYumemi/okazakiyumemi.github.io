@@ -4,6 +4,7 @@ categories: 题解
 urlname: CF641F
 date: 2020-08-26 19:00:48
 tags:
+- Codeforces
 - 2-SAT
 - bitset
 top:

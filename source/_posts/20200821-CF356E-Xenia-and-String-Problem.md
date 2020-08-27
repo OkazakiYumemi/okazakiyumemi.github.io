@@ -4,6 +4,7 @@ categories: 题解
 urlname: CF356E
 date: 2020-08-21 22:31:00
 tags:
+- Codeforces
 - 字符串
 - 后缀数组
 top:

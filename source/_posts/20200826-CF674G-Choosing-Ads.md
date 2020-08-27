@@ -4,6 +4,7 @@ categories: 题解
 urlname: CF674G
 date: 2020-08-26 15:49:23
 tags:
+- Codeforces
 - 线段树
 top:
 ---

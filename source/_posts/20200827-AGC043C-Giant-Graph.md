@@ -4,12 +4,15 @@ categories: 题解
 urlname: AGC043C
 date: 2020-08-27 11:12:32
 tags:
+- AtCoder
 - 图论
 - 博弈论
 top:
 ---
 
 ## 题意简述
+
+[AGC 043C](https://atcoder.jp/contests/agc043/tasks/agc043_c)
 
 给三个点数均为 $n$ 的无向图 $G_0, G_1, G_2$，构造一张新无向图 $W$，点数为 $n^3$，每个点的形式为 $(x_0, x_1, x_2)$。
 对于原来 $G_0$ 中的一条边 $u, v$，连接所有 $(u, x_1, x_2), (v, x_1, x_2)$。$G_1, G_2$ 中的边同理。
