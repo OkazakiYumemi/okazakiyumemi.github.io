@@ -6,6 +6,7 @@ date: 2020-08-27 21:57:47
 tags:
 - AtCoder
 - dp
+- 概率期望
 - min-max容斥
 top:
 ---
