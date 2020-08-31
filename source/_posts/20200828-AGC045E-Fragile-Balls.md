@@ -145,6 +145,6 @@ int main() {
     //2 Pointers求剩余两种各取几个
     printf("%lld\n", ans + res);
     return 0;
-}s
+}
 ```
 {% endfold %}
