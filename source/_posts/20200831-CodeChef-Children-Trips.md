@@ -13,6 +13,8 @@ top:
 
 ## 题意简述
 
+[CodeChef TRIPS](https://www.codechef.com/problems/TRIPS)
+
 一棵树，边有 $1$ 或 $2$ 的边权，多次询问从点 $u$ 到 $v$，每次移动最多能走 $w$（不能在两点之间停下），要几次才能到达。
 $n, m\le 10^5$。
 
