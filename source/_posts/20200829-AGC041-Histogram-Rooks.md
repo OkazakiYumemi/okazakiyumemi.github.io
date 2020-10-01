@@ -1,7 +1,7 @@
 ---
-title: 「AGC041」Histogram Rooks
+title: 「AGC041F」Histogram Rooks
 categories: 题解
-urlname: AGC041
+urlname: AGC041F
 date: 2020-08-29 22:56:14
 tags:
 - AtCoder
@@ -11,6 +11,8 @@ top:
 ---
 
 ## 题意简述
+
+[AGC 041F](https://atcoder.jp/contests/agc041/tasks/agc041_f)
 
 给定一个 $n\times n$ 的被破坏的棋盘，其中第 $i$ 列只剩了最底下的 $h_i$ 个。
 
