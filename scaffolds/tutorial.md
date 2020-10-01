@@ -14,3 +14,8 @@ urlname: {{ title }}
 ## 主要思路
 
 ## 参考代码
+
+{% fold %}
+```cpp
+```
+{% endfold %}
