@@ -3,7 +3,7 @@ title: 「CF639F」Bear and Chemistry
 date: 2020-02-10 23:35:57
 tags:
 - 图论
-- Trojan
+- Tarjan
 - 虚树
 - Codeforces
 categories: 题解
