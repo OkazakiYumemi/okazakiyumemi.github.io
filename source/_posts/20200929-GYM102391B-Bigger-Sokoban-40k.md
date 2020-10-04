@@ -5,7 +5,7 @@ urlname: GYM102391B
 date: 2020-09-29 16:36:21
 tags:
 - GYM
-- 构造题
+- 构造
 - 猜结论
 top:
 ---
