@@ -2,7 +2,7 @@
 title: 「CF1407E」Egor in the Republic of Dagestan
 categories: 题解
 urlname: CF1407E
-date: 2020-10-02 23:31:16
+date: 2020-09-27 23:31:16
 tags:
 - Codeforces
 - dp

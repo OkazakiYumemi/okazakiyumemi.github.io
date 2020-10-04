@@ -2,7 +2,7 @@
 title: 「CF1396D」Rainbow Rectangles
 categories: 题解
 urlname: CF1396D
-date: 2020-10-03 22:57:00
+date: 2020-09-27 22:57:00
 tags:
 - Codeforces
 - log数据结构
