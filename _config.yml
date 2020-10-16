@@ -26,7 +26,13 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: [README.md, 404.html, hide/**.md]
+skip_render:
+  [
+    README.md,
+    404.html,
+    hide/**/*,
+    _posts/????????-**/*
+  ]
   # - README.md
   # - 404.html
   # - hide/**
