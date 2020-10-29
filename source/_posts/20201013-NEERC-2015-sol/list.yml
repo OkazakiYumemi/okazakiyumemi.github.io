@@ -36,3 +36,6 @@ Finished:
 - contest: J
   - finished: E G I
   - unsolved: C D H
+
+- contest: K
+  - unsolved: A C D E G H I K
