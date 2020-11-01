@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+    <link rel="stylesheet" type="text/css" href="/hide/main.css">
+    <title>20201101 | Okazaki Yumemi's blog</title>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}});
+    </script>
+</head>
+
+<body>
+<div class="content-wrap">
+    <h2>题意简述</h2>
+    <p>
+    交互题。交互器有一个 $1$ 到 $n$ （$6\le n\le 1000$）的排列 $f$，选手需要猜出这个排列。<br><br>
+
+    交互库有两个会告知选手的参数 $b, k$ 满足 $b\times k=n,b\ge 2,k\ge 2$。<br><br>
+
+    每次，选手可以询问一个排列 $\langle a\rangle$。<br><br>
+
+    交互器首先会生成排列 $\langle x\rangle$，其中 $x_i = f(a_i)$。<br>
+    接着交互器会每 $k$ 个数分一组，即将 $\langle x\rangle$ 共分 $b$ 组。<br>
+    然后交互器会将组内元素随机打乱，再将组与组随机打乱。<br>
+    最后交互器会将新得到的 $\langle x\rangle$ 返回给选手。<br>
+    </p>
+    <h2>主要思路</h2>
+    <p>
+    将询问直接看成询问 $b$ 个组 $A(i)$，返回 $b$ 个组 $X(i)$。<br>
+
+    不妨记第 $o$ 次询问的组为 $A_o(i)$，返回的组为 $X_o(i)$，没有下标的为下一次询问的。<br>
+    </p>
+    <h3>Subtask 1, 2</h3>
+    <p>
+    各种方法暴力即可。<br>
+    </p>
+    <h3>Subtask 3</h3>
+    <p>
+    本 Subtask 即交互器不会将组与组之间打乱。<br><br>
+
+    对已知 $T = \{f(x)|x\in S\}$ 且 $|S| > 1$ 的集合 $S$，称其为一个「未解决集合」。并称 $T$ 为 $S$ 的「对应集合」。<br><br>
+
+    对已知 $y = f(x)$ 的元素 $x$，称其为「已解决元素」。<br><br>
+
+    不难发现，我们无论如何，第一次询问都仅能获得 $b$ 个大小为 $k$ 的未解决集合。<br><br>
+
+    考虑一个未解决集合 $S$，其对应集合为 $T$。<br>
+    我们取出其一个子集 $S_i$ 并在下一次询问中令 $S_i\subset A(i)$。<br>
+    那么在结果中必然有 $S_i$ 的对应集合 $T_i\subset X(i)$，结合 $S$ 的对应集合 $T$ 即可求得 $T_i$。<br><br>
+
+    那么我们最多能将集合 $S$ 拆成多少个子集？$b$ 个。<br><br>
+
+    所以次数就是 $\lceil log_b n\rceil$，最大为 $10$。<br>
+    </p>
+    <h3>Subtask 4</h3>
+    <p>
+    本 Subtask 即 $k = 2$。<br><br>
+
+    第一次询问 $\{\{1, 2\}, \{3, 4\}, \{5, 6\}, \dots, \{n - 1, n\}\}$。<br>
+    第二次询问 $\{\{2, 3\}, \{4, 5\}, \{6, 7\}, \dots, \{n, 1\}\}$。<br><br>
+
+    考虑现在我们得到了什么。<br><br>
+
+    假设我们突然知道了已解决元素 $f(x) = y$，那么就能够得到整个 $f$。<br><br>
+
+    为什么？<br><br>
+
+    假设 $x$ 在第一次询问中与 $c$ 一组。显然，仅有一组 $X_1(i)$ 使 $y\in X_1(i)$。那么 $f(c)$ 即为 $X_1(i)$ 中另一元素。<br>
+    同理，我们通过第二次询问也可解决与 $x$ 一组的元素。<br>
+    于是递归地，我们就能够解决所有元素了。<br><br>
+
+    那么现在需要用剩余的两次询问来获得一个已解决元素。<br><br>
+
+    这显然是可能的：<br>
+    第三次询问 $\{\{1, 3\}, \{2, 4\}, \{5, 6\}, \{7, 8\}, \dots, \{n - 1, n\}\}$。<br>
+    第四次询问 $\{\{1, 3\}, \{4, 5\}, \{6, 7\}, \{8, 9\}, \dots, \{n, 2\}\}$。<br><br>
+
+    显然，只有一对 $(i, j)$ 满足 $X_3(i) = X_4(j) = \{f(1), f(3)\}$。于是我们获得了未解决集合 $\{1, 3\}$。<br><br>
+
+    考虑前两次询问，显然，我们也仅能找出一对 $(i, j)$ 使得 $|X_1(i)\cup X_2(j)| = 3, \{f(1), f(3)\}\subset X_1(i)\cup X_2(j)$。那么 $X_1(i)\cap X_2(j) = \{f(2)\}$。<br><br>
+
+    那么就得到了一个已解决元素 $2$。<br>
+    </p>
+    <h3>Subtask 5</h3>
+    <p>
+    本 Subtask 即 $b = 2$。<br><br>
+
+    我们试图套用 Subtask 3 的做法，发现不同点在于不知道 $A(i)$ 对应的集合。<br><br>
+
+    但是如果我们已有一个已解决元素 $a_1$，每次询问我们不妨都令 $a_1\in A(1)$，这样 $X(i)$ 中有 $f(a_1)$ 的那个集合就对应 $A(1)$，另一个对应 $A(2)$。<br><br>
+
+    $\lceil \log_2 (n / 2)\rceil\le 9$，意味着我们最多能够使用 $3$ 步来获得 $1$ 个已解决元素，和 $2$ 个 $O(n / 2)$ 的未解决集合。<br><br>
+
+    如何三步求得？<br>
+    第一次询问 $\{\{1,2,3,\dots,k\}, \{k+1,k+2,k+3,\dots,n\}\}$。<br>
+    第二次询问 $\{\{k+1,2,3,\dots,k\}, \{k+2,1,k+3,\dots,n\}\}$。<br>
+    第三次询问 $\{\{k+2,2,3,\dots,k\}, \{1,k+1,k+3,\dots,n\}\}$。<br>
+
+    那么，显然仅有一组 $(i_1, i_2, i_3)$ 使得 $Y = X_1(i_1)\cap X_2(i_2)\cap X_3(i_3),|Y| = k - 1$。$Y$ 即为 $\{2,3,\dots,k\}$ 的对应集合。<br>
+    于是可以分别获得三个已解决元素 $1,k+1,k+2$。<br>
+    </p>
+    <h3>Subtask 6</h3>
+    <p>
+    本 Subtask 即 $k > 2, b > 2$。<br><br>
+
+    仍然试图套用 Subtask 3 的做法，此时至少需要 $b - 1$ 个已解决元素。<br><br>
+
+    同样地因为 $\lceil \log_b (n / b)\rceil\le 6$，只能用 $3$ 步来求得。<br><br>
+
+    第一次询问 $\{\{1,2,\dots,k\},\{k+1,\dots,2k\},\{2k+1,\dots,3k\},\dots,\{n-k+1,\dots,n\}\}$。<br>
+    第二次询问 $\{\{k+1,2,\dots,k\},\{1,\dots,2k\},\{2k+1,\dots,3k\},\dots,\{n-k+1,\dots,n\}\}$。<br>
+    第三次询问 $\{\{2k+1,2,\dots,k\},\{k+1,\dots,2k\},\{3k+1,2k+2,\dots,3k\},\dots,\{n-k+1,n-2k+2,\dots,n-k\},\{1,n-k+2,\dots,n\}\}$。<br><br>
+
+    首先，仅有一个 $i$ 使得 $\forall j,X_1(i)\ne X_2(j)\land X_1(i)\ne X_3(j)$，为 $\{1,2,\dots,k\}$ 的对应集合，记为 $T_1$。<br><br>
+
+    对 $o=\{2,3\}$ 都找到惟一一个 $j$ 使得 $|X_o(j)\cap T_1|=k-1$，就可以解决 $1,k+1,2k+1$ 了。<br><br>
+
+    再找到第三次询问 $1$ 所得的集合 $T'$，则可以解决 $n-k+1$；同理可以解决所有 $ik + 1,i\in[0, b - 1]$，获得了 $b$ 个已解决元素。<br><br>
+
+    然后直接套用 Subtask 3 的做法即可。<br>
+    </p>
+    <h2>吐槽</h2>
+    <p>
+    由于是边想边写的，有一堆冗余代码，然后比原题解还多了 1k 左右。<br>
+    所以这题其实还好？<br>
+    除了我傻了。<br>
+    </p>
+</div>
+</body>
+
+</html>
