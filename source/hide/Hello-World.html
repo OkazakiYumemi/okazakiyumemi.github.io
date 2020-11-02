@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
     <link rel="stylesheet" type="text/css" href="/hide/main.css">
     <title>Hello World | Okazaki Yumemi's blog</title>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}});
     </script>
@@ -26,14 +26,12 @@
         <p>
             MathJax。<br>
             使用方法依然是 inline 模式用 "<code>&#36;</code>" 包住，display 模式用 "<code>&#36;&#36;</code>" 包住。<br>
-            然后发现出锅了。这玩意现在在 http 下是好的，在 https 下不行。<br>
-            换成支持 https 的之后 http 又不行了。<br>
-            只能找时间迁移到自己的博客里面（咕咕咕）。<br>
+            然后发现直接用 <code>mathjax</code> 提供的 CDN 出锅了，于是改成了用 <code>jsdelivr</code>。<br>
         </p>
         <h2>未实现的功能</h2>
         <p>
             Markdown 的一切方便。<br>
-            可读的代码段。<br>
+            可读的代码段、列表、好看的链接等等。<br>
         </p>
         <h2>吐槽</h2>
         <p>
