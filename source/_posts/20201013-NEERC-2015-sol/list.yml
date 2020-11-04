@@ -43,9 +43,13 @@ Finished:
   - unsolved: C D H
 
 - contest: K
-  - finished: D H I K
+  - finished: C D H I K
   - uncode: A
-  - unsolved: C E G
+  - unsolved: E G
 
 - contest: L
-  - unsolved: B C D E I K L
+  - uncode: C D E I K L
+  - unsolved: B
+
+- contest: M
+  - unsolved: B D E G I J L
