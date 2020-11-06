@@ -23,33 +23,75 @@ Homework:
 - {contest: "U (NEERC,NSub 2013)", href: 100269, problem: C H I J L}
 
 Finished:
+- contest: A
+  unsolved: A B C E F G H I J K L
+
+- contest: B
+  unsolved: B E G H J K L M
+
+- contest: C
+  unsolved: A B D F H I J K M
+
+- contest: D
+  unsolved: A B D G H J K L
+
+- contest: E
+  unsolved: C D E G H I J
+
+- contest: F
+  unsolved: B C F G I J K
+
 - contest: G
-  - finished: F I
-  - uncode: K L
-  - unsolved: G H J
+  finished: F I
+  uncode: K L
+  unsolved: G H J
 
 - contest: H
-  - finished: C G K L M
-  - uncode: B D
-  - unsolved: I
+  finished: C G K L M
+  uncode: B D
+  unsolved: I
 
 - contest: I
-  - finished: B H J K L
-  - uncode: C
-  - unsolved: D I
+  finished: B H J K L
+  uncode: C
+  unsolved: D I
 
 - contest: J
-  - finished: E G I
-  - unsolved: C D H
+  finished: E G I
+  unsolved: C D H
 
 - contest: K
-  - finished: C D H I K
-  - uncode: A
-  - unsolved: E G
+  finished: C D H I K
+  uncode: A
+  unsolved: E G
 
 - contest: L
-  - uncode: C D E I K L
-  - unsolved: B
+  uncode: C D E I K L
+  unsolved: B
 
 - contest: M
-  - unsolved: B D E G I J L
+  unsolved: B D E G I J L
+
+- contest: "N"
+  unsolved: C E F G I J L
+
+- contest: O
+  unsolved: A B E G J K L
+
+- contest: P
+  unsolved: A D E G H J
+
+- contest: Q
+  unsolved: C D E F G H J
+
+- contest: R
+  unsolved: B D E G H I J
+
+- contest: S
+  unsolved: D F G I K
+
+- contest: T
+  unsolved: C E F H K
+
+- contest: U
+  unsolved: C H I J L
