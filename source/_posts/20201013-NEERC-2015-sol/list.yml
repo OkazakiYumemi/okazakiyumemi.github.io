@@ -61,8 +61,8 @@ Finished:
   unsolved: C D H
 
 - contest: K
-  finished: C D H I K
-  uncode: A
+  finished: D H I K
+  uncode: A C
   unsolved: E G
 
 - contest: L
