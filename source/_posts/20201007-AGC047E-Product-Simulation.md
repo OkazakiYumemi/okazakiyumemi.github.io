@@ -5,7 +5,7 @@ urlname: AGC047E
 date: 2020-10-07 19:28:56
 tags:
 - AtCoder
-- 构造题
+- 构造
 top:
 ---
 
