@@ -1,6 +1,6 @@
 body {
   position: relative;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato Regular', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 16px;
   line-height: 2;
   color: #555;
@@ -35,4 +35,12 @@ body {
     min-height: auto;
     border-radius: initial;
   }
+}
+.content-wrap :not(pre) > code{
+  /* font-size: 1em!important; */
+  padding: .2em;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #f8f8f8;
+  border: 1px solid #dddddd;
 }
