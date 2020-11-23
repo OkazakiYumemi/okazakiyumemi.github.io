@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+    <link rel="stylesheet" type="text/css" href="/hide/main.css">
+    <title>20201123 | Okazaki Yumemi's blog</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}});
+    </script>
+</head>
+
+<body>
+<div class="content-wrap">
+    <p>
+    <h2>杂题</h2>
+    <h2>D</h2>
+    <h3>题意简述</h3>
+    给一个长为 $2n$（$n\le 100$）的字符串，保证有 $n-1$ 个 '<code>A</code>'，$n-1$ 个 '<code>B</code>'，两个连续的 '<code>.</code>'（空位）。<br>
+    你希望通过不超过 $1000$ 次操作使该字符串中任意 '<code>A</code>' 前面没有 '<code>B</code>'。<br>
+    操作为将两个连续的字符按顺序扔到空位上（那两个字符原本的位置会变成新的空位）。<br>
+    <h3>主要思路</h3>
+    特判 $n\le 3$。<br>
+    先把空位移到最后。<br>
+    然后考虑暴力。就是试图把 '<code>B</code>' （从后往前）全扔到 $[n+2,2n]$ 上。<br>
+    一个简单的思路是每次直接找到一个 '<code>B</code>'，然后把它和前面一个字符扔到后面。<br>
+    此时需要保证第一个字符不是 '<code>B</code>'，显然这可以通过几步操作得到。<br><br>
+    但是可能选了 '<code>AB</code>'，导致下一个位置出现 '<code>A</code>'。此时需要找个 '<code>A</code>' 扔过来，再和刚刚搞过来的 '<code>A</code>' 一起扔回去。<br>
+    不难证明正确性。于是做完了。
+    </p>
+    <h2>G</h2>
+    <h3>题意简述</h3>
+    长度为 $n$ （$n\le 10^6$）的不降序列 $a$，现在希望重排使得逆序对数等于「每次选择任意两个数交换使为不降的最少交换次数」。求重排的数量（这里相等的元素是无序的）模大质数。<br>
+    <h3>主要思路</h3>
+    手玩排列，发现合法的重排都是若干次以下操作的叠加：<br>
+    选定一个区间 $[l, r]$，记 $[l', r']$ 为上次的区间，则要求 $r'\le l$。<br>
+    将 $a_l\gets a_r$，其他的各自右移一位。<br><br>
+    感性理解大概是，「每次选择任意两个数交换使为不降的最少交换次数」是 $n$ 减去环数。然后上述操作在 $r'&#60;l$ 时显然是对的；否则环数不加，逆序对数增加 $r-r'$，相当于将某个环增大了 $r-r'$，也仍然满足条件。<br>
+    显然，任意时刻可选择的区间都是上升的，于是直接考虑求「以后不再选择左端点不大于 $m$ 的」
+    然后考虑不是排列，发现一个数不会经过超过两个相同的数，于是连续相同段可以直接切开。<br>
+    于是做完了。<br>
+</div>
+</body>
+
+</html>
