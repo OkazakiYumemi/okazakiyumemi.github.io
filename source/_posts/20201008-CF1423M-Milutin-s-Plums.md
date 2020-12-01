@@ -17,8 +17,6 @@ top:
 
 通过不超过 $4(n + m)$ 次单点询问确定该矩阵的最小值。
 
-<span style="font-weight:bold; color:red">朗报：本题解已经被 hack，于是彻底死了。</span>
-
 <!-- more -->
 
 ## 主要思路
@@ -36,7 +34,15 @@ top:
 
 尽管 $n$ 的系数足够小，但 $m$ 的系数太大。
 
-咕了。
+设可能的列的集合为 $T$，如果 $|T|>|S|$，我们尝试将先减小 $T$ 的大小。
+
+考虑两个元素 $a(x, l), a(x, r)$。
+如果 $a(x, l)\le a(x, r)$，则显然对于任意 $i\le x$，$L(i)\ne r$；
+如果 $a(x, l)> a(x, r)$，则同理对于任意 $i\ge x$，$L(i)\ne l$。
+
+由此我们可以在 $|S| + |T|$ 步内将 $T$ 的大小缩小为 $|S|$。
+
+此时对于集合 $S$，最多需要的询问次数即为 $f(|S|) = f(\frac{|S|}{2}) + 2|S| + 2|T|$，即最多需要 $4(n + m)$ 次。
 
 ## 参考代码
 
@@ -44,10 +50,8 @@ top:
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
-#define reg register
-#define Rint register int
-#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i <= ed_##i; ++i)
-#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i >= ed_##i; --i)
+#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i <= ed_##i; ++i)
+#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i >= ed_##i; --i)
 #define MP make_pair
 #define pb push_back
 typedef pair<int, int> PII;
@@ -55,8 +59,8 @@ typedef vector<int> VI;
 #define SZ(x) ((int)(x).size())
 #define Templ(T) template <typename T>
 inline int read() {
-    Rint ans = 0;
-    reg char c = getchar();
+    int ans = 0;
+    char c = getchar();
     while (!isdigit(c)) c = getchar();
     for (; isdigit(c); c = getchar())
         ans = ans * 10 + c - '0';
@@ -74,11 +78,11 @@ int qry_cnt;
 map<PII, int> mem;
 
 inline int ask(int x, int y){
+    if(mem.count(MP(x, y))) return mem[MP(x, y)];
+    printf("? %d %d\n", x, y), fflush(stdout);
     #ifdef LOCAL
     return ++qry_cnt, qry[x][y];
     #endif
-    if(mem.count(MP(x, y))) return mem[MP(x, y)];
-    printf("? %d %d\n", x, y), fflush(stdout);
     return mem[MP(x, y)] = read();
 }
 
@@ -94,19 +98,18 @@ inline VI Reduce(VI rows, VI cols){
             continue;
         }
         r = rows[i];
-        int &y = ans.back();
-        if(ask(r, y) <= ask(r, c)){
-            if(SZ(ans) == n){
-                //所有行都已经找到了最前的可能的列
-                continue;
-            }else{
-                //显然此列不可能为这行的答案，于是将其配给下一行
-                ans.pb(c);
-                ++i;
-            }
-        }else{
-            //修改该行匹配的列
-            y = c;
+        int y = ans.back();
+        while(ask(r, y) > ask(r, c)){
+            ans.pop_back();
+            --i;
+            if(ans.empty()) break;
+            r = rows[i];
+            y = ans.back();
+        }
+        if(SZ(ans) == n) continue;
+        else{
+            ans.pb(c);
+            ++i;
         }
     }
     //注意这里仅仅是简单地去掉了一些多余的列
@@ -154,8 +157,10 @@ VI Solve(VI rows, VI cols){
         //根据题目性质，偶数行的答案应该在上下两行之间
         x = rows[i];
         y = cols[lc];
+        // printf(": %d %d\n", x, y);
         int mn = ask(x, y);
-        FOR(j, lc + 1, rc){
+        FOR(j, lc, rc){
+            // printf(": %d %d\n", x, cols[j]);
             if(chkmin(mn, ask(x, cols[j]))){
                 y = cols[j];
             }
