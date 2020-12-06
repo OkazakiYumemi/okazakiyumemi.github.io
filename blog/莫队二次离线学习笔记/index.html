@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Okazaki Yumemi&#39;s blog">
 <meta property="og:description" content="在进行莫队时，若不能快速地在线计算移动区间后的贡献变化，可以考虑将 $O(n\sqrt{n})$ 个移动再次离线，每次 $O(1)$ 求出贡献变化。 这就是所谓莫队二次离线。 注意这里贡献要求具有可减性，因为我们每次求的是贡献变化。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-21T05:30:16.329Z">
+<meta property="og:updated_time" content="2020-12-06T08:17:17.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="莫队二次离线学习笔记">
 <meta name="twitter:description" content="在进行莫队时，若不能快速地在线计算移动区间后的贡献变化，可以考虑将 $O(n\sqrt{n})$ 个移动再次离线，每次 $O(1)$ 求出贡献变化。 这就是所谓莫队二次离线。 注意这里贡献要求具有可减性，因为我们每次求的是贡献变化。">
@@ -446,7 +446,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-21 13:30:16" itemprop="dateModified" datetime="2020-08-21T13:30:16+08:00">2020-08-21</time>
+                <time title="修改时间：2020-12-06 16:17:17" itemprop="dateModified" datetime="2020-12-06T16:17:17+08:00">2020-12-06</time>
               
             
           </span>
@@ -509,17 +509,31 @@
 <p>注意这里贡献要求具有可减性，因为我们每次求的是贡献变化。</p>
 <a id="more"></a>
 
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>目前，运用该 trick 的题目通常为求区间中合法点对数量。</p>
+<p>设 $S([l_1, r_1], [l_2, r_2])$ 为前面的数在 $[l_1, r_1]$ 位置，后面的数在 $[l_2, r_2]$ 位置所组成的合法点对数。</p>
+<p>考虑从上一个区间 $[l_1, r_1]$ 转移至当前需求区间 $[l_2, r_2]$ 的过程。不失一般性地，设 $l_1 &lt; l_2, r_1 &lt; r_2$（其他情况可类似推出）。</p>
+<p>$$\begin{aligned}<br>  &amp;\ S([l, r], [l, r])\\<br>  &amp;= S([1, r], [1, r]) + S([l, n], [l, n])\\<br>  &amp;+ S([1, l - 1], [r + 1, n]) - S([1, n], [1, n])<br>\end{aligned}$$</p>
+<p>注意到：</p>
+<p>$$\begin{aligned}<br>  &amp;\ S([1, l_2 - 1], [r_2 + 1, n]) - S([1, l_1 - 1], [r_1 + 1, n])\\<br>  &amp;= S([l_1, l_2 - 1], [r_2 + 1, n]) - S([1, l_1 - 1], [r_1 + 1, r_2])<br>\end{aligned}$$</p>
+<p>所以：</p>
+<p>$$\begin{aligned}<br>  &amp;\ S([l_2, r_2], [l_2, r_2]) - S([l_1, r_1], [l_1, r_1])\\<br>  &amp;= S([1, r_2], [1, r_2]) - S([1, r_1], [1, r_1]) - S([l_1, n], [l_1, n]) + S([l_2, n], [l_2, n]) \\<br>  &amp;- S([1, l_1 - 1], [r_1 + 1, r_2]) + S([l_1, l_2 - 1], [r_2 + 1, n])<br>\end{aligned}$$</p>
+<p><del>虽然基本每个题都是这个式子，但因为太长实在没有记的必要，直接画出<code>1,n,l_1,r_1,l_2,r_2</code>现推往往更快。</del></p>
+<p>下面是原来的较为繁琐的推法：</p>
+<div><div class="fold_hider"><div class="close hider_title"> </div></div><div class="fold">
+<p>$$\begin{aligned}<br>  &amp;\ S([l_2, r_2], [l_2, r_2]) - S([l_1, r_1], [l_1, r_1])\\<br>  &amp;= S([l_2, r_2], [r_1 + 1, r_2]) - S([l_1, l_2 - 1], [l_1, r_1])\\<br>  &amp;= (S([1, r_2], [r_1 + 1, r_2]) - S([1, l_1 - 1], [r_1 + 1, r_2]))\\<br>  &amp;- (S([l_1, l_2 - 1], [l_1, n]) - S([l_1, l_2 - 1], [r_2 + 1, n]))\\<br>  &amp;= S([1, r_2], [1, r_2]) - S([1, r_1], [1, r_1]) - S([l_1, n], [l_1, n]) + S([l_2, n], [l_2, n]) \\<br>  &amp;- S([1, l_1 - 1], [r_1 + 1, r_2]) + S([l_1, l_2 - 1], [r_2 + 1, n])<br>\end{aligned}$$</p>
+
+</div></div>
+
+<br>
+
+<p>故，不失一般性地，只需考虑 $S([1, r], [1, r]), S([1, l_1 - 1], [r_1 + 1, r_2])$ 的求法。前者一般因题而异且不为难点，故本处只考虑后者。</p>
+<p>不妨为每个位置开一个<code>vector</code>。将一个 $S([1, l_1 - 1], [r_1 + 1, r_2])$ 的询问记录在第 $l_1 - 1$ 个<code>vector</code>上。</p>
+<p>然后使用可以用类似扫描线的做法，依次处理每个<code>vector</code>上的询问，</p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="「Ynoi2019模拟赛」Yuno-loves-sqrt-technology-II"><a href="#「Ynoi2019模拟赛」Yuno-loves-sqrt-technology-II" class="headerlink" title="「Ynoi2019模拟赛」Yuno loves sqrt technology II"></a>「Ynoi2019模拟赛」Yuno loves sqrt technology II</h3><p><a href="https://www.luogu.com.cn/problem/P5047" target="_blank" rel="noopener">Luogu 5047</a></p>
 <p>给定长 $O(n)$ 序列，离线 $O(n)$ 次查询区间逆序对，希望做到 $O(n\sqrt{n})$ 复杂度。</p>
-<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h4><p>显然利用树状数组有复杂度 $O(n\sqrt{n}\log n)$ 的莫队。</p>
-<p>瓶颈在于计算移动区间后的贡献变化。</p>
-<p>设 $S([l_1, r_1], [l_2, r_2])$ 为前面的数在 $[l_1, r_1]$ 位置，后面的数在 $[l_2, r_2]$ 位置所组成的逆序对数。</p>
-<p>考虑从上一个区间 $[l_1, r_1]$ 转移至当前需求区间 $[l_2, r_2]$ 的过程。不失一般性地，设 $l_1 &lt; l_2, r_1 &lt; r_2$（其他情况可类似推出）。</p>
-<p>$$\begin{aligned}<br>  &amp;\ S([l_2, r_2], [l_2, r_2]) - S([l_1, r_1], [l_1, r_1])\\<br>  &amp;= S([l_2, r_2], [r_1 + 1, r_2]) - S([l_1, l_2 - 1], [l_1, r_1])\\<br>  &amp;= (S([1, r_2], [r_1 + 1, r_2]) - S([1, l_1 - 1], [r_1 + 1, r_2]))\\<br>  &amp;- (S([l_1, l_2 - 1], [l_1, n]) - S([l_1, l_2 - 1], [r_2 + 1, n]))\\<br>  &amp;= S([1, r_2], [1, r_2]) - S([1, r_1], [1, r_1]) - S([l_1, n], [l_1, n]) + S([l_2, n], [l_2, n]) \\<br>  &amp;- S([1, l_1 - 1], [r_1 + 1, r_2]) + S([l_1, l_2 - 1], [r_2 + 1, n])<br>\end{aligned}$$</p>
-<p>$S([1, r], [1, r])$ 和 $S([l, n], [l, n])$ 可以直接使用树状数组求出。</p>
-<p>故，不失一般性地，只需考虑 $S([1, l_1 - 1], [r_1 + 1, r_2])$ 的求法。</p>
-<p>不妨为每个位置开一个<code>vector</code>。将一个 $S([1, l_1 - 1], [r_1 + 1, r_2])$ 的询问记录在第 $l_1 - 1$ 个<code>vector</code>上。</p>
-<p>我们可以用类似扫描线的做法：依次处理每个<code>vector</code>上的询问，则问题转化为维护可重集，要求 $O(n\sqrt{n})$ 次查询比某数小的元素个数且有 $O(n)$ 次加点。</p>
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h4><p>显然利用树状数组有复杂度 $O(n\sqrt{n}\log n)$ 的莫队，且瓶颈在于计算移动区间后的贡献变化。</p>
+<p>$S([1, r], [1, r])$ 可以直接使用树状数组求出。考虑 $S([1, l_1 - 1], [r_1 + 1, r_2])$。</p>
+<p>套上上面那套东西，则问题转化为维护可重集，要求 $O(n\sqrt{n})$ 次查询比某数小的元素个数且有 $O(n)$ 次加点。</p>
 <p>利用一个值域分块即可做到 $O(\sqrt{n})$ 加点，$O(1)$ 查询。</p>
 <p>故总时间复杂度 $O(n\sqrt{n})$，空间 $O(n)$。</p>
 <div><div class="fold_hider"><div class="close hider_title"> </div></div><div class="fold">
@@ -653,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-count">115</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -779,7 +793,31 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1032,7 +1070,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">1.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#「Ynoi2019模拟赛」Yuno-loves-sqrt-technology-II"><span class="nav-number">1.1.</span> <span class="nav-text">「Ynoi2019模拟赛」Yuno loves sqrt technology II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主要思路"><span class="nav-number">1.1.1.</span> <span class="nav-text">主要思路</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">2.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#「Ynoi2019模拟赛」Yuno-loves-sqrt-technology-II"><span class="nav-number">2.1.</span> <span class="nav-text">「Ynoi2019模拟赛」Yuno loves sqrt technology II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主要思路"><span class="nav-number">2.1.1.</span> <span class="nav-text">主要思路</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

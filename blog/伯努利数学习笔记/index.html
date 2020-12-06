@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="下 Summer Pockets REFLECTION BLUE 的时候太无聊，于是就来学这个东西了。">
+<meta name="keywords" content="数学,生成函数,多项式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="伯努利数学习笔记">
+<meta property="og:url" content="http://okazakiyumemi.github.io/blog/伯努利数学习笔记/index.html">
+<meta property="og:site_name" content="Okazaki Yumemi&#39;s blog">
+<meta property="og:description" content="下 Summer Pockets REFLECTION BLUE 的时候太无聊，于是就来学这个东西了。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-30T11:01:14.105Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="伯努利数学习笔记">
+<meta name="twitter:description" content="下 Summer Pockets REFLECTION BLUE 的时候太无聊，于是就来学这个东西了。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://okazakiyumemi.github.io/blog/伯努利数学习笔记/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>伯努利数学习笔记 | Okazaki Yumemi's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Okazaki Yumemi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">冈崎梦美的实验室</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/伯努利数学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">伯努利数学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-25 17:38:38" itemprop="dateCreated datePublished" datetime="2020-08-25T17:38:38+08:00">2020-08-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-30 19:01:14" itemprop="dateModified" datetime="2020-09-30T19:01:14+08:00">2020-09-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><del>下 Summer Pockets REFLECTION BLUE 的时候太无聊，于是就来学这个东西了。</del></p>
+<a id="more"></a>
+
+<p>伯努利数(Bernoulli number)是由雅各布·伯努利的名字命名的。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>我们定义伯努利数 $B_n$ 是满足如下递归式 $\sum_{i=0}^{n}\binom{n + 1}{i}B_i = [n = 0]$ 的数列。<br>定义自然数幂和函数 $S(n, k)=\sum\limits_{i=0}^{n - 1}i^k$。</p>
+<h4 id="EGF"><a href="#EGF" class="headerlink" title="EGF"></a>EGF</h4><p>首先求出它的 EGF $B(z)$。定义式两边同加 $B_{n + 1}$ 得 $\sum\limits_{i = 0}^{n + 1} \binom{n + 1}{i} B_i = [n = 0] + B_{n + 1}$。</p>
+<p>处理一下就是 $\sum\limits_{i = 0}^{n} \binom{n}{i} B_i = [n = 1] + B_{n}$。</p>
+<p>所以 $B(z)e^z = B(z) + z$，即 $B(z) = \dfrac{z}{e^z - 1}$。</p>
+<h3 id="与自然数幂的转化"><a href="#与自然数幂的转化" class="headerlink" title="与自然数幂的转化"></a>与自然数幂的转化</h3><p>$$S(n, k) = \sum_{i = 0}^{n - 1} i^k = \dfrac{1}{k + 1}\sum_{i = 0}^{k}\binom{k + 1}{i} B_i n^{k - i + 1}$$</p>
+<p>这玩意大概有两种常见证法。</p>
+<h4 id="利用归纳法证明"><a href="#利用归纳法证明" class="headerlink" title="利用归纳法证明"></a>利用归纳法证明</h4><p>这个证明方法来自 Concrete Mathematics 6.5 BERNOULLI NUMBER。</p>
+<p>$$\begin{aligned}<br>S(n, k)+n^{k + 1} &amp;= \sum_{i = 0}^{n - 1}(i + 1)^{k + 1}\\<br>&amp;= \sum_{i = 0}^{n - 1}\sum_{j=0}^{k + 1}\binom{k + 1}{j}k^j\\<br>&amp;= \sum_{j = 0}^{k + 1}\binom{k + 1}{j}S(n, j)<br>\end{aligned}$$</p>
+<p>两边同时减去 $S(n, k)$ 得</p>
+<p>$$n^{k + 1} = \sum_{j = 0}^{k} \binom{k + 1}{j} S(n, j)$$</p>
+<p>设 $\hat{S}(n, k) = \sum_{i = 0}^{n - 1} i^k = \dfrac{1}{k + 1}\sum_{i = 0}^{k}\binom{k + 1}{i} B_i n^{k - i + 1}$，且对于 $j\in [0, k)$ 均有 $S(n, j) = \hat{S}(n, j)$ 成立。则需证明 $S(n, k) = \hat{S}(n, k)$。</p>
+<p>则此时 $n^{k + 1} = \sum_{j = 0}^{k - 1} \binom{k + 1}{j} \hat{S}(n, j) + S(n, k)$，故转化为证 $n^{k + 1} = \sum_{j = 0}^{k} \binom{k + 1}{j}\hat{S}(n, j)$。</p>
+<p>$$\begin{aligned}<br>  &amp;\sum_{j = 0}^{k} \binom{k + 1}{j}\hat{S}(n, j)\\<br>  &amp;= \sum_{j = 0}^{k} \binom{k + 1}{j}\dfrac{1}{j + 1}\sum_{i = 0}^{j}\binom{j + 1}{i} B_i n^{j - i + 1}\\<br>  &amp;= \sum_{j = 0}^{k} \binom{k + 1}{j}\dfrac{1}{j + 1}\sum_{i = 0}^{j}\binom{j + 1}{i + 1} B_{j - i} n^{i + 1}\\<br>  &amp;= \sum_{j = 0}^{k} \binom{k + 1}{j}\sum_{i = 0}^{j}\binom{j}{i} B_{j - i} \dfrac{n^{i + 1}}{i + 1}\\<br>  &amp;= \sum_{i = 0}^{k} \dfrac{n^{i + 1}}{i + 1}\sum_{j = i}^{k}\binom{k + 1}{j}\binom{j}{i} B_{j - i}\\<br>  &amp;= \sum_{i = 0}^{k} \dfrac{n^{i + 1}}{i + 1}\binom{k + 1}{i}\sum_{j = i}^{k}\binom{k + 1 - i}{j - i} B_{j - i}\\<br>  &amp;= \sum_{i = 0}^{k} \dfrac{n^{i + 1}}{i + 1}\binom{k + 1}{i}\sum_{j = 0}^{k - i}\binom{k + 1 - i}{j} B_{j}\\<br>  &amp;= \sum_{i = 0}^{k} \dfrac{n^{i + 1}}{i + 1}\binom{k + 1}{i}[i = k]\\<br>  &amp;= \dfrac{n^{k + 1}}{k + 1}\binom{k + 1}{k}\\<br>  &amp;= n^{k + 1}<br>\end{aligned}$$</p>
+<p>其中倒数第二步用的是定义式。</p>
+<h4 id="利用指数生成函数证明"><a href="#利用指数生成函数证明" class="headerlink" title="利用指数生成函数证明"></a>利用指数生成函数证明</h4><p>设 $F_n(z) = \sum\limits_{k\ge 0}\dfrac{S(n, k)}{k!}z^k$。</p>
+<p>$$\begin{aligned}<br>  F_n(z) &amp;= \sum\limits_{k\ge 0}\dfrac{S(n, k)}{k!}z^k\\<br>  &amp;= \sum_{i=0}^{n-1}\sum_{k\ge 0}\dfrac{i^kz^k}{k!}\\<br>  &amp;= \sum_{i=0}^{n-1}e^{iz}\\<br>  &amp;= \dfrac{e^{nz} - 1}{e^z - 1}\\<br>  &amp;= \dfrac{z}{e^z - 1}\cdot\dfrac{e^{nz} - 1}{z}\\<br>  &amp;= B(z)\cdot\dfrac{e^{nz} - 1}{z}\\<br>  &amp;= \left(\sum_{i\ge 0}\dfrac{B_i}{i!} \right)\left(\sum_{i\ge 0}\dfrac{n^{i+1} z^{i}}{(i+1)!}\right)<br>\end{aligned}$$</p>
+<p>然后取一项就行了。</p>
+<p>$$\begin{aligned}<br>  S(n, k) &amp;= k![z^k]F_n(z)\\<br>  &amp;= m!\sum_{i=0}^{k}\dfrac{B_i}{i!}\cdot\dfrac{n^{k-i+1}}{(k-i+1)!}\\<br>  &amp;= \dfrac{1}{k+1}\sum_{i=0}^{k}\binom{k+1}{i}B_in^{k-i+1}<br>\end{aligned}$$</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>未特别说明时，模数均为<code>998244353</code>。</p>
+<h4 id="「Luogu-3711」仓鼠的数学题"><a href="#「Luogu-3711」仓鼠的数学题" class="headerlink" title="「Luogu 3711」仓鼠的数学题"></a>「Luogu 3711」仓鼠的数学题</h4><p><a href="https://www.luogu.com.cn/problem/P3711" target="_blank" rel="noopener">Luogu 3711</a></p>
+<p>给数列 ${a_n}$，求 $Ans(z) = \sum\limits_{k = 0}^{n}(S(z, k) + z^k)a_k$。$n\le 2.5\times 10^5$。</p>
+<p>$\sum\limits_{k = 0}^n a_k z^k$ 是个常量可以先扔出来。</p>
+<p>$$\begin{aligned}<br>  &amp;Ans(z) -\sum\limits_{k = 0}^n a_k z^k\\<br>  &amp;= \sum_{k = 0}^{n}S(z, k)a_k\\<br>  &amp;= \sum_{k = 0}^{n}a_k\dfrac{1}{k+1}\sum_{i=0}^{k}\binom{k + 1}{i}B_i z^{k - i + 1}\\<br>  &amp;= \sum_{k = 0}^{n}a_k k!\sum_{i = 0}^{k} \dfrac{B_i}{i!}\cdot\dfrac{z^{k + 1 - i}}{(k + 1 - i)!}\\<br>  &amp;= \sum_{k = 0}^{n}a_k k!\sum_{i = 1}^{k + 1} \dfrac{B_{k + 1 - i}}{(k + 1 - i)!}\cdot\dfrac{z^i}{i!}\\<br>  &amp;= \sum_{i = 1}^{n + 1}\dfrac{z^i}{i!}\sum_{k = i - 1}^{n}(a_k k!)\dfrac{B_{k + 1 - i}}{(k + 1 - i)!}<br>\end{aligned}$$</p>
+<p>后面那坨是个差卷积，于是翻转一下多项式做完了。</p>
+<h4 id="「HDU-6340」Delightful-Formulas"><a href="#「HDU-6340」Delightful-Formulas" class="headerlink" title="「HDU 6340」Delightful Formulas"></a>「HDU 6340」Delightful Formulas</h4><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6340" target="_blank" rel="noopener">HDU 6340</a></p>
+<p>给一个大数 $n = \prod\limits_{o = 0}^{m - 1} p_o^{\alpha_o}$ 的分解和正整数 $K$，求 $\sum\limits_{i=1}^{n}[\gcd(i, n) = 1]S(i, K)$。<br>$m\le 20, K\le 10^5, p_o, \alpha_o\le 10^9$。</p>
+<p>首先来个莫比乌斯反演，$Ans = \sum\limits_{d|n} \mu(d)\sum\limits_{i=1}^{n/d}S(i\cdot d, K)$。设 $a_i = \dfrac{1}{k + 1}\binom{k + 1}{j}B_{k + 1 - j}$。</p>
+<p>$$\begin{aligned}<br>  Ans &amp;= \sum_{d|n}\mu(d)\sum_{j=1}^{K+1}a_j d^j \sum_{i = 1}^{n/d} i^j\\<br>  &amp;= \sum_{d|n}\mu(d)\sum_{j=1}^{K+1}a_j d^j \sum_{i=1}^{j+1}(\dfrac{n}{d})^i\dfrac{1}{j + 1}\binom{j + 1}{i}B_{j + 1 - i}<br>\end{aligned}$$</p>
+<p>到这里，枚举 $c = j - i + 1\in[0, K + 1]$：</p>
+<p>$$\begin{aligned}<br>  Ans &amp;= \sum_{d|n}\mu(d)\sum_{c=-}1^{K}d^c\sum_{j=1}^{K+1}a_j n^{j-c} \dfrac{1}{j + 1}\binom{j+1}{c+1}B_{c+1}\\<br>  &amp;= \sum_{c=-1}^{K}B_{c+1}\sum_{j=1}^{K+1}\dfrac{a_j}{j+1}\binom{j+1}{c+1}n^{j-c} \sum_{d|n}d^c\mu(d)\\<br>  &amp;= \sum_{c=0}^{K+1}B_{c}\sum_{j=1}^{K+1}\dfrac{a_j}{j+1}\binom{j+1}{c}n^{j-c+1} \sum_{d|n}d^{c-1}\mu(d)<br>\end{aligned}$$</p>
+<p>发现 $\sum\limits_{d|n}d^c\mu(d)=\prod\limits_{o=0}(1 - p_o)$，所以考虑 $F_c = \sum\limits_{j=1}^{K+1}\dfrac{a_j}{j+1}\binom{j+1}{c}n^{j-c+1}$，我们要对于 $c\in[0, K + 1]$ 全求出来。</p>
+<p>$$\begin{aligned}<br>  F_c &amp;= \sum_{j=1}^{K+1}\dfrac{a_j}{j+1}\binom{j+1}{c}n^{j-c+1}\\<br>  &amp;= \dfrac{1}{c!}\sum_{j=1}^{K+1}a_j j!\dfrac{n^{j - c + 1}}{(j - c + 1)!}<br>\end{aligned}$$</p>
+<p>又是差卷积，稍微算算发现 $K-j+c\in[-K-1, K]$，所以设 $b_i=\dfrac{n^{K - i + 2}}{(K - i + 2)!}$。<br>就变成求 $F_c = \sum\limits_{j=1}^{K+1}a_j j! b_{K + 1-j+c}$。（这个 $a_i$ 其实拆开形式比较好）</p>
+<p>于是做完了。记得乘上一堆麻烦的系数。</p>
+<div><div class="fold_hider"><div class="close hider_title"> </div></div><div class="fold">
+<p>不知道为什么板子一直 WA……后来重写了一遍就过了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std &#123;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> i64;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> u64;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Templ(T) template <span class="meta-string">&lt;typename T&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    reg <span class="keyword">int</span> ans = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    reg <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c))</span><br><span class="line">        f ^= (c == <span class="string">'-'</span>), c = getchar();</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = getchar())</span><br><span class="line">        ans = (ans &lt;&lt; <span class="number">1</span>) + (ans &lt;&lt; <span class="number">3</span>) + (c ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? ans : -ans;</span><br><span class="line">&#125;</span><br><span class="line">Templ(_Tp) <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">chkmin</span><span class="params">(_Tp &amp;x, _Tp y)</span> </span>&#123; <span class="keyword">return</span> x &gt; y ? x = y, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line">Templ(_Tp) <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">chkmax</span><span class="params">(_Tp &amp;x, _Tp y)</span> </span>&#123; <span class="keyword">return</span> x &lt; y ? x = y, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> using_mod</span></span><br><span class="line"><span class="comment">// const int mod = 998244353;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 998244353</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> using_mod</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">    x += y;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= mod)</span><br><span class="line">        x -= mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dec</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">    x -= y;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>)</span><br><span class="line">        x += mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qmo</span><span class="params">(reg <span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span> </span>&#123; <span class="keyword">return</span> x + ((x &gt;&gt; <span class="number">31</span>) &amp; mod); &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x, i64 y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; y; y &gt;&gt;= <span class="number">1</span>, x = (i64)x * x % mod)</span><br><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>) res = (i64)res * x % mod;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125; <span class="comment">// namespace my_std</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> swap(x, y) (x ^= y ^= x ^= y)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">550010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> LMT = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> rev[N], omg[N], inv[N];</span><br><span class="line"><span class="keyword">int</span> fac[N], ifac[N];</span><br><span class="line"><span class="keyword">int</span> l2g[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;n)</span> </span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>] = fac[<span class="number">1</span>] = ifac[<span class="number">0</span>] = ifac[<span class="number">1</span>] = inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    FOR(i, <span class="number">2</span>, n) &#123;</span><br><span class="line">        inv[i] = (i64)(mod - mod / i) * inv[mod % i] % mod;</span><br><span class="line">        fac[i] = (i64)fac[i - <span class="number">1</span>] * i % mod;</span><br><span class="line">        ifac[i] = (i64)ifac[i - <span class="number">1</span>] * inv[i] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    l2g[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    FOR(i, <span class="number">2</span>, n &lt;&lt; <span class="number">1</span>)</span><br><span class="line">    l2g[i] = l2g[i &gt;&gt; <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">poly_init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;n)</span></span>&#123;</span><br><span class="line">    Rint l = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(LMT &lt;= n) LMT &lt;&lt;= <span class="number">1</span>, ++l;</span><br><span class="line">    FOR(i, <span class="number">1</span>, LMT - <span class="number">1</span>) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>));</span><br><span class="line">    reg <span class="keyword">const</span> <span class="keyword">int</span> t = ksm(<span class="number">3</span>, (mod - <span class="number">1</span>) &gt;&gt; l);</span><br><span class="line">    omg[LMT &gt;&gt; <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    FOR(i, (LMT &gt;&gt; <span class="number">1</span>) + <span class="number">1</span>, LMT - <span class="number">1</span>) omg[i] = (i64)omg[i - <span class="number">1</span>] * t % mod;</span><br><span class="line">    ROF(i, (LMT &gt;&gt; <span class="number">1</span>) - <span class="number">1</span>, <span class="number">1</span>) omg[i] = omg[i &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    LMT = l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">get_len</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> &lt;&lt; (l2g[n] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">DFT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> &amp;n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> u64 tmp[N];</span><br><span class="line">    reg <span class="keyword">const</span> <span class="keyword">int</span> fix = LMT - l2g[n];</span><br><span class="line">    Rint t;</span><br><span class="line">    FOR(i, <span class="number">0</span>, n - <span class="number">1</span>) tmp[i] = a[rev[i] &gt;&gt; fix];</span><br><span class="line">    <span class="keyword">for</span>(Rint i = <span class="number">1</span>; i &lt; n; i &lt;&lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(Rint j = <span class="number">0</span>; j &lt; n; j += i &lt;&lt; <span class="number">1</span>)&#123;</span><br><span class="line">            FOR(k, j, j + i - <span class="number">1</span>)&#123;</span><br><span class="line">                t = tmp[i + k] * omg[i + k - j] % mod;</span><br><span class="line">                tmp[i + k] = tmp[k] + mod - t;</span><br><span class="line">                tmp[k] += t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i, <span class="number">0</span>, n - <span class="number">1</span>) a[i] = tmp[i] % mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">IDFT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> &amp;n)</span></span>&#123;</span><br><span class="line">    reverse(a + <span class="number">1</span>, a + n);</span><br><span class="line">    DFT(a, n);</span><br><span class="line">    reg <span class="keyword">const</span> <span class="keyword">int</span> bk = mod - (mod - <span class="number">1</span>) / n;</span><br><span class="line">    FOR(i, <span class="number">0</span>, n - <span class="number">1</span>) a[i] = (i64)bk * a[i] % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">poly_mul</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">int</span> *c, <span class="keyword">const</span> <span class="keyword">int</span> &amp;deg)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> tmp1[N], tmp2[N];</span><br><span class="line">    reg <span class="keyword">const</span> <span class="keyword">int</span> len = get_len(deg);</span><br><span class="line">    <span class="built_in">memcpy</span>(tmp1, a, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len), <span class="built_in">memcpy</span>(tmp2, b, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len);</span><br><span class="line">    DFT(tmp1, len), DFT(tmp2, len);</span><br><span class="line">    FOR(i, <span class="number">0</span>, len - <span class="number">1</span>) c[i] = (i64)tmp1[i] * tmp2[i] % mod;</span><br><span class="line">    IDFT(c, len);</span><br><span class="line">    <span class="built_in">memset</span>(c + deg, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (len - deg));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">poly_inv</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">const</span> <span class="keyword">int</span> &amp;deg)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> tmp[N];</span><br><span class="line">    <span class="keyword">if</span>(deg == <span class="number">1</span>)&#123;</span><br><span class="line">        *b = ksm(*a, mod - <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    poly_inv(a, b, (deg + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    reg <span class="keyword">const</span> <span class="keyword">int</span> len = get_len(deg &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">memcpy</span>(tmp, a, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * deg);</span><br><span class="line">    <span class="built_in">memset</span>(tmp + deg, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (len - deg));</span><br><span class="line">    DFT(b, len), DFT(tmp, len);</span><br><span class="line">    FOR(i, <span class="number">0</span>, len - <span class="number">1</span>)&#123;</span><br><span class="line">        b[i] = (i64)qmo(<span class="number">2l</span>l - (i64)b[i] * tmp[i] % mod) * b[i] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    IDFT(b, len);</span><br><span class="line">    <span class="built_in">memset</span>(b + deg, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (len - deg));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M (1 &lt;&lt; 17)</span></span><br><span class="line"><span class="keyword">int</span> bnl[N], A[N], G[N];</span><br><span class="line"><span class="keyword">int</span> mc, n, K;</span><br><span class="line"><span class="keyword">int</span> pr[<span class="number">20</span>], aph[<span class="number">20</span>], pt[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">    K = read(), mc = read(), n = <span class="number">1</span>;</span><br><span class="line">    FOR(o, <span class="number">0</span>, mc - <span class="number">1</span>)&#123;</span><br><span class="line">        pr[o] = read(), aph[o] = read();</span><br><span class="line">        n = n * (i64)ksm(pr[o], aph[o]) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    reg <span class="keyword">const</span> <span class="keyword">int</span> len = get_len((K + <span class="number">5</span>) * <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">memset</span>(A, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len);</span><br><span class="line">    <span class="built_in">memset</span>(G, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len);</span><br><span class="line">    FOR(i, <span class="number">0</span>, K)&#123;</span><br><span class="line">        A[K + <span class="number">1</span> - i] = (i64)ifac[i] * bnl[i] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(Rint i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt;= K + <span class="number">2</span>; ++i)&#123;</span><br><span class="line">        j = j * (i64)n % mod;</span><br><span class="line">        G[K + <span class="number">2</span> - i] = j * (i64)ifac[i] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    poly_mul(A, G, G, len - <span class="number">1</span>);</span><br><span class="line">    <span class="function">Rint <span class="title">ans</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    FOR(o, <span class="number">0</span>, mc - <span class="number">1</span>) pt[o] = ksm(pr[o], mod - <span class="number">2</span>);</span><br><span class="line">    FOR(c, <span class="number">0</span>, K + <span class="number">1</span>)&#123;</span><br><span class="line">        Rint res = G[c + K + <span class="number">1</span>] * (i64)bnl[c] % mod * ifac[c] % mod;</span><br><span class="line">        FOR(o, <span class="number">0</span>, mc - <span class="number">1</span>)&#123;</span><br><span class="line">            res = (i64)res * (<span class="number">1l</span>l - pt[o] + mod) % mod;</span><br><span class="line">            pt[o] = pt[o] * (i64)pr[o] % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = qmo(ans + res - mod);</span><br><span class="line">    &#125;</span><br><span class="line">    ans = (i64)fac[K] * ans % mod;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    init(M &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    poly_init(M &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">memcpy</span>(G, ifac + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * M);</span><br><span class="line">    poly_inv(G, bnl, M);</span><br><span class="line">    FOR(i, <span class="number">1</span>, M - <span class="number">1</span>) bnl[i] = (i64)bnl[i] * fac[i] % mod;</span><br><span class="line">    bnl[<span class="number">1</span>] = mod - bnl[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">esac</span><span class="params">(read())</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (esac--)</span><br><span class="line">        work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/生成函数/" rel="tag"># 生成函数</a>
+          
+            <a href="/tags/多项式/" rel="tag"># 多项式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/HDU5451/" rel="next" title="「HDU5451」Best Solver">
+                <i class="fa fa-chevron-left"></i> 「HDU5451」Best Solver
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/CF674G/" rel="prev" title="「CF674G」Choosing Ads">
+                「CF674G」Choosing Ads <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Okazaki Yumemi">
+            
+              <p class="site-author-name" itemprop="name">Okazaki Yumemi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">115</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/OkazakiYumemi" title="GitHub &rarr; https://github.com/OkazakiYumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.luogu.org/space/show?uid=76107" title="洛谷 &rarr; https://www.luogu.org/space/show?uid=76107" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>洛谷</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://codeforces.com/profile/Okazaki_Yumemi" title="Codeforces &rarr; https://codeforces.com/profile/Okazaki_Yumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Codeforces</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://atcoder.jp/users/OkazakiYumemi" title="Atcoder &rarr; https://atcoder.jp/users/OkazakiYumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Atcoder</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Following
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mcfx.us/" title="https://mcfx.us/" rel="noopener" target="_blank">mcfx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://negiizhao.blog.uoj.ac/archive" title="http://negiizhao.blog.uoj.ac/archive" rel="noopener" target="_blank">negiizhao</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://olddrivertree.blog.uoj.ac/archive/" title="http://olddrivertree.blog.uoj.ac/archive/" rel="noopener" target="_blank">ODT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://memset0.cn/" title="https://memset0.cn/" rel="noopener" target="_blank">memset0</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://studyingfather.blog.luogu.org/" title="https://studyingfather.blog.luogu.org/" rel="noopener" target="_blank">studyingfather</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://min-25.hatenablog.com/" title="https://min-25.hatenablog.com/" rel="noopener" target="_blank">min_25</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://nikaidou-shinku.github.io/" title="https://nikaidou-shinku.github.io/" rel="noopener" target="_blank">yurzhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qq_38609262https://blog.csdn.net/qq_38609262" title="https://blog.csdn.net/qq_38609262https://blog.csdn.net/qq_38609262" rel="noopener" target="_blank">mayaohua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yfzcsc/" title="https://blog.csdn.net/yfzcsc/" rel="noopener" target="_blank">yfzcsc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/suwakow/" title="https://www.cnblogs.com/suwakow/" rel="noopener" target="_blank">suwakow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">deco</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xht37.com/" title="https://www.xht37.com/" rel="noopener" target="_blank">xht37</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ccz181078/" title="https://www.cnblogs.com/ccz181078/" rel="noopener" target="_blank">ccz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="https://www.cnblogs.com/cjyyb/" rel="noopener" target="_blank">yyb</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/PinkRabbit/" title="https://www.cnblogs.com/PinkRabbit/" rel="noopener" target="_blank">PinkRabbit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.com.cn/blog/wucstdio/" title="https://www.luogu.com.cn/blog/wucstdio/" rel="noopener" target="_blank">wucstdio</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/NaCly-Fish-blog/" title="https://www.luogu.org/blog/NaCly-Fish-blog/" rel="noopener" target="_blank">NaCly_Fish</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://rqy.moe/" title="https://rqy.moe/" rel="noopener" target="_blank">rqy</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/yzhang-rp-inf/" title="https://www.cnblogs.com/yzhang-rp-inf/" rel="noopener" target="_blank">yzhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/EI_Captain" title="https://blog.csdn.net/EI_Captain" rel="noopener" target="_blank">EI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mrsrz.github.io/" title="https://mrsrz.github.io/" rel="noopener" target="_blank">mrsrz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/LJC00118/" title="https://www.cnblogs.com/LJC00118/" rel="noopener" target="_blank">LJC00118</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/1000Suns/" title="https://www.cnblogs.com/1000Suns/" rel="noopener" target="_blank">AThousandSuns</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.yznheya.top/blog/" title="http://www.yznheya.top/blog/" rel="noopener" target="_blank">朝田诗乃</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.com.cn/blog/command-block/" title="https://www.luogu.com.cn/blog/command-block/" rel="noopener" target="_blank">command_block</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ouuan.github.io" title="https://ouuan.github.io" rel="noopener" target="_blank">ouuan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/owencodeisking" title="https://www.cnblogs.com/owencodeisking" rel="noopener" target="_blank">owencodeisking</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/p-b-p-b/" title="https://www.cnblogs.com/p-b-p-b/" rel="noopener" target="_blank">p_b_p_b</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ustze.cn/" title="http://www.ustze.cn/" rel="noopener" target="_blank">ustze</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://foreverlasting1202.github.io/" title="https://foreverlasting1202.github.io/" rel="noopener" target="_blank">foreverlasting</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/bztMinamoto/" title="https://www.cnblogs.com/bztMinamoto/" rel="noopener" target="_blank">bztMinamoto</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://flower233pks.github.io/" title="https://flower233pks.github.io/" rel="noopener" target="_blank">皎月半洒花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjjsb/" title="https://www.cnblogs.com/cjjsb/" rel="noopener" target="_blank">hl666</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/ShadowassIIXVIIIIV/" title="https://www.luogu.org/blog/ShadowassIIXVIIIIV/" rel="noopener" target="_blank">shadowice</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zory.ink/" title="https://zory.ink/" rel="noopener" target="_blank">zory</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qiuly.xyz/" title="https://qiuly.xyz/" rel="noopener" target="_blank">qiuly</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/AThousandMoons/" title="https://www.cnblogs.com/AThousandMoons/" rel="noopener" target="_blank">AThousandMoons</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://m-sea-blog.com/" title="http://m-sea-blog.com/" rel="noopener" target="_blank">M_sea</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://venusnero.github.io" title="https://venusnero.github.io" rel="noopener" target="_blank">Venus</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/chen-zhe/" title="https://www.luogu.org/blog/chen-zhe/" rel="noopener" target="_blank">chen_zhe</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EGF"><span class="nav-number">1.1.</span> <span class="nav-text">EGF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与自然数幂的转化"><span class="nav-number">2.</span> <span class="nav-text">与自然数幂的转化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用归纳法证明"><span class="nav-number">2.1.</span> <span class="nav-text">利用归纳法证明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用指数生成函数证明"><span class="nav-number">2.2.</span> <span class="nav-text">利用指数生成函数证明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#「Luogu-3711」仓鼠的数学题"><span class="nav-number">3.1.</span> <span class="nav-text">「Luogu 3711」仓鼠的数学题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#「HDU-6340」Delightful-Formulas"><span class="nav-number">3.2.</span> <span class="nav-text">「HDU 6340」Delightful Formulas</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Okazaki Yumemi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '6db7c68ddd3c276bde37',
+          clientSecret: '1974844dbe21a5dd8a900b8db524c7dc37012021',
+          repo: 'okazakiyumemi.github.io',
+          owner: 'OkazakiYumemi',
+          admin: ['OkazakiYumemi'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+    <link rel="stylesheet" type="text/css" href="/hide/main.css">
+    <title>20201116 | Okazaki Yumemi's blog</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}});
+    </script>
+</head>
+
+<body>
+<div class="content-wrap">
+    <p>
+    <h2>杂题</h2>
+    校内做了一两个还过得去的题，扔在这里。代码都挺简单，就不放了。<br>
+    拿 <code>&#38;&#35;60&#59;</code> 来表示 <code>&#60;</code> 也太生草了。<br>
+    <del>虽然只需要偶尔用用 <code>ord('')</code> 就好，也不是非常麻烦……</del><br>
+    <h2>P</h2>
+    <h3>题意简述</h3>
+    有 $n$ 堆石子，第 $i$ 堆有 $a_i$ 个，每次可以取出至多 $r$ 个，要求若取了某个集合的石子，至少要取两个。<br>
+    求取完需要的最少次数。<br>
+    $n\le 2\times 10^{6},a_{i},r\le 10^{9},2\le a_{i},3\le r$。<br>
+    <h3>主要思路</h3>
+    由于一个大于 1 的数一定可以拆成若干个 2 和 3 ，所以等价于把所有 $a_i$ 都先划分成独立的 2 和 3 ，再取。<br>
+    下设 3 的个数为 $C$，2 的个数为 $\frac{S - 3C}{2}$。<br>
+    显然，易求得 3 的个数的取值在某个区间 $[C_L, C_R]$ 内，（并且奇偶性是确定的）。<br>
+    那么先把 $r&#60;6$ 的手判一下。<br>
+    $r$ 为偶数时，显然 3 越少越好。于是尽量把两个 3 凑成一个 6，最后把剩下的 3 看作 4。<br>
+    $r$ 为奇数时，二分答案，然后每组放一个 3，（不够就拿 2 当 3），然后变成一个 $r$ 为偶数的子问题。<br>
+    由于数据较一般，难以完全验证本题解的正确性，希望有人能提供证明或 hack。<br>
+    <h2>G</h2>
+    <h3>题意简述</h3>
+    给个序列，$a_i\le n\le 10^5$，求「字典序」第 $k$ 小的连续子序列。<br>
+    「字典序」的定义是：$A&#60;B$ 仅当 $A,B$ 中出现次数不同的最小元素 $x$ 在 $A$ 中出现次数更多。<br>
+    <h3>主要思路</h3>
+    对于一个序列，每个连续子序列的字典序都比它大。<br>
+    考虑二分，每次选择一个子序列 $[L,R]$，求出有多少个子序列比它小。<br>
+    枚举子序列的右端点 $r$，那么使得 $[l,r]$ 的字典序大于 $[L,R]$ 的最大的 $l$，随着 $r$ 的递增是单调不减的。<br>
+    所以可以双指针。那么要支持往子序列中加一个数，删一个数，和查询字典序大小关系。可以用 set 或者线段树等方法解决。<br>
+    那么怎么选择一个合适的 $[L,R]$ 呢（也就是在之前二分后的合法字典序范围内）？对于每个右端点，维护合法左端点的位置（是个区间），然后随机一个。那么一次期望可以分成两半。<br>
+    注意第 $k$ 小不唯一的时候的细节。<br>
+    期望时间复杂度是 $O(n\log^2n)$。<br>
+    </p>
+</div>
+</body>
+
+</html>
