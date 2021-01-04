@@ -1,5 +1,5 @@
 ---
-title: 「AGC021E」球 Eat Chameleons
+title: 「AGC021E」Ball Eat Chameleons
 categories: 题解
 urlname: AGC021E
 date: 2021-01-04 16:38:43
@@ -105,14 +105,14 @@ inline void inc(int &x, const int &y){ x += y; if(x >= mod) x -= mod; }
 int n, K;
 
 int fac[N], ifac[N];
-void init(int T){
+void init(int T) {
     *fac = *ifac = 1;
     FOR(i, 1, T) fac[i] = (i64)i * fac[i - 1] % mod;
     ifac[T] = ksm(fac[T], mod - 2);
     ROF(i, T - 1, 1) ifac[i] = (i + 1ll) * ifac[i + 1] % mod;
 }
-inline int CC(int n, int m){
-    if(m < 0 || n < m) return 0;
+inline int CC(int n, int m) {
+    if (m < 0 || n < m) return 0;
     return (i64)fac[n] * ifac[m] % mod * ifac[n - m] % mod;
 }
 
