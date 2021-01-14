@@ -7,7 +7,7 @@ tags:
 - 猜结论
 - 交互题
 top:
-urlname: CodeChef-FGTREE
+urlname: CC-FGTREE
 ---
 
 很妙的一道交互。

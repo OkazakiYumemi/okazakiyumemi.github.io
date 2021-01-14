@@ -1,7 +1,7 @@
 ---
 title: 「CodeChef TRIPS」Children Trips
 categories: 题解
-urlname: CodeChef-TRIPS
+urlname: CC-TRIPS
 date: 2020-08-31 02:30:44
 tags:
 - CodeChef

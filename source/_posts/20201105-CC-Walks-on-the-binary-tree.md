@@ -1,7 +1,7 @@
 ---
 title: 「CodeChef WALKBT」Walks on the binary tree
 categories: 题解
-urlname: CodeChef-WALKBT
+urlname: CC-WALKBT
 date: 2020-11-05 19:44:16
 tags:
 - CodeChef
