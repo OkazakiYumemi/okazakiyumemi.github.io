@@ -11,7 +11,7 @@ top:
 
 ## 题意简述
 
-[GYM101741H](https://codeforces.com/gym/101741/problem/H)
+[GYM102798F](https://codeforces.com/gym/102798/problem/F)
 
 想象一只 skeleton，抽象其骨头为无向边，关节为顶点，可以得到一个无向连通图。假设定点数为 $J$，该图为 $G$。
 
