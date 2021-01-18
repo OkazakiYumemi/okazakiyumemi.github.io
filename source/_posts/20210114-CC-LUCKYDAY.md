@@ -12,6 +12,8 @@ top:
 
 ## 题意简述
 
+[CodeChef LUCKYDAY](https://www.codechef.com/problems/LUCKYDAY)
+
 有序列 $S$，其中 $S_1=A,S_2=B;S_i=X\cdot S_{i-1}+Y\cdot S_{i-2}+Z(i>2)\\\% P$。
 $Q$ 个询问求 $\sum\limits_{i=L}^{R}[S_i=C]$。
 $A,B,X,Y,C,P,Q$ 均给定，$P$ 为不超过 $10007$ 的质数，$0\le A,B,X,Y,C<P$，$Q\le 2\times 10^4$，$1\le L\le R\le 10^{18}$。
