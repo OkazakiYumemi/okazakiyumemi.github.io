@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+    <link rel="stylesheet" type="text/css" href="/hide/main.css">
+    <title>20210124 | Okazaki Yumemi's blog</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}});
+    </script>
+</head>
+
+<body>
+<div class="content-wrap">
+<p>
+(*) 表示没想出来看了题解。<br>
+(-) 表示还没搞懂。<br>
+<h3>(*)CF1468B - Bakery</h3>
+有一个栈，第 $i$ 天开始往里面扔 $a_i$ 个元素，然后弹出 $k$ 个元素（若不足则仅全部弹出，且第 $n$ 天会将栈内所有剩余元素弹出）；一个元素的代价是其被弹出的日期与其被入栈的日期的差，最大代价即为所有元素的最大代价。<br>
+$m$ 次询问不同 $k$，离线。$n,\! m\le 2\times 10^5,a_i,\! k\le 10^9$。<br>
+<br>
+首先显然时间可以被割成一段段，每段的最后栈被清空。<br>
+假设 $k=10^9$，那么每段长度为 $1$。离线询问，将 $k$ 递减。<br>
+考虑两个相邻的线段 $[p_0,p_1),\! [p_1,p_2)$ 何时会合并：$(p_2-p_1)\cdot k&#60;\sum\limits_{p_1\le i&#60;p_2}a_i$。<br>
+然后弄个 <code>set</code> 随便 $O(n\log n)$。<br>
+</p>
+</div>
+</body>
+
+</html>
