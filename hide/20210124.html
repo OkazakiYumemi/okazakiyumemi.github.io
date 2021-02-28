@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self'">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+    <link rel="stylesheet" type="text/css" href="/hide/main.css">
+    <title>20210124 | Okazaki Yumemi's blog</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}});
+    </script>
+</head>
+
+<body>
+<div class="content-wrap">
+<p>
+(*) 表示没想出来看了题解。<br>
+(-) 表示还没搞懂。<br>
+<h3>(*)CF1468B - Bakery</h3>
+有一个栈，第 $i$ 天开始往里面扔 $a_i$ 个元素，然后弹出 $k$ 个元素（若不足则仅全部弹出，且第 $n$ 天会将栈内所有剩余元素弹出）；一个元素的代价是其被弹出的日期与其被入栈的日期的差，最大代价即为所有元素的最大代价。<br>
+$m$ 次询问不同 $k$，离线。$n,\! m\le 2\times 10^5,a_i,\! k\le 10^9$。<br>
+<br>
+首先显然时间可以被割成一段段，每段的最后栈被清空。<br>
+假设 $k=10^9$，那么每段长度为 $1$。离线询问，将 $k$ 递减。<br>
+考虑两个相邻的线段 $[p_0,p_1),\! [p_1,p_2)$ 何时会合并：$(p_2-p_1)\cdot k&#60;\sum\limits_{p_1\le i&#60;p_2}a_i$。<br>
+然后弄个 <code>set</code> 随便 $O(n\log n)$。<br>
+<h3>(-)GYM102412J</h3>
+<h3>(-)GYM102586A</h3>
+<h3>(-)CF1349F2</h3>
+<h3>LOJ6051</h3>
+<h3>APC001H</h3>
+这比赛不说都没人知道……先贴个 <a href="https://atcoder.jp/contests/apc001/tasks/apc001_h">problem link</a>。<br>
+把（两条）链 $n$ 次玩出来基本就做完了。<br>
+依次将每个元素往下扔一次（元素在哪边就往哪边扔，扔时顺便维护两边的顺序）即可。<br>
+<br>
+类似地，对于任意树，就能 $n$ 次将最下面的若干条链都排好。<br>
+显然最下面的某个子树如果排好了就不应该再动，于是相当于砍掉了最下面的若干条链。<br>
+注意到每次<strong>至少会砍掉一半</strong>的节点，于是就总共 $O(n)$。<br>
+<h3>(-)APC001G</h3>
+没看懂题解，跑路了。<br>
+<h3>(*)APC001I</h3>
+<del>显然有 $O(H^2W^2)$ 的 bfs。</del><br>
+考虑相邻的两行，如果它们都是全白的，那么较上面的那一行上方的点到较下面的那一行下方的点就必须经过这相邻两行；即，将这两行缩成一行，减少的贡献是上方点个数与下方点个数的乘积。<br>
+于是对于全白的行和列，可以这样缩起来，最后就变成一个 $H,W\le 2N$ 的矩阵，直接 $O(N^4)$ bfs 即可。<br>
+<h3>(?)AGC036E</h3>
+大讨论。首先串相邻相同的肯定要缩起来，设 $c_A\le c_B\le c_C$。然后把串按 <code>A</code> 切开。<br>
+记含 <code>B,C</code> 的串的数量为 $d_B,d_C$，记仅含一个 <code>B/C</code> 且不在两边的串的个数为 $u_B,u_C$（并称为 unit string）。<br>
+如果 $u_B\le d_C, u_C\le d_B$，不难发现所有的 <code>A</code> 都能被使用。<br>
+而且两条中最多只有一条不满足，不妨设 $u_B&#62;d_C$。<br>
+删掉一个 <code>B</code> 的 unit string 旁边的 <code>A</code> 能令 $u_B$ 减一，并使 $d_C$ 不变。所以随便删掉 $u_B-d_C$ 个这样的 <code>A</code>，然后再次去重之后就能得到 $d_B\ge u_B=d_C\ge u_C$。然后就直接按上面的搞。<br>
+感觉和官方题解有微妙的不同，但是 GDKOI 考自闭了懒得写。<br>
+<h3>(*)CF1477D</h3>
+<del>不会吧不会吧，我 2800 构造题都做不出来了。</del><br>
+考虑搞张 $n$ 个点的图，每个限制当作一条无向边。<br>
+注意到度数为 $n-1$ 的点显然只能在两个排列里相同，直接删了。<br>
+然后建出反图，随便取一个生成森林（注意到不会有孤立点，一棵树上至少会有两个节点）。<br>
+注意现在如果两个点之间没有边则必须在两个排列中关系相同。<br>
+所以，如果出菊花了，非常好：设大小为 $k$，给中心染上 $1,k$，其他点染 $i,i+1$ 即可。<br>
+注意到把一棵树割成菊花不会出问题，因为并不要求有边的两点在两个排列中关系不同。<br>
+将一棵树割成菊花可以如下做：先贪心选出一些边使连接的两点匹配，剩下的点连向旁边的一个已匹配点。<br>
+<del>看起来好像是线性的？</del><br>
+</p>
+</div>
+</body>
+
+</html>

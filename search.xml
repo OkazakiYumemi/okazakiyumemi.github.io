@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[ffmpeg 和 youtube-dl 小记]]></title>
-    <url>%2Fblog%2Fffmpeg-%E5%92%8C-youtube-dl-%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[被 myy 送退役了，于是这个 blog 以后可能大部分都是这些内容了。 至于为啥把这两个明显格局不同的项目放在一起介绍？只是碰巧而已啦。 ffmpeg咕了。]]></content>
+    <title><![CDATA[转区软件 Locale Emulator 简介]]></title>
+    <url>%2Fblog%2FLocale-Emulator%2F</url>
+    <content type="text"><![CDATA[由于 App Locale 本身就有一堆 bug，也有可能是我不会搞，反正是从来没有能用过。 于是在 GitHub 上找了找，总算找到个好使的转区软件。 xupefei/Locale-Emulator，以 GPL v3.0 开源。 star 好多（ 然后操作很方便，这里就不加叙述了。 有兴趣的话可以自己编译一个？ 有一说一 latest commit 记录比 latest release 晚了一年多，不知道修了什么 bug。 发现真没啥东西能写的，于是本篇博客大概就是这样一个小作品了。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[又一个弥生月，近况报告]]></title>
+    <url>%2Fblog%2F20210226%2F</url>
+    <content type="text"><![CDATA[已逝世]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>计划与总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2021WC 听课记录]]></title>
+    <url>%2Fblog%2F2021WC-notes%2F</url>
+    <content type="text"><![CDATA[总结：自闭了。 0201上午在讲简单东西，跳了。 下午的一些题目： GYM102832J(from 2020 China Collegiate Programming Contest Changchun Onsite) 注意到方案合法仅当 $[x-r,x+r]$ 这些区间互相之间只有严格包含和相离关系，且没有完全相同的线段。考虑从左到右维护扫描线，记录前 $10$ 个端点哪一些是合法的。插入一条 $[x, y]$ 的线段会使得 $[x + 1, y − 1]$ 非法，打标记即可。时间复杂度 $O(n\times 2^{10})$。 GYM102822I(from 2020 China Collegiate Programming Contest Mianyang Onsite) 这题见过。 $n$ 棵树高度为 $\langle h\rangle$，可以任意买可使一棵树长高 $i$、单价 $i^2+C$ （$C$ 为常数）的肥料，求每棵树都长到不低于 $k$ 的最小花费。$n,q\le 10^5,c\le 10^4,h_i,k\le 10^9$ 且 $h,k$ 随机生成。 考虑若我们要将某棵树高度提升 $h$。假设我们操作了 $k$ 次，显然会有 $h \bmod k$ 次 $\lfloor\frac{h}{k}\rfloor$ 和 $k-h\bmod k$ 次 $\lfloor\frac{h}{k}\rfloor$。 所以直接令 $f(h)$ 为升高 $h$ 最优（且最大）的操作次数，不难发现 $h&gt;O(C)$ 时有约为 $O(\sqrt{C})$ 的周期，所以小暴力，大按剩余类做扫描线即可。而又因为数据随机，问到小的概率很小，所以复杂度没问题。 GYM102798F(from 2020 China Collegiate Programming Contest Weihai Onsite) GYM102769L(from 2020 China Collegiate Programming Contest Qinhuangdao Onsite) 虽然我知道这是什么但是不会描述所以直接抄课件了（ 平面上有 $n$ 组石柱，第 $i$ 组包含了坐标为 $(i,l_i),(i,r_i)$ 的石柱，除此之外没有石柱。每一年，如果一个石柱旁边四格中存在一个空格子，则在当年结束时，其会崩塌，形成一个空格子。问每一组石柱哪一年会全部崩塌。$\sum n\le 1.2\times 10^7,1\le l_i,r_i\le 5\times 10^8$。 考虑一个石柱 $(x,y)$ 与一个空格子 $(x’,y’)$，则该石柱显然会在 $|x-x’|+|y-y’|$ 年内崩塌。于是设第 $i$ 组的答案为 $ans_i$，则显然有 $ans_i−1\le ans_i+1\le ans_i+1$。因而 $i−ans_i,i+ans_i$, 也就是极大合法的左右端点均单调增。 不妨设 $(i,l_i−1),(i,r_i+1)$ 为上下关键点，考虑用单调栈分别维护左右侧的上下关键点的四个单调队列。队列维护的是 $x,y$ 两轴的坐标的和差，用于计算当前石柱没有崩塌的区间的上下边界。 我们同时维护队列左右两侧 $4$ 个方向的单调队列，同时记录当前极大合法区间左右端点 $L,R$。从 $i−1$ 转移到 $i$ 的时候，右端点最多向右移动 $2$，因而这些零散的部分可以通过暴力询问求得。 每一次中点的移动，合法区间左右端点的移动，相当于从若干个队列中删去起始元素，加入末尾元素。检验合法性等价于求最小值，因而直接维护 $4$ 个单调队列即可。时间复杂度 O(n)。 NC9925H(from 2020 ICPC,Shanghai Regional Contest) 这题见过。 一个圆形餐桌，有 $n$ 个位置，现有 $k$ 个人分别在 $a_i$，$k$ 碗饭分别在 $b_i$。每个时刻你可以顺时针或逆时针将桌子转一个位置，如果一碗饭转到了一个人面前，他可以不花时间取走饭，每个人恰好会取走一碗饭。大家都想最小化最后拿到饭的人的时间，求出这个时间。$n\le 10^9,k\le 2000$。 有一个结论是：我们把每个人和对应的饭在圆盘上连线，那么这些连线是不会相交的。这样我们可以直接枚举第一个人对应的饭编号，然后转一圈计算答案。复杂度 $O(n^2\log n)$。 证明略。 NC9925K(from 2020 ICPC,Shanghai Regional Contest) 这题见过。 $n$ 个点 $m$ 条边无向简单图，每个点有颜色0/1，保证点 $1$ 初始颜色为0。每当你离开一个点，该点颜色会改变。你希望经过节点颜色依次为010101...，判断是否存在这样的路径，$n,m\le 2\times 10^5$。 考虑第一个在路径中出现两次的点 $x$，和第二次 $x$ 出现前上一个点 $y$，显然初始 $x,y$ 同色，而路径 $1\to x\to y$ 每条边均为异色边。 把异色边提出来，求出点双，求出圆方树 $T$，则存在 $1\to x\to y$ 的不经过重复节点的路径仅当「$y$ 在 $x$ 子树内」或「$x$ 父节点为方点，且 $y$ 在 $x$ 父亲的子树内」。 总时间复杂度 $O(n)$。 NC9328H(from 2020 XiaoMi Invitational Programming contest) 见过不会。 给定一个 $n$ 层的满二叉树，所有叶子节点有固定权值 $v_i$。自行确定其他节点的权值最小化 $\sum(v_i-v_{fa(i)})^2$ 并输出最小值 $\bmod 998244353$。$Q$ 次单点修改，$n\le 18,Q\le 2\times 10^5$。 设 $f_x(t)$ 为 $v_x=t$、其子树内节点权值任意，其子树贡献最小值。不难发现 $f_x(t)$ 为一个二次函数。 因此直接对于树上每个节点维护多项式对应系数即可。注意到二次项系数仅与树结构相关，因此可省去修改时求逆部分。时间复杂度 $O((n+m)(\log n + \log mod))$。 020202030204显而易见，咕了。]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>GYM</tag>
+        <tag>NowCoder</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「CF1442F」Differentiating Games]]></title>
+    <url>%2Fblog%2FCF1442F%2F</url>
+    <content type="text"><![CDATA[题意简述CF 1442F 给一个 $n$ 个点 $m$ 条边的 DAG，你可以进行至多 $4242$ 次修改操作，每次删掉一条边或加上一条边（修改之后允许有环、重边、自环）。 在这个图上定义函数 $f(S)$ ，表示如果在多重集合 $S$ 的每一个元素上放一个球，两人轮流操作，每次把一个球向某一条出边移动，不能操作者输，那么是先手是胜还是输，或者永远玩不完（平）。（双方的策略均为先尽量赢，再尽量平。） 接下来 $T$ 组数据，每组数据中交互器确定一个特殊点 $x$ ，你要通过询问来找到这个特殊点。 一次询问可以问大小不超过 $20$ 的多重集合 $S$ ，返回 $f(S+{x})$ 的值。最多问 $20$ 次，集合大小的总和不能超过 $20$ 。 $n\le 1000,m\le 10^5,T\le 2000$ 主要思路假设图无环，则没有平局情况，故两点的SG值必须两两不同，图这必须是一个完全 DAG。 那么，一个显然的想法是给除了那个完全 DAG 里的点都加上一个自环。称 DAG 里的点是 A 类点，有自环的点是 B 类点。 不难发现，如果至少 2 个球在 B 类点上，一定是Draw；有 1 个球在 B 类点上，不可能Lose，因为其可以什么都不做。于是现在考虑仅有 1 个球在 B 类点上的情况，考虑先手什么时候会将球移出去。 显然，先手不会将球移到另一个 B 类点上，因为此时不可能Win。故先手仅可能将球移到一个 A 类点上。 不妨假设我们每次仅询问大小为 1 的集合，即，将 A 类点都询问一遍。A 类点的SG值都不相同，所以如果出现了Lose，仅可能是询问点和答案相同。 否则，只会有一堆Win和Draw。类似地，Win的情况为答案有连向询问点的出边。所以只需保证每个 B 类点对 A 类边连边的集合不同即可。 于是钦定 A 类点不超过 $20$ 个，直接冲即可。 最后大概会修改 $3900$ 条边。 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)typedef long long i64;typedef vector&lt;int&gt; VI;#define pb emplace_back#define N 1024#define M 25#define BB 20vector&lt;tuple&lt;char, int, int&gt;&gt; ans;int n, m, esac, B;VI E[N];int ind[N], que[N];int id[N], rd[M];int tb[1048599], val[N];inline void AddEdge(int u, int v)&#123; ans.pb('+', u, v); &#125;inline void DelEdge(int u, int v)&#123; ans.pb('-', u, v); &#125;inline int Query(int u)&#123; printf("? 1 %d\n", u), fflush(stdout); static char s[10]; scanf("%s", s); return *s == 'L' ? -1 : (*s == 'W' ? 1 : 0);&#125;inline void Report(int u)&#123; printf("! %d\n", u), fflush(stdout); static char s[10]; scanf("%s", s); assert(*s == 'C');&#125;inline void Init1()&#123; scanf("%d%d%d", &amp;n, &amp;m, &amp;esac); FOR(i, 1, m)&#123; int u, v; scanf("%d%d", &amp;u, &amp;v); E[u].pb(v), ++ind[v]; &#125; // B = min(n, BB); if(n &lt;= BB) B = n; else&#123; B = 1; FOR(i, 1, BB - 1) if(i+(i*(i-1))/2+(i*(i-1)*(i-2)/6)&lt;=n) ++B; &#125;&#125;inline void Init2()&#123; int *ql(que), *qr(que); FOR(i, 1, n) if(!ind[i]) *qr++ = i; while(ql != qr)&#123; int u = *ql++; for(int v: E[u])&#123; if(!(--ind[v])) *qr++ = v; &#125; &#125;&#125;inline void Init3()&#123; static int e[M][M]; memset(id, -1, sizeof(int) * N); FOR(i, 1, B)&#123; id[que[n - i]] = i - 1; rd[i - 1] = que[n - i]; &#125; // FOR(i, 0, n - 1) printf("%d%c", que[i], " \n"[i == ed_i]); // FOR(i, 0, B - 1) printf("%d%c", rd[i], " \n"[i == ed_i]); FOR(i, 0, B - 1)&#123; int u = rd[i]; for(int v: E[u]) if(id[v] != -1)&#123; assert(id[v] &lt; i); e[i][id[v]] = 1; &#125; FOR(j, 0, i - 1) if(!e[i][j])&#123; AddEdge(rd[i], rd[j]); &#125; &#125; FOR(i, 1, n) if(id[i] == -1) AddEdge(i, i);&#125;inline void Init4()&#123; VI s[3]; FOR(i, 1, (1 &lt;&lt; B) - 1)&#123; int t = __builtin_popcount(i); if(t &lt;= 3) s[t - 1].pb(i); &#125; FOR(i, 1, n) if(id[i] == -1)&#123; for(int v: E[i]) if(id[v] != -1)&#123; val[i] |= 1 &lt;&lt; id[v]; &#125; if(!tb[val[i]]) tb[val[i]] = i; &#125; // FOR(i, 1, n) printf("%d%c", val[i], " \n"[i == ed_i]); // FOR(i, 0, (1 &lt;&lt; B) - 1) printf("%d%c", tb[i], " \n"[i == ed_i]); auto UpdNode = [s](int p) -&gt; void&#123; FOR(o, 0, 2) for(int j: s[o]) if(!tb[val[p] ^ j])&#123; ROF(i, B - 1, 0) if((j &gt;&gt; i) &amp; 1)&#123; (((val[p] &gt;&gt; i) &amp; 1) ? DelEdge : AddEdge)(p, rd[i]); &#125; tb[val[p] ^= j] = p; return; &#125; &#125;; FOR(i, 1, n) if(id[i] == -1 &amp;&amp; tb[val[i]] != i)&#123; UpdNode(i); &#125; printf("%d\n", (int)ans.size()); for(auto [x, y, z]: ans)&#123; printf("%c %d %d\n", x, y, z); &#125; fflush(stdout);&#125;inline void Work()&#123; int v = 0, t; FOR(i, 0, B - 1)&#123; t = Query(rd[i]); if(t == -1) return Report(rd[i]); if(t == 1) v |= 1 &lt;&lt; i; &#125; assert(tb[v] != 0); Report(tb[v]);&#125;int main() &#123; Init1(); Init2(); Init3(); Init4(); while(esac--) Work(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>构造</tag>
+        <tag>Codeforces</tag>
+        <tag>交互题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「GYM102392H」Tree Permutations]]></title>
+    <url>%2Fblog%2FGYM102392H%2F</url>
+    <content type="text"><![CDATA[为啥集训队作业只有 NEERC，没有 SEERC 题意简述GYM102392H 神树爷爷建了一棵树，大小为 $n$，根为 $1$，每个节点的父亲 $p_i&lt;i$，连向父亲的边的边权 $w_i$。 神树爷爷把所有 $p_i, w_i$ 混在一起之后乱序扔给了你，记这个序列为 $a$。 显然一个 $a$ 可能对应多棵可能的树。 神树爷爷认为一棵树是k-good的，仅当 $1$ 到 $n$ 的路径上有 $k$ 条边； 一棵树是k-perfect的，仅当这棵树是k-good的树中，$1$ 到 $n$ 路径上的边权和是最大的。 现在神树爷爷希望你对所有 $1\le k\le n-1$，求出k-perfect树 $1$ 到 $n$ 路径上的边权和。 如果没有k-perfect树，输出-1。 $n\le 2\le 10^5, 1\le a_i\le n - 1$。 主要思路先排序，下文中出现的序列，若未特殊说明，也默认已按不降排序。 【引理 1】如果对于某些 $i$ 有 $a_i&gt;i$，那么根本没有合法的树。 【证明】假设 $a_i&gt;i$。显然节点 $j\in[2, i+1]$ 的父亲都不大于 $i$，而此时最多仅有 $i-1$ 个不大于 $i$ 的数，故矛盾。 【引理 2】如果对于某些 $i$ 有 $a_i=i$，那么节点 $i$ 在 $1$ 到 $n$ 的路径上。 【证明】注意到节点的编号形成堆结构，即，$1$ 到 $n$ 的路径为每次选择最大的儿子向下走。假设 $a_i=i$。类似【引理 1】的证明，$i-1$ 个不大于 $i$ 的数分别应是点 $j\in[2, i]$ 的父亲，而对于节点 $j&gt;i$，由于没有更多小于 $i$ 的数，其父亲均不小于 $i$。 我们令 $T$ 为那些 $a_i=i$ 的位置集合，并令 $S$ 为所有未在 $T$ 中出现的 $a_i$ 第一次出现位置集合。称k-perfect树 $1$ 到 $n$ 路径为路径，其上的边权和为k-perfect树的权值。 【引理 3】对于任意 $|T|\le k\le |T|+|S|$，有k-good的树。并且，k-perfect树的权值可以用以下方法计算： 标记 $T$ 中所有元素，以及 $S$ 中 $k-|T|$ 个最小元素。k-perfect树的权值即为未标记的位置中最大的 $k$ 个值的和。 【证明】显然地，$|T|$ 是下界，$|T|+|S|$ 是上界。我们仅需证明他们都可被成功构造。 记 $k-|T|$ 个 $S$ 中最小的元素为 $s_i(i\in[1,k-|T|])$。那么路径上应该包含节点 $a_i(i\in s\cup T)$ 与 $n$。标记 $s, T$ 中所有位置，同时也标记所有在路径上的节点（这些节点除了 $1$ 都已有了父亲）。 未标记的 $2n-2-k$ 个位置记为 $\langle x\rangle$，未标记的 $n-k-1$ 个节点记为 $\langle v\rangle$。钦定 $a_{x_i}$ 为 $v_i$ 的父亲 $(i\in[1,n-k-1])$。剩下的 $n-1$ 个位置对应的 $a_i$ 均为边权，将最大的 $k$ 个分给路径，其他的任意分给其他边。 这样我们得到了上述的答案，下面我们证明通过此方法构造出的确实是一棵树。 由于我们希望分配 $a_{x_i}$ 为 $v_i$ 的父亲，故只需证明 $a_{x_i}&lt;v_i$。 不妨假设对于某些 $i$ 有 $a_{x_i}\ge v_i$。 记路径上的点为 $\langle p\rangle$，由于 $p_{k+1}=n$，我们可以找到 $j$ 使 $p_j\le a_{x_i}\le p_{j+1}$。即，有 $j$ 个已标记的节点不大于 $a_{x_i}$。并且由于 $a_{x_i}\ge v_i$，即有 $i$ 个未标记的节点不大于 $a_{x_i}$。因此，有 $a_{x_i}\ge i+j$。 现在来考虑 $x_i$，有 $i-1$ 个未标记的位置不大于 $x_i$。根据 $S,T$ 的定义，$p_j$ 对应的已标记位置应在 $x_i$ 之前。即，有 $j$ 个已标记位置在 $x_i$ 之前。 于是 $i-1+j$ 个位置在 $x_i$ 之前，即 $x_i=i+j$。即，$a_{x_i}\ge x_i$。 【引理 1】中已经证明 $a_{x_i}\le x_i$，且根据【引理 2】，若 $a_{x_i}=x_i$，则 $x_i$ 必定在路径上。Contradiction! 实现可以类似 two pointers，复杂度 $O(n)$。 参考代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)inline int read() &#123; int x = 0; char c = getchar(); while (!isdigit(c)) c = getchar(); for (; isdigit(c); c = getchar()) x = x * 10 + c - '0'; return x;&#125;#define N 100010int n;int c[N], b[N], a[N];int L, R;long long ans;int main() &#123; n = read(); FOR(i, 1, (n - 1) * 2) R += !(c[read()]++); FOR(i, 1, n - 1)&#123; b[i] = b[i - 1] + c[i] - 1; if(b[i] &lt; 0)&#123; FOR(i, 1, n - 1) printf("-1 "); return 0; &#125; a[i] = c[i]; if(!b[i - 1]) --a[i], ++L; &#125; int l = 1, r = n - 1, d = 0; FOR(i, 1, n - 1)&#123; if(i &lt; L || i &gt; R)&#123; printf("-1 "); continue; &#125; if(i &gt; L)&#123; while(!b[l - 1] || !c[l]) ++l; if(a[l]) --a[l]; else ans -= l, --d; ++l; &#125; while(d != i)&#123; while(!a[r]) --r; --a[r], ++d, ans += r; &#125; printf("%lld ", ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>构造</tag>
+        <tag>猜结论</tag>
+        <tag>树论</tag>
+        <tag>GYM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「GYM102341」Dedenne]]></title>
+    <url>%2Fblog%2FGYM102341D%2F</url>
+    <content type="text"><![CDATA[题意简述GYM102341D 一堆01串是 dictionary 仅当其中没有一个串为另一个的前缀，且每个串都不含子串00。 一个 dictionary $S$ 的 cost，是所有01串 $s$（不仅包含 $S$ 中的串）的 cost 的和。 对于一个01串 $s$，若其为 $k$ 个 $S$ 中串的前缀，则其 cost 为 $\sum\limits_{j=1}^k\lfloor1+\log_2j\rfloor$。 $t$ 组询问大小为 $n$ 的 dictionary 的 cost 的最小值，$t\le 5\times 10^4, 2\le n\le 10^{15}$。 主要思路首先 $f(k)=\sum\limits_{j=1}^k\lfloor1+\log_2j\rfloor$ 可以在 $O(\log n)$ 预处理后 $O(1)$ 计算。 设 $D(n)$ 为构造大小为 $n$ 的 dictionary 的最小代价，则 $D(1)=1$。 我们把串扔到 trie 上，那么显然地，$D(n) = f(n)+\min\limits_{i\le k&lt;n}\{f(k)+D(k)+D(n-k)\}$。这里 $k$ 是枚举左子树的叶子个数，$f(k)$ 是因为左边的串（因为不能出现00）要以01开头。（$k=1$ 时则不需要加上 $f(1)$。） 可以证明 $D$ 是下凸函数，同时 $f$ 也是下凸函数，因此 $f(k)+D(k)+D(n-k)$ 也是下凸的。因此可以三分 $k$。于是我们可以 $O(\log^2n)$ 地求出任意一个 $D(n)$。 显然这不够。我们不妨枚举增量 $\delta$，每次求出最大 $n’$ 使 $D(n’)=D(n)+\delta\cdot(n’-n)$，其中 $n$ 是目前确定的最远 $D$ 值。$n’$ 可以二分，且当 $n$ 足够大时，计算 $D(n’)$ 不会用到未确定的 $D$ 值。可以证明 $\delta$ 是 $O(\log^2n)$ 级别。（经过尝试，$n\le 10^{15}$ 时，增量 $\delta$ 仅有 $1840$。） 于是可以 $O(\log^5 n)$ 预处理上述所有东西，每次询问再 $O(\log n)$ 二分一下即可。 参考代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long i64;typedef vector&lt;i64&gt; VI;#define pb emplace_back#define Templ(T) template &lt;typename T&gt;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;constexpr i64 inf = 1'00000'00000'00000;constexpr i64 B = 1'000; // limit of brute forcei64 fp[55];i64 f(i64 k) &#123; int t = 64 - __builtin_clzll(k); return fp[t] + (k + 1 - (1ll &lt;&lt; (t - 1))) * t;&#125;// #define fk1(k) ((k) == 1 ? 0 : f(k))VI a, D;i64 Dsm[1024];i64 Dbrute(i64 n) &#123; // assert(n &lt;= B); if (Dsm[n] != 0) return Dsm[n]; i64 res = 1 + Dsm[n - 1]; // assert(Dsm[n - 1] != 0); for (i64 i = 2; i &lt;= n / 2; ++i) &#123; i64 tmp = f(i) + Dsm[i] + Dsm[n - i]; chkmin(res, tmp); &#125; return Dsm[n] = res + f(n);&#125;i64 Dget(i64 n) &#123; if (n &lt;= B) return Dbrute(n); int k = upper_bound(a.begin(), a.end(), n) - a.begin(); return D[k - 1] + k * (n - a[k - 1]);&#125;i64 Dcalc(i64 n) &#123; if (n &lt;= B) return Dbrute(n); i64 l = n / 3, r = n / 2; while (l &lt; r) &#123; i64 m = (l + r) / 2; i64 Dl = f(m) + Dget(m) + Dget(n - m); i64 Dr = f(m + 1) + Dget(m + 1) + Dget(n - m - 1); if (Dl &lt; Dr) r = m; else l = m + 1; &#125; return f(n) + f(l) + Dget(l) + Dget(n - l);&#125;int main() &#123; for (int i = 1; i &lt; 54; ++i) fp[i + 1] = fp[i] + (1ll &lt;&lt; (i - 1)) * i; a.pb(1), D.pb(1); Dsm[1] = 1; int delta = 1;#define Dexp(i) (D.back() + delta * ((i) - a.back())) // expect while (a.back() &lt; inf) &#123; i64 n = a.back(); while (n &lt; B &amp;&amp; Dcalc(n + 1) == Dexp(n + 1)) ++n; if (n &lt; B) &#123; D.pb(Dcalc(n)), a.pb(n), ++delta; continue; &#125; // assert(Dcalc(n / 2 * 3) != Dexp(n / 2 * 3)); i64 l = n, r = n / 2 * 3 - 1; while (l &lt; r) &#123; i64 m = (l + r + 1) / 2; if (Dcalc(m) == Dexp(m)) l = m; else r = m - 1; &#125; D.pb(Dcalc(l)), a.pb(l), ++delta; &#125; int Q; scanf("%d", &amp;Q); while (Q--) &#123; i64 n; scanf("%lld", &amp;n); printf("%lld\n", Dget(n)); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>GYM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「GYM102798F」Skeleton Dynamization]]></title>
+    <url>%2Fblog%2FGYM102798F%2F</url>
+    <content type="text"><![CDATA[题意简述GYM102798F 想象一只 skeleton，抽象其骨头为无向边，关节为顶点，可以得到一个无向连通图。假设定点数为 $J$，该图为 $G$。 这只 skeleton 开始动了起来，我们记录了其在连续 $F$ 帧中的动作，并且建立了一张 spatial-temporal graph。 spatial-temporal graph 是一个有 $F\times J$ 个节点的图。每个节点可以用 $(f, j)$ 唯一表示，前者为其出现的帧，后者为其在 $G$ 中对应的标号。 两点 $(f_1, j_1), (f_2, j_2)$ 间有边，仅当满足以下条件之一： $j_1 = j_2, f_1 + 1 = f_2$； $f_1 = f_2$，且在 $G$ 中有边 $(j_1, j_2)$。 现在 $G$ 丢失了，只剩下了标号被打乱的 spatial-temporal graph。请还原可能的 $F, J$ 并构造方案。如有多个方案，请最大化 $F$。 $n\le 10^5, m\le 2\times 10^5$。 主要思路上面讲了那么多废话，其实题意就是将给定的图看作分层图，每层内部边相同，相邻层只有对应点连边，最大化层数。 设度数最小的点为 $s$，显然其（在某个最优方案）一定是第一层的点。显然，$s$ 的度数不超过 $O(\sqrt{m})$。 枚举 $s$ 在第二层对应的点 $t$。从 $s,t$ 开始 bfs，则以 $s$ 为起点 bfs 到的点即为第一层的点。 已知第一层的点，就可以确定第二层的点，然后确定所有层的点。 如果过程中出现矛盾，则退出。 最后，检查每一层内部的边是否都相同。 时间复杂度 $O(m\sqrt{m})$。 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt; ed_##i; ++i)#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i &gt; ed_##i; --i)// Note the unusual definitiontypedef long long i64;typedef vector&lt;int&gt; VI;#define pb emplace_back#define X first#define Y second#define SZ(x) ((int)(x).size())#define Templ(T) template &lt;typename T&gt;inline int read() &#123; int x = 0; char c = getchar(); while (!isdigit(c)) c = getchar(); for (; isdigit(c); c = getchar()) x = x * 10 + c - '0'; return x;&#125;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;#define N 100010int n, m;int F, J;// Frames, Jointsint ans[N];int S;VI E[N];inline void work(const int &amp;T)&#123; static int B[N], Q[N], w[N], res[N]; static VI e[N]; memset(B, -1, n &lt;&lt; 2); memset(w, -1, n &lt;&lt; 2); memset(res, -1, n &lt;&lt; 2); int *ql(Q), *qr(Q); B[S] = 0, B[T] = 1; *qr++ = S, *qr++ = T; while(ql != qr)&#123; int u = *ql++; for(int v: E[u]) if(B[v] == -1)&#123; B[v] = B[u]; *qr++ = v; &#125; &#125; int j(0), f, t(0); // (now) joints, frames FOR(i, 0, n) if(B[i] == 0)&#123; res[j] = i; w[i] = j++; t += SZ(E[i]); &#125;; if(n % j != 0) return; f = n / j; if(f &lt; F) return; t -= j; if(t &amp; 1) return; t &gt;&gt;= 1; if(f * t + (f - 1) * j != m) return; FOR(o, 1, f)&#123; int c = 0, *a = res + (o - 1) * j; FOR(i, 0, j)&#123; int u = a[i]; for(int v: E[u]) if(w[v] == -1)&#123; if(a[i + j] != -1) return; w[v] = w[u] + j; a[i + j] = v; ++c; &#125; &#125; if(c != j) return; &#125; FOR(i, 0, n) e[i].resize(0); FOR(o, 0, f)&#123; int *a = res + o * j; FOR(i, 0, j)&#123; int u = a[i]; for(int v: E[u]) if(w[v] / j == w[u] / j) e[w[v]].pb(w[u] % j); &#125; &#125; FOR(i, j, n) if(e[i] != e[i - j]) return; J = j; F = f; memcpy(ans, res, n &lt;&lt; 2);&#125;int main() &#123; n = read(), m = read(); FOR(i, 0, m)&#123; int u(read() - 1), v(read() - 1); E[u].pb(v), E[v].pb(u); &#125; &#123; int mn = m; FOR(i, 0, n) if(chkmin(mn, SZ(E[i]))) S = i; &#125; F = 1, J = n; FOR(i, 0, n) ans[i] = i; for(int i: E[S]) work(i); printf("%d %d\n", F, J); FOR(i, 0, n) printf("%d%c", ans[i] + 1, " \n"[i % J == J - 1]); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>GYM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「CodeChef LUCKYDAY」Lucky Days]]></title>
+    <url>%2Fblog%2FCC-LUCKYDAY%2F</url>
+    <content type="text"><![CDATA[题意简述CodeChef LUCKYDAY 有序列 $S$，其中 $S_1=A,S_2=B;S_i=X\cdot S_{i-1}+Y\cdot S_{i-2}+Z(i&gt;2)\% P$。$Q$ 个询问求 $\sum\limits_{i=L}^{R}[S_i=C]$。$A,B,X,Y,C,P,Q$ 均给定，$P$ 为不超过 $10007$ 的质数，$0\le A,B,X,Y,C&lt;P$，$Q\le 2\times 10^4$，$1\le L\le R\le 10^{18}$。 主要思路先把 $X=0$ 或 $Y=0$ 等情况判了。此时循环节长度 $O(P)$，暴力找出即可。注意到此时可能循环节从 $3$ 开始。 设 $F_i=\begin{bmatrix}S_i\\S_{i+1}\\1\end{bmatrix},M=\begin{bmatrix}0&amp;1&amp;0\\Y&amp;X&amp;Z\\0&amp;0&amp;1\end{bmatrix}$，则有 $F_i = M\times F_{i-1}$。 不同的 $F_i$ 仅有 $P^2$ 个，由HDU 5451的经验，循环节一定是 $P^2-1$ 的约数，并且 $X&gt;0,Y&gt;0$ 时因为转移矩阵可逆，故一定是纯循环。 那么就先来找最小循环节 $R$。枚举约数矩阵快速幂即可。 然后考虑如何找到循环节中所有 $S_i=C$。由于循环节内相同 $F_i$ 只会出现一次，我们试图枚举 $m$，找到所有 $t=\begin{bmatrix}C\\m\\1\end{bmatrix}$ 的位置。即，找到 $0\le k&lt;R$ 使 $M^k F_1=t$ 成立。 设一阈值 $L$，则 $M^{dL-e}F_1=t$。由于 $M$ 可逆，变成 $M^{dL}F_1=M^et$，且 $d$ 是 $O({R\over L})$ 级别，$e$ 是 $O(L)$ 级别。 不难想到可以 $O({R\over L})$ 预处理出所有左边的可能值，扔到 Hash Table 里，就支持 $O(1)$ 查询。那么每次查询时，枚举 $e$，即可做到 $O(L)$ 单次查询。喂这不就是 BSGS…… 由于有 $O(P)$ 次查询（枚举 $m$），所以时间复杂度是 $O(LP)+O({R\over L})$，由于 $R$ 是 $O(P^2)$ 级别，故 $L$ 取 $\sqrt{P}$ 时复杂度最优为 $O(P\sqrt{P})$。 之后，每个询问就 $O(\log P)$ 了。 总时间复杂度 $O(P\sqrt{P} + Q\log P)$。 参考代码代码真的很烦，我的 Hash Table 都是抄 Sunli Chen 的。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)typedef long long i64;#define Templ(T) template &lt;typename T&gt;inline int read() &#123; int x = 0; char c = getchar(); while (!isdigit(c)) c = getchar(); for (; isdigit(c); c = getchar()) x = x * 10 + c - '0'; return x;&#125;inline i64 read64() &#123; i64 x = 0; char c = getchar(); while (!isdigit(c)) c = getchar(); for (; isdigit(c); c = getchar()) x = x * 10 + c - '0'; return x;&#125;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;int __MOD__;#define P __MOD__inline void inc(int &amp;x, const int &amp;y) &#123; x += y; if (x &gt;= P) x -= P;&#125;inline void dec(int &amp;x, const int &amp;y) &#123; x -= y; if(x &lt; 0) x += P;&#125;inline int ksm(int x, i64 y) &#123; int res = 1; for (; y; y &gt;&gt;= 1, x = (i64)x * x % P) if (y &amp; 1) res = (i64)res * x % P; return res;&#125;/*[ S(i) ] [0 1 0] [S(i-1)][S(i+1)] = [Y X Z] * [ S(i) ][ 1 ] [0 0 1] [ 1 ]*/#define MR 160#define SL 150// Thanks Eric Sunli Chen for his AMAZING hash table!#define Hash_P 2333333#define Hash_N 888888struct Hash_T &#123; int head[Hash_P], nxt[Hash_N], a[Hash_N], val[Hash_N], tot; void Clear() &#123; memset(head, 0, sizeof(head)); tot = 0; &#125; Hash_T() &#123; Clear(); &#125; inline int &amp;operator[](const int &amp;x) &#123; int tx = x % Hash_P; for (int i = head[tx]; i; i = nxt[i]) if (val[i] == x) return a[i]; nxt[++tot] = head[tx]; head[tx] = tot; val[tot] = x; a[tot] = 0; return a[tot]; &#125; inline int Find(const int &amp;x) const &#123; int tx = x % Hash_P; for (int i = head[tx]; i; i = nxt[i]) if (val[i] == x) return a[i]; return -1; &#125;&#125;;Hash_T rem;struct Matrix&#123; int a[3][3]; inline Matrix()&#123; memset(a, 0, 36); &#125; inline bool Unit()&#123; FOR(i, 0, 2) FOR(j, 0, 2) if(a[i][j] != (i == j)) return false; return true; &#125; inline Matrix operator *(const Matrix &amp;y)const&#123; Matrix z; FOR(i, 0, 2) FOR(k, 0, 2) FOR(j, 0, 2) (z.a[i][j] += a[i][k] * y.a[k][j]) %= P; return z; &#125;&#125;IE;struct Vector&#123; int a[3]; inline Vector()&#123; memset(a, 0, 12); &#125; friend inline Vector operator *(const Matrix &amp;x, const Vector &amp;y)&#123; Vector z; z.a[0] = (x.a[0][0] * y.a[0] + x.a[0][1] * y.a[1] + x.a[0][2] * y.a[2]) % P; z.a[1] = (x.a[1][0] * y.a[0] + x.a[1][1] * y.a[1] + x.a[1][2] * y.a[2]) % P; z.a[2] = 1; return z; &#125;&#125;;inline Matrix ksm(Matrix x, int y)&#123; Matrix z = IE; for(; y; y &gt;&gt;= 1, x = x * x) if(y &amp; 1) z = z * x; return z;&#125;inline int Hash(const Vector &amp;x)&#123; return x.a[0] * P + x.a[1];&#125;Matrix M, MM;Vector S;int A, B, X, Y, Z, C, Q;int Per, MxP;// int SL;vector&lt;int&gt; W;inline void work0()&#123; i64 L, R, res; while(Q--)&#123; L = read64(), R = read64(); res = 0; if(L == 1) res += R &gt;= 1 &amp;&amp; A == C, ++L; if(L == 2) res += R &gt;= 2 &amp;&amp; B == C, ++L; if(Z == C &amp;&amp; L &lt;= R) res += R - L + 1; printf("%lld\n", res); &#125;&#125;inline void work1()&#123; int *F = (int*)malloc(sizeof(int) * 5 * P), Per = 0; F[1] = A, F[2] = B; FOR(i, 3, 4 * P)&#123; F[i] = ((i64)F[i - 1] * X + (i64)F[i - 2] * Y + Z) % P; &#125; FOR(i, 5, 4 * P)&#123; if(F[i - 1] == F[3] &amp;&amp; F[i] == F[4])&#123; Per = i - 4; break; &#125; &#125; *F = 0; FOR(i, 1, Per) F[i] = F[i - 1] + (F[i + 2] == C); function&lt;i64(i64)&gt; Qry = [F, Per](i64 Lim)&#123; i64 res = 0; if(Lim &gt;= 1) res += A == C, --Lim; if(Lim &gt;= 1) res += B == C, --Lim; if(Lim &lt;= 0) return res; return res + F[Per] * (Lim / Per) + F[Lim % Per]; &#125;; i64 L, R; while(Q--)&#123; L = read64(), R = read64(); printf("%lld\n", Qry(R) - Qry(L - 1)); &#125; free(F);&#125;inline void init()&#123; M.a[0][1] = 1; M.a[1][0] = Y; M.a[1][1] = X; M.a[1][2] = Z; M.a[2][2] = 1; S.a[0] = A; S.a[1] = B; S.a[2] = 1; W.clear(); rem.Clear();&#125;inline int Find(Vector v)&#123; FOR(i, 0, SL - 1)&#123; int t = rem.Find(Hash(v)); if(t != -1 &amp;&amp; t - i &lt;= Per) return t - i; v = M * v; &#125; return 0;&#125;void work()&#123; A = read(), B = read(); X = read(), Y = read(), Z = read(); P = read(), C = read(), Q = read(); if(X == 0 &amp;&amp; Y == 0) return work0(); if(X == 0 || Y == 0) return work1(); init(); Per = MxP = P * P - 1; FOR(i, 1, P) if(MxP % i == 0)&#123; if(ksm(M, i).Unit()) chkmin(Per, i); if(ksm(M, MxP / i).Unit()) chkmin(Per, MxP / i); &#125; // SL = sqrt(Per); MM = ksm(M, SL); &#123; Vector v = ksm(M, SL - 1) * S; for(int i = SL, ed_i = Per + SL; i &lt; ed_i; i += SL)&#123; int &amp;tmp = rem[Hash(v)]; if(!tmp) tmp = i; v = MM * v; &#125; v.a[0] = C; v.a[2] = 1; FOR(i, 0, P - 1)&#123; v.a[1] = i; int t = Find(v); if(t) W.emplace_back(t); &#125; sort(W.begin(), W.end()); &#125; i64 L, R; const int t = W.size(); function&lt;i64(i64)&gt; Qry = [t](const i64 &amp;Lim)&#123; return t * (Lim / Per) + upper_bound(W.begin(), W.end(), Lim % Per) - W.begin() - 1; &#125;; while(Q--)&#123; L = read64(), R = read64(); printf("%lld\n", Qry(R) - Qry(L - 1)); &#125;&#125;int main() &#123; IE.a[0][0] = 1; IE.a[1][1] = 1; IE.a[2][2] = 1; int T = read(); while(T--) work(); return 0;&#125; 然后喜提最速解（]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>CodeChef</tag>
+        <tag>BSGS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「CF1408H」Rainbow Triples]]></title>
+    <url>%2Fblog%2FCF1408H%2F</url>
+    <content type="text"><![CDATA[被模拟网络流打爆了。 题意简述CF1408H 给定一个长度为 $n$ 的序列 $a$。每次可以选出三个数删掉，需要保证左边和右边的都是 $0$，中间的不是 $0$ 且不能是之前删过的数。求删掉数的最大次数。$n\le 5\times 10^5$。 主要思路设 $cnt(x)$ 为序列中 $x$ 的数量，那么显然答案上界为 $m=\lfloor{cnt(0)\over 2}\rfloor$。假设一个位置左边至少有 $m$ 个 $0$，那么其左边一定可以选出一个 $0$ 来合成答案。右边同理。不难发现每个点总会满足上述性质中的一条，于是可以据此将节点划分为 $L, R$ 两个集合，$L$ 表示满足右边至少有 $m$ 个点的点集，$R$ 反之。 同时不难发现，如果 $L$ 中有数 $x$ 出现至少两次，更右的出现位置更优。$R$ 中同理。所以对于每种颜色 $x$，仅保留两个节点，记为 $l(x), r(x)$。 考虑网络流建图： 源点 $S$ 向每个颜色 $x$ 连一条流量为 $1$ 的边（颜色边）； $x$ 向 $l(x),r(x)$ 连一条流量为 $1$ 的边； $L$ 中每个下标 $i$ 向 $i - 1$ 连边，$R$ 中每个下标 $i$ 向 $i + 1$ 连边，流量均为 $+\infty$； 每个 $0$ 向汇点 $T$ 连一条流量为 $1$ 的边（零边）。 此时，该图的最大流就是需要求的答案。注意到，最大流等于最小割，考虑求解最小割。 显然，我们只会割去颜色边和零边。并且如果颜色边 $x$ 未被割去，则 $l(x)$ 前面的所有零边，$r(x)$ 后面的所有零边都需要被割去。因此，最小割方案必定为割去一段前缀零边，一段后缀零边，一部分颜色边。 枚举割走的 $L$ 中前缀零边，则对于每一段 $R$ 中的零后缀，割走这一段零边的代价是前缀长度、后缀长度、前后缀中均不存在的颜色数量的和。 不难推出，只需维护一个支持区间减一、全局最值的数据结构即可。 于是做完了，时间复杂度 $O(n\log n)$。 参考代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)inline int read() &#123; int x = 0; char c = getchar(); while (!isdigit(c)) c = getchar(); for (; isdigit(c); c = getchar()) x = x * 10 + c - '0'; return x;&#125;#define Templ(T) template &lt;typename T&gt;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;#define N 500010int n, a[N], m, Lm, Rm;int vis[N], pre[N], suf[N], ans;int Lw[N], Rw[N];int lim, cc;namespace DS&#123;#define lc t &lt;&lt; 1#define rc t &lt;&lt; 1 | 1#define ls lc, l, mid#define rs rc, mid + 1, rint mn[N &lt;&lt; 2], del[N &lt;&lt; 2];inline void Pu(int t)&#123; mn[t] = min(mn[lc], mn[rc]);&#125;inline void Pd(int t)&#123; if(del[t])&#123; const int d = del[t]; del[t] = 0; mn[lc] += d, mn[rc] += d; del[lc] += d, del[rc] += d; &#125;&#125;void Bld(int t, int l, int r)&#123; del[t] = 0; if(l == r) return mn[t] = l, void(); int mid = (l + r) &gt;&gt; 1; Bld(ls), Bld(rs); Pu(t);&#125;void Upd(int t, int l, int r, int L, int R)&#123; if(L &lt;= l &amp;&amp; r &lt;= R) return --mn[t], --del[t], void(); int mid = (l + r) &gt;&gt; 1; Pd(t); if(L &lt;= mid) Upd(ls, L, R); if(R &gt; mid) Upd(rs, L, R); Pu(t);&#125;inline void Upd(int l, int r)&#123; if(l &gt; r) return; Upd(1, 0, lim, l, r);&#125;&#125;inline void work()&#123; n = read(), cc = 0; memset(vis, 0, sizeof(int) * (n + 1)); FOR(i, 1, n) vis[a[i] = read()] = 1; suf[n + 1] = 0; FOR(i, 1, n) if(vis[i]) ++cc; FOR(i, 1, n) pre[i] = pre[i - 1] + (!a[i]); ROF(i, n, 1) suf[i] = suf[i + 1] + (!a[i]); m = pre[n] &gt;&gt; 1, ans = min(m, cc); Lm = 0; FOR(i, 1, n) Lm += pre[i] &lt;= m; Rm = Lm + 1; FOR(i, 1, n) Lw[i] = 0, Rw[i] = n + 1; FOR(i, 1, Lm) Lw[a[i]] = i; ROF(i, n, Rm) Rw[a[i]] = i; lim = suf[Rm]; DS::Bld(1, 0, lim); FOR(i, 1, n) if(vis[i] &amp;&amp; !Lw[i])&#123; DS::Upd(suf[Rw[i]], lim); chkmin(ans, cc + DS::mn[1]); &#125; FOR(i, 1, Lm) if(Lw[a[i]] == i)&#123; DS::Upd(suf[Rw[a[i]]], lim); chkmin(ans, cc + DS::mn[1] + pre[i]); &#125; printf("%d\n", ans);&#125;int main() &#123; int T = read(); while(T--) work(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Codeforces</tag>
+        <tag>log数据结构</tag>
+        <tag>模拟网络流</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「AGC015F」Kenus the Ancient Greek]]></title>
+    <url>%2Fblog%2FAGC015F%2F</url>
+    <content type="text"><![CDATA[题意简述给出下列代码： 1234567891011121314151617def F(x, y): if x &lt; y: return F(y, x) if y == 0: return 0 return F(y, x % y) + 1def G(x, y): m = 0 for i in range(1, x + 1): for j in range(1, y + 1): m = max(m, F(i, j)) return mdef W(x, y): m = G(x, y) n = 0 for i in range(1, x + 1): for j in range(1, y + 1): if F(i, j) == m: n += 1 return n % 1000000007 有 $Q$ 个询问，每个询问两个整数 $x, y$，求 $G(x, y), W(x, y)$。$Q\le 3\times 10^5, x, y\le 10^{18}$。 主要思路设斐波那契数列为 $f$，$f_0 = f_1 = 1$。 第一问简单，因为最小的 $(x, y)$ 满足 $F(x, y) = k$ 即为 $(f_k, f_{k+1})$。 设满足 $F(x, y) = G(x, y) = k$ 的二元组 $(x, y)$ 为 $k$ 阶高对子。显然 $k$ 阶高对子数量巨大多，无法直接统计。 但是不难发现许多高对子经过一次迭代就会变得一样，于是试图把这些高对子缩在一起，用一个最小的来表示，称为 $k$ 阶妙对子。显然，$(x, y)$ 是妙对子当且仅当 $(x, y)$ 是高对子且 $y\le 2x$。那么 $(x, y)$ 这个妙对子实际上就表示了 $(x, y + i\times x), i\in \mathbf{N}$。$k$ 阶妙对子的数量很少，是 $O(k)$ 个。 给出前面一些妙对子： 1234(1, 2)(2, 3), (3, 4)(3, 5), (4, 7), (5, 7)(5, 8), (7, 11), (7, 12), (8, 11) 仔细一看，$k$ 阶妙对子就是将所有 $k-1$ 阶妙对子 $(x, y)\to (y, x + y)$，再加一个 $(f_{k+1}, f_{k-1} + f_{k+1})$。 然后就可以 $O(\log^2 lim + Q\log lim)$ 了。 参考代码哦另外要注意的是 $(i, i)$ 均为 $1$ 阶高对子，要特判。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)typedef long long i64;typedef pair&lt;i64, i64&gt; PLL;#define pb emplace_back#define X first#define Y second#define MP make_pair#define mod 10000'00007#define lim 100'0000'0000'0000'0000#define N 128i64 fib[N];vector&lt;PLL&gt; exc[N];int K;const bool __init__ = [ ]()&#123; fib[0] = fib[1] = 1; K = 0; while(fib[K] &lt;= lim) ++K, fib[K + 1] = fib[K] + fib[K - 1]; exc[1].pb(MP(1, 2)); FOR(i, 2, K)&#123; for(PLL t: exc[i - 1]) exc[i].pb(MP(t.Y, t.X + t.Y)); exc[i].pb(MP(fib[i + 1], fib[i - 1] + fib[i + 1])); &#125; return true;&#125;();int main() &#123; int Q; scanf("%d", &amp;Q); while(Q--)&#123; i64 x, y, z(0); scanf("%lld%lld", &amp;x, &amp;y); if(x &gt; y) swap(x, y); int k = 1; while(k &lt; K &amp;&amp; fib[k + 1] &lt;= x &amp;&amp; fib[k + 2] &lt;= y) ++k; for(PLL t: exc[k])&#123; if(t.X &lt;= x &amp;&amp; t.Y &lt;= y) z += (y - t.Y) / t.X + 1; if(t.Y &lt;= x) z += (x - t.Y) / t.X + 1; z %= mod; &#125; if(k == 1) (z += x) %= mod; printf("%d %lld\n", k, z); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>AtCoder</tag>
+        <tag>找规律</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「AGC021E」Ball Eat Chameleons]]></title>
+    <url>%2Fblog%2FAGC021E%2F</url>
+    <content type="text"><![CDATA[题意简述AGC 021E 有 $n$ 条蛇，开始都是蓝色。你有 $k$ 个球，均为红色或蓝色，可以依次喂给蛇。一条蛇如果吃了一个球之后，吃的该颜色的球的总数恰好超过另一种颜色的球，则该蛇会变为该颜色。一个球的颜色序列合法仅当可以合理分配喂蛇顺序使得最后所有蛇都能变为红色。$n, k\le 5\times 10^5$。（由于「🐍️」的渲染效果无法预测，故用「蛇」。） 主要思路下面用B来表示蓝色球，R来表示红色球。 一个显然的事实是，如果给两条未喂过球的蛇都喂了一些B，显然没有将这些B都喂给其中一条优。考虑将这些蓝色的蛇喂回红色需要的R数量即可得到。那么，一个球的颜色序列最后能够得到的红蛇最多的方案应该为：有一条蛇（下称「大蛇」）吃了最后一个球，并且为唯一一条可能吃了超过 $2$ 个球的蛇；其他蛇的吃球序列仅可能为RB或R。（一个球的颜色序列最后能够得到的红蛇最多的方案即，开始假设有无数条蓝蛇，将这个球的颜色序列按顺序喂给蛇后使得最后所有喂过的蛇均为红色，并且红色的蛇的数量最多的一个方案。） 另一个显然的事实是，如果一个球的颜色序列最后能够得到的最多红蛇数量为 $m\ge n$，则其一定能够得到 $n$ 条红蛇。于是，我们考虑最后能够得到的最多红蛇数量为 $m$ 的球的颜色序列。 除了大蛇以外应该还有 $m-1$ 条蛇，注意到这些蛇都会且仅会吃 $1$ 个R，不妨枚举这些R的位置；并且注意到上述定义中吃了最后一个球的是大蛇（实质上是为了钦定大蛇的位置，否则类似RBRBRB的序列则不知哪个是大蛇），所以这些R的位置仅能是前 $k-1$ 个球。于是这里有 $\binom{k-1}{m-1}$ 种放置其他蛇的R的方案。 根据分析可得，每一种放置其他蛇的R的方案都与最后能够得到的最多红蛇数量为 $m$ 的球的颜色序列一一对应。于是答案即为 $\sum\limits_{m=n}^{k}\binom{k-1}{m-1}$。 等等，证明呢以下内容不保证严谨性。证明一个放置其他蛇的R的方案能够推出唯一一个最后能够得到的最多红蛇数量为 $m$ 的球的颜色序列：考虑现在已经放置了 $m-1$ 个其他蛇的R，现在我们做以下操作：从后到前依次考虑每个R的位置，在下一个空位放上一个B，构成一条吃球顺序为RB的蛇。若一个R没有下一个空位，表示该蛇的吃球顺序为R。 考虑剩下的位置（包括最后一个位置），假设有 $c$ 个。如果 $c$ 为奇数，则依次在前 $c-1\over 2$ 个空位填上B，其他填上R；否则依次在前 ${c\over 2}-1$ 个位置与最后一个位置填上B，其他空位填上R。 此时即可满足，得到的颜色序列最后能够得到的红蛇数量为 $m$ ，且其他蛇的R尽量后的方案中，其他蛇的R是开始选出的R。 以下是一个例子，用于感受上述过程： 1234k = 12, m = 5..R.R...RR...RBRB..RRBBBRBRBRRRRBR 证明一个最后能够得到的最多红蛇数量为 $m$ 的球的颜色序列能够推回唯一一个放置其他蛇的R的方案： 注意到在上述为每个其他蛇的R放置B后，整个序列中已经放置球的每个极长段，都有其中的R均与其中的B匹配（这里认为无B与其匹配的R不在极长段内）。并且，由于大蛇的吃球序列的特殊性（B...BR...R或B...BR...RB），放置大蛇吃掉的球后，前 $k-1$ 个球中不会有更长的极长段产生。 所以同理地，找出这些极长段（可以使用类似括号匹配的方式），剩余的序列即为大蛇的吃球序列和一些未匹配的R。显然这些未匹配的R只能是这个剩余的序列次长前缀的一个后缀，找出最长的这样的后缀即可；剩余的即为大蛇的吃球序列。如果这个剩余的序列本身都无法使大蛇变为红色，则该序列本身不合法。 以下是一个例子，用于感受上述过程： 123456k = 14)(()()())((()(BRRBRBRBBRRRBRB........RR..R +5B........R...R +1m = 6 综上，即可得每一种放置其他蛇的R的方案都与最后能够得到的最多红蛇数量为 $m$ 的球的颜色序列一一对应。 参考代码 12345678910111213141516171819202122232425262728293031323334353637#include &lt;bits/stdc++.h&gt;using namespace std;#define FOR(i, a, b) for (int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)typedef long long i64;#define mod 998244353inline int ksm(int x, i64 y) &#123; int res = 1; for (; y; y &gt;&gt;= 1, x = (i64)x * x % mod) if (y &amp; 1) res = (i64)res * x % mod; return res;&#125;inline void inc(int &amp;x, const int &amp;y)&#123; x += y; if(x &gt;= mod) x -= mod; &#125;#define N 500010int n, K;int fac[N], ifac[N];void init(int T) &#123; *fac = *ifac = 1; FOR(i, 1, T) fac[i] = (i64)i * fac[i - 1] % mod; ifac[T] = ksm(fac[T], mod - 2); ROF(i, T - 1, 1) ifac[i] = (i + 1ll) * ifac[i + 1] % mod;&#125;inline int CC(int n, int m) &#123; if (m &lt; 0 || n &lt; m) return 0; return (i64)fac[n] * ifac[m] % mod * ifac[n - m] % mod;&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;K); init(K); int ans = 0; FOR(i, n, K) inc(ans, CC(K - 1, i - 1)); printf("%d\n", ans); return 0;&#125; 你蛇红了.jpg]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>AtCoder</tag>
+        <tag>计数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ffmpeg 小记]]></title>
+    <url>%2Fblog%2Fffmpeg-%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[被 myy 送退役了，于是这个 blog 以后可能大部分都是这些内容了。 安装首先安装。Linux 用户显然会自己搞。Windows 人得去下编译好的包，gyan.dev和BtbN不知道有什么区别。 然后ffmpeg --help就可以看到简短的帮助了。想看到完整的帮助可以ffmpeg -h full（长约 1MB 警告）。 简要介绍咕了。 使用例curl下载网课（分段.ts）并用ffmpeg合并我比较菜找不到.m3u8，然后恰好某网站的.ts又是顺序排列的，于是直接请求到返回404为止，再ffmpeg合并就好了。 颇具 oi 风格的码风，坏 12345678910111213141516171819#!/bin/bashS="https://example.com/"rm list.infor ((i=0;$i&lt;=9999;i+=1))do j=$((i+10000))"" j=$&#123;j:1:4&#125; # echo $j info=`curl -I $S$j.ts` code=`echo $info|grep "HTTP"|awk '&#123;print $2&#125;'` if [ "$code" == "200" ]; then curl -O $S$j.ts echo file \'$j.ts\' &gt;&gt; list.in fidoneffmpeg -f concat -i list.in demo.mp4]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -63,7 +198,7 @@
   </entry>
   <entry>
     <title><![CDATA[「CodeChef WALKBT」Walks on the binary tree]]></title>
-    <url>%2Fblog%2FCodeChef-WALKBT%2F</url>
+    <url>%2Fblog%2FCC-WALKBT%2F</url>
     <content type="text"><![CDATA[题意简述CodeChef WALKBT 一棵高度为 $n$ 的满二叉树（节点数为 $2^{n+1}-1$），用一个 $[0,2^n)$ 的数 $X$ 表示一条根到叶子的路径（从最高位开始，为0则走左儿子，否则走右儿子）。 初始 $X = 0$，有两种操作共 $q$ 个： 将 $X$ 改为 $(X + 2^C) \bmod 2^n$，然后从根出发走到叶子。 询问当前有多少个节点至少被访问一次。 $n,q\le 10^5$。 主要思路考虑一次新增的节点数，不难发现是 $n$ 减去新的 $X$ 与之前所有数的 lcp 的最大值。不难发现这个最大值必然在新 $X$ 的前驱或后继中取得。 考虑加上 $2^C$ 的操作，实质上是把前面的一段1赋为0，把一个0赋为1。于是每个修改操作只会改变均摊 $O(1)$ 个位置。于是可以上棵可持久化线段树维护每个位的值。 那么如何比较大小？可以在可持久化线段树上二分第一个两数不同的位置，然后 $O(\log n)$ 比较。那么我们希望能够 $O(1)$ 比较两棵线段树上的一个区间是否完全相等。这个哈希一下就好了。 于是我们获得了一个 $O(\log n)$ 比较大小的方法，再套个set维护前驱后继就 $O(n\log^2n)$ 走了。 然后这题被出到模拟赛里有人被卡常了，所以是 CC 太快还是 CC 数据水啊（ 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131#include &lt;bits/stdc++.h&gt;namespace my_std &#123;using namespace std;#define reg register#define Rint register int#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)typedef long long i64;typedef const int CI;#define fr first#define sc second#define MP make_pair#define Templ(T) template &lt;typename T&gt;inline int read() &#123; Rint ans = 0; reg char c = getchar(); while (!isdigit(c)) c = getchar(); for (; isdigit(c); c = getchar()) ans = ans * 10 + c - '0'; return ans;&#125;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;#define m1 88888901#define m2 77777803&#125; // namespace my_stdusing namespace my_std;#define N 200010int pw1[N], pw2[N];const bool init = [&amp;]()&#123; *pw1 = *pw2 = 1; FOR(i, 1, N - 1)&#123; pw1[i] = (pw1[i - 1] &lt;&lt; 1) % m1; pw2[i] = (pw2[i - 1] &lt;&lt; 1) % m2; &#125; return true;&#125;();int n, q;int rt[N], lc[N &lt;&lt; 5], rc[N &lt;&lt; 5], s1[N &lt;&lt; 5], s2[N &lt;&lt; 5];int tt, cc;#define lt lc[t]#define rt rc[t]#define ls lc[s]#define rs rc[s]#define f1 s1[t]#define f2 s2[t]#define g1 s1[s]#define g2 s2[s]void upd(int &amp;t, CI &amp;s, CI &amp;l, CI &amp;r, CI &amp;p, CI &amp;v)&#123; t = ++cc; lt = ls, rt = rs; f1 = g1, f2 = g2; if(l == r) return f1 = f2 = v, void(); CI mid = (l + r) &gt;&gt; 1; if(p &lt;= mid) upd(lt, ls, l, mid, p, v); else upd(rt, rs, mid + 1, r, p, v); f1 = (s1[lt] + (i64)pw1[mid - l + 1] * s1[rt]) % m1; f2 = (s2[lt] + (i64)pw2[mid - l + 1] * s2[rt]) % m2;&#125;int is_1(CI &amp;t, CI &amp;l, CI &amp;r, CI &amp;p)&#123; if(!t) return 0; if(l == r) return s1[t]; CI mid = (l + r) &gt;&gt; 1; if(p &lt;= mid) return is_1(lt, l, mid, p); else return is_1(rt, mid + 1, r, p);&#125;pair&lt;bool, int&gt; cpr(CI &amp;t, CI &amp;s, CI &amp;l, CI &amp;r)&#123; if(l == r) return MP(f1 &lt;= g1, f1 == g1 ? -1 : l); CI mid = (l + r) &gt;&gt; 1; if(s1[rt] == s1[rs] &amp;&amp; s2[rt] == s2[rs]) return cpr(lt, ls, l, mid); else return cpr(rt, rs, mid + 1, r);&#125;#undef lt#undef rt#undef ls#undef rs#undef f1#undef f2#undef g1#undef g2#define upd(p, v) \ ++tt, upd(rt[tt], rt[tt - 1], 0, n - 1, p, v)#define cpr(t, s) \ cpr(t, s, 0, n - 1)struct cmp&#123; inline bool operator()(CI &amp;x, CI &amp;y)const&#123; return cpr(rt[x], rt[y]).fr; &#125;&#125;;typedef set&lt;int, cmp&gt; SCI;SCI st;i64 ans;inline void work()&#123; ans = 0, tt = 0, cc = 0; st.clear(); n = read(), q = read(); FOR(o, 1, q)&#123; char c = getchar(); while(c != '!' &amp;&amp; c != '?') c = getchar(); if(c == '?')&#123; printf("%lld\n", ans ? ans : 1); continue; &#125; int x = read(); while(x &lt; n &amp;&amp; is_1(rt[tt], 0, n - 1, x)) upd(x++, 0); if(x &lt; n) upd(x, 1); SCI::iterator i = st.insert(tt).fr, nxt = next(i), pre = prev(i); int res = n; if(i != st.begin()) chkmin(res, cpr(rt[*i], rt[*pre]).sc); if(nxt != st.end()) chkmin(res, cpr(rt[*i], rt[*nxt]).sc); ans += res + 1; // printf("%lld\n", ans); &#125;&#125;int main() &#123; int esac = read(); while(esac--) work(); return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
@@ -199,8 +334,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -365,7 +500,7 @@
   </entry>
   <entry>
     <title><![CDATA[「CodeChef TRIPS」Children Trips]]></title>
-    <url>%2Fblog%2FCodeChef-TRIPS%2F</url>
+    <url>%2Fblog%2FCC-TRIPS%2F</url>
     <content type="text"><![CDATA[题意简述CodeChef TRIPS 一棵树，边有 $1$ 或 $2$ 的边权，多次询问从点 $u$ 到 $v$，每次移动最多能走 $w$（不能在两点之间停下），要几次才能到达。$n, m\le 10^5$。 主要思路这个题感觉有一车 $O(n\sqrt{n})$ 做法？这里介绍一种在线的树分块做法。设 $M = \sqrt{n}$。先钦定根，定义点 $u$ 的深度 $dep(u)$ 为到根路径上的边数。 那么我们将 $M | dep(u)$ 的节点设为关键点，于是这棵树就被分为若干块（关键点属于其下面的块）。（若一块大小不足 $M$ 跟上面的块合并。） 这样每个块的大小就不小于 $M$，个数就不大于 $M$，且直径最大为 $2M$（此处直径指连通块中两点路径间最多的边的数量）。 显然对于询问 $(u, v, w)$，从两个人两边出发直到碰头所用的总步数和单人走完是相同的。 那么若 $u, v$ 在同一块中，则直接暴力每次将较深的一个往上跳一条边就行了。 若在不同块中，则由于块数量也为 $O(M)$，我们希望一次能够令一个点上跳一个块。 假设点 $u$，一次走的距离为 $i$（$i\le 2M$）。设 $db(u)$ 为到最近的不同块的祖先的距离，$du(u)$ 为到父亲的距离；$rc(u, i)$ 为向上走一次能到达的最远的点；$sp(u, i)$ 表示向上走最少几次能跳出块，$rm(u, i)$ 为最后一次会剩余多少未使用距离。 考虑步长为 $w$，当前向上跳的点为 $u$，根号分治： 对 $w\le 2M$，由于处理了 $sp, rm$，一次可以直接跳出一个块； 对 $w &gt; 2M$，由于块数 $O(M)$，可以把一次移动拆成多次长为 $2M$ 的移动，一步只跳一个块。 预处理？对 $rc$，继承父亲的；对 $sp, rm$ 继承 $rc(u, i)$ 的。嘛还有些讨论细节啥的，不过不重要。 反正这样就 $O(n\sqrt{n})$ 了。 参考代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162#include &lt;bits/stdc++.h&gt;namespace my_std &#123;using namespace std;#define reg register#define Rint register int#define FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)#define ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)#define GO(x, e, i, v) for (register int i = head[x], v; i; i = e[i].link)#define Templ(T) template &lt;typename T&gt;inline int read() &#123; reg int ans = 0, f = 1; reg char c = getchar(); while (!isdigit(c)) f ^= (c == '-'), c = getchar(); for (; isdigit(c); c = getchar()) ans = (ans &lt;&lt; 1) + (ans &lt;&lt; 3) + (c ^ 48); return f ? ans : -ans;&#125;Templ(_Tp) inline int chkmin(_Tp &amp;x, _Tp y) &#123; return x &gt; y ? x = y, 1 : 0; &#125;Templ(_Tp) inline int chkmax(_Tp &amp;x, _Tp y) &#123; return x &lt; y ? x = y, 1 : 0; &#125;&#125; // namespace my_stdusing namespace my_std;#define N 100010#define BN 350#define M 317#define M2 634#define swap(a, b) (a ^= b ^= a ^= b)struct Edge&#123; int link, to, wgh;&#125;e[N &lt;&lt; 1];int ecnt, head[N];inline void A_E(int u, int v, int w)&#123; e[++ecnt] = (Edge)&#123;head[u], v, w&#125;; head[u] = ecnt;&#125;int n, m;int fth[N], du[N], dep[N], siz[N];int key[BN], bc, bl[N];int sk[N], st;#define TB(u) key[bl[u]]void dfs0(int u)&#123; siz[u] = 1; sk[st++] = u; GO(u, e, i, v)&#123; v = e[i].to; if(v == fth[u]) continue; fth[v] = u, du[v] = e[i].wgh; dep[v] = dep[u] + 1; dfs0(v); siz[u] += siz[v]; &#125; if(!(dep[u] % M) &amp;&amp; siz[u] &gt;= M)&#123; key[++bc] = u, bl[u] = bc; while(sk[--st] != u)&#123; bl[sk[st]] = bc; &#125; &#125;&#125;int rc[N][BN &lt;&lt; 1], db[N], sp[N][BN &lt;&lt; 1], rm[N][BN &lt;&lt; 1];//点 u，跳一次距离 i：//到达的点；与最近的块外祖先距离；跳几步能跳出块；最后一步会剩下多少；void dfs1(int u)&#123; reg const int d(du[u]), f(fth[u]); rc[u][0] = u; rc[u][1] = d == 1 ? f : u; FOR(i, 2, M2)&#123; rc[u][i] = (i &gt;= d) ? rc[f][i - d] : f; &#125; if(bl[u] == bl[f])&#123; Rint v; FOR(i, 2, M2)&#123; v = rc[u][i]; if(bl[u] == bl[v])&#123; sp[u][i] = sp[v][i] + 1; rm[u][i] = rm[v][i]; &#125; else&#123; sp[u][i] = 1; rm[u][i] = rm[f][i] - d; &#125; &#125; db[u] = db[f] + d; &#125; else&#123; FOR(i, 2, M2)&#123; sp[u][i] = 1; rm[u][i] = i - d; &#125; db[u] = d; &#125; GO(u, e, i, v)&#123; v = e[i].to; if(v != f) dfs1(v); &#125;&#125;inline void init()&#123; n = read(); Rint u, v, w; FOR(i, 1, n - 1)&#123; u = read(), v = read(), w = read(); A_E(u, v, w), A_E(v, u, w); &#125; dfs0(1); dfs1(1); m = read();&#125;//同一块中暴力跳inline int queryb(int *u, int *s, const int &amp;p)&#123; int ans(0); while(u[0] != u[1])&#123; if(dep[u[0]] &lt; dep[u[1]]) swap(u[0], u[1]), swap(s[0], s[1]); if(*s &gt;= du[*u]) *s -= du[*u]; else *s = p - du[*u], ++ans; *u = fth[*u]; &#125; if(s[0] + s[1] &gt;= p) --ans; return ans;&#125;//不同块，步长小，一步跳一块inline int query0(int *u, const int &amp;p)&#123; int ans(0), s[2] = &#123;&#125;; while(bl[u[0]] != bl[u[1]])&#123; if(bl[u[0]] &gt; bl[u[1]]) swap(u[0], u[1]), swap(s[0], s[1]); if(db[*u] &gt; *s)&#123; *u = rc[*u][*s]; ans += sp[*u][p], *s = rm[*u][p]; &#125; else *s = rm[*u][*s]; *u = fth[TB(*u)]; &#125; return ans + queryb(u, s, p);&#125;//不同块，步长大，一步跳一块inline int query1(int *u, const int &amp;p)&#123; int ans(0), s[2] = &#123;&#125;; while(bl[u[0]] != bl[u[1]])&#123; if(bl[u[0]] &gt; bl[u[1]]) swap(u[0], u[1]), swap(s[0], s[1]); if(db[*u] &lt;= *s) *s -= db[*u], *u = fth[TB(*u)]; else&#123; if(*s &gt; M2)&#123; *s -= M2 - (rc[*u][M2] == rc[*u][M2 - 1]); *u = rc[*u][M2]; &#125; else *u = rc[*u][*s], ++ans, *s = p; &#125; &#125; return ans + queryb(u, s, p);&#125;int main() &#123; init(); Rint u[2], w; while(m--)&#123; u[0] = read(), u[1] = read(), w = read(); printf("%d\n", (w &lt;= M ? query0 : query1)(u, w)); &#125; return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
@@ -450,8 +585,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>猜结论</tag>
+        <tag>图论</tag>
         <tag>AtCoder</tag>
       </tags>
   </entry>
@@ -588,9 +723,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -630,9 +765,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[摆脱辣鸡cmd]]></title>
-    <url>%2Fblog%2F%E6%91%86%E8%84%B1%E8%BE%A3%E9%B8%A1cmd%2F</url>
-    <content type="text"><![CDATA[我，一直有个梦想，就是在 Windows 下摆脱 cmd。 终于我这一天被它弄得心态崩溃，整了一个 cmder 来玩。 这啥这里有个详细的初步介绍。 好吧，这大概是个 Win 下的可移植的终端的整合包，让你随身携带命令别名、颜色主题之类的。 然后这里主要用来记录使用 cmder 遇到的一些问题。 λ很炫，但也很屑由于 cmder 将λ作为命令提示符，稍微上下键查看下前后的命令就会多出来一个无法删除的符号，令人谔谔。 于是vendor\clink.lua里面把某一行（因版本不同而不同，行开头是local cmder_prompt =）中的{lamb}改为$即可解决 cmd 的命令提示符问题。 bash 的命令提示符就麻烦些，要在vendor\git-for-windows\etc\profile.d\git-prompt.sh把某一行PS1=&quot;$PS1&quot;&#39;λ &#39; # prompt: always λ改为PS1=&quot;$PS1&quot;&#39;$ &#39; # prompt: always $就好了。 输入中文光标出问题若使用的是 Git，在vendor\profile.ps1里找到下面这一行： 1Microsoft.PowerShell.Utility\Write-Host &quot;`nλ &quot; -NoNewLine -ForegroundColor &quot;DarkGray&quot; λ改成$就好了。]]></content>
+    <title><![CDATA[cmder初探]]></title>
+    <url>%2Fblog%2Fcmder%E5%88%9D%E6%8E%A2%2F</url>
+    <content type="text"><![CDATA[我，一直有个梦想，就是在 Windows 下摆脱 cmd。 终于我这一天被它弄得心态崩溃，整了一个 cmder 来玩。 这啥这里有个详细的初步介绍。 好吧，这大概是个 Win 下的可移植的终端的整合包，让你随身携带命令别名、颜色主题之类的。 然后这里主要用来记录使用 cmder 遇到的一些问题。 λ很炫，但也很屑由于 cmder 将λ作为命令提示符，稍微上下键查看下前后的命令就会多出来一个无法删除的符号，令人谔谔。 于是vendor\clink.lua里面把某一行（因版本不同而不同，行开头是local cmder_prompt =）中的{lamb}改为$即可解决 cmd 的命令提示符问题。 bash 的命令提示符就麻烦些，要在vendor\git-for-windows\etc\profile.d\git-prompt.sh把某一行PS1=&quot;$PS1&quot;&#39;λ &#39; # prompt: always λ改为PS1=&quot;$PS1&quot;&#39;$ &#39; # prompt: always $就好了。 输入中文光标出问题若使用的是 Git，在vendor\profile.ps1里找到下面这一行： 1Microsoft.PowerShell.Utility\Write-Host &quot;`nλ &quot; -NoNewLine -ForegroundColor &quot;DarkGray&quot; λ改成$就好了。 隐藏 history正如 Linux 中国的这篇博客，Linux 下可以方便地隐藏 bash 记录。那么 Cmder 的 cmd，以及 git for windows 呢？ cmd 隐藏 historycmd 的 history 都在config\.history里，可以直接看到自己的history。 然后进config\settings，不难找到history_file_lines的行，是历史记录的保存条数。下面的history_ignore_space是一个bool变量，为1时可以通过在命令前加上一个空格（）来避免命令被加入history。 git for windows 隐藏 historygit for windows 的历史都在~\.bash_history里。在同一目录下，还能看见.bash_profile，即全局配置文件。 在里面塞进去一行export HISTCONTROL=ignorespace，即可将通过命令前加上来避免命令被加入history。 实际上，HISTCONTROL有以下选项： 选项 效果 ignoredup 默认，忽略重复命令 ignorespace 忽略所有开头的命令 ignoreboth ignoredups和ignorespace的组合 erasedups 删除重复命令]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -772,7 +907,7 @@
   </entry>
   <entry>
     <title><![CDATA[「CodeChef FGTREE」Forgotten Tree 9]]></title>
-    <url>%2Fblog%2FCodeChef-FGTREE%2F</url>
+    <url>%2Fblog%2FCC-FGTREE%2F</url>
     <content type="text"><![CDATA[很妙的一道交互。 [CodeChef FGTREE] 题意简述一棵 $n$ 个点的有根二叉树，树中节点编号为中序遍历中的 dfs 序。其中 $n \le 100$ 。 你可以询问不超过 $300$ 次形如 $(i, l, r)$ 的问题，表示询问 $i$ 子树内编号最小值是否为 $l$ 且最大值是否为 $r$ 。 请回答每个点的父亲的编号。 主要思路考虑按照编号从小到大尝试确定父亲。维护一个栈来存储还没有确定父亲的节点。不妨设我们已经加入到点 $x$ 。 先判断其是否在栈顶的子树中，若是则直接压入栈中；否则弹出栈顶并继续直到可压入栈中。 考虑过程中弹出的点按弹出先后为 $\langle v_m\rangle$，则弹出的点子树中的最大编号均为 $x - 1$，故 $\mathrm{fth}(v_i) = v_{i + 1}$（$v_{m + 1} = x$）。 加入所有点后，若栈非空，不难发现这些点子树中最大编号均为 $n$，故也相邻两点有父子关系。 那么在此过程中如何判断 $x$ 是否在某个点 $y$ 的子树内？可以询问 $(y, l_y, x - 1)$，若返回值为假则在子树中。而 $l_y$ 显然可以在过程中更新。 于是做完，查询次数 $O(n)$，据说可以卡满。 参考代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include&lt;bits/stdc++.h&gt;using namespace std;#define F_O fflush(stdout)const int N = 110;class Stack&#123;private: int a[N], t;public: inline bool empty()&#123; return t == 0; &#125; inline int size()&#123; return t; &#125; inline int top()&#123; return t ? a[t - 1] : -1; &#125; inline bool pop()&#123; return t ? (-- t, 1) : 0; &#125; inline void push(int x)&#123; a[t ++] = x; &#125; inline void clear()&#123; t = 0; &#125; inline void print()&#123; puts("Stack:"); for(int i = 0; i &lt; t; ++i)&#123; printf("%d, ", a[i]); &#125; puts(""); &#125;&#125;;int n, f[N], l[N];Stack S, T;inline bool query(int x, int l, int r)&#123; printf("Q %d %d %d\n", x, l, r); F_O; char c[5]; scanf("%s", c); return *c == 'Y';&#125;inline void work()&#123; scanf("%d", &amp;n); S.clear(), T.clear(); memset(f, 0, sizeof(f)); int t; for(int x = 1; x &lt;= n; ++x) l[x] = x; for(int x = 1; x &lt;= n; ++x)&#123; while(!S.empty())&#123; t = S.top(); S.pop(); bool g = query(t, l[t], x - 1); if(!g)&#123; S.push(t); break; &#125; T.push(t); &#125; if(!T.empty())&#123; l[x] = l[T.top()]; T.push(x); t = 0; while(!T.empty())&#123; f[T.top()] = t; t = T.top(); T.pop(); &#125; &#125; S.push(x); &#125; while(!S.empty())&#123; t = S.top(); S.pop(); f[t] = S.top(); &#125; printf("A "); for(int x = 1; x &lt; n; ++x) printf("%d ", f[x]); printf("%d\n", f[n]); F_O; return;&#125;int main()&#123; int esac; scanf("%d", &amp;esac); while(esac --) work(); return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
@@ -849,8 +984,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -899,8 +1034,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -911,8 +1046,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>数学</tag>
+        <tag>AtCoder</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -1011,8 +1146,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>字符串</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -1024,8 +1159,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>找规律</tag>
         <tag>AtCoder</tag>
+        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
@@ -1245,9 +1380,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>Codeforces</tag>
         <tag>猜结论</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -1270,8 +1405,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>猜结论</tag>
+        <tag>dp</tag>
         <tag>找规律</tag>
       </tags>
   </entry>

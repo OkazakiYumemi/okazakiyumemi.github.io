@@ -10,6 +10,18 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+a:link {
+  color:#555;
+}
+a:visited {
+  color:#777;
+}
+a:hover {
+  color:#777;
+}
+a:active {
+  color:#777;
+}
 .content-wrap {
   margin: auto;
   /* float: left; */

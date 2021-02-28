@@ -110,25 +110,20 @@
 
 
 
-  <meta name="description" content="题意简述CodeChef TRIPS 一棵树，边有 $1$ 或 $2$ 的边权，多次询问从点 $u$ 到 $v$，每次移动最多能走 $w$（不能在两点之间停下），要几次才能到达。$n, m\le 10^5$。">
-<meta name="keywords" content="CodeChef,树论,树分块,根号分治">
-<meta property="og:type" content="article">
-<meta property="og:title" content="「CodeChef TRIPS」Children Trips">
-<meta property="og:url" content="http://okazakiyumemi.github.io/blog/CodeChef-TRIPS/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Okazaki Yumemi&#39;s blog">
+<meta property="og:url" content="http://okazakiyumemi.github.io/page/13/index.html">
 <meta property="og:site_name" content="Okazaki Yumemi&#39;s blog">
-<meta property="og:description" content="题意简述CodeChef TRIPS 一棵树，边有 $1$ 或 $2$ 的边权，多次询问从点 $u$ 到 $v$，每次移动最多能走 $w$（不能在两点之间停下），要几次才能到达。$n, m\le 10^5$。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-04T09:09:45.413Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「CodeChef TRIPS」Children Trips">
-<meta name="twitter:description" content="题意简述CodeChef TRIPS 一棵树，边有 $1$ 或 $2$ 的边权，多次询问从点 $u$ 到 $v$，每次移动最多能走 $w$（不能在两点之间停下），要几次才能到达。$n, m\le 10^5$。">
+<meta name="twitter:title" content="Okazaki Yumemi&#39;s blog">
 
 
 
 
 
 
-  <link rel="canonical" href="http://okazakiyumemi.github.io/blog/CodeChef-TRIPS/">
+  <link rel="canonical" href="http://okazakiyumemi.github.io/page/13/">
 
 
 
@@ -138,7 +133,7 @@
   };
 </script>
 
-  <title>「CodeChef TRIPS」Children Trips | Okazaki Yumemi's blog</title>
+  <title>Okazaki Yumemi's blog</title>
   
 
 
@@ -187,7 +182,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -370,9 +366,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -387,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/CodeChef-TRIPS/">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/VSCode配置二三事/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Okazaki Yumemi">
@@ -404,7 +400,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">「CodeChef TRIPS」Children Trips
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/VSCode配置二三事/" class="post-title-link" itemprop="http://okazakiyumemi.github.io/page/13/index.html">VSCode配置二三事</a>
               
             
           </h1>
@@ -429,7 +428,721 @@
                 
               
 
-              <time title="创建时间：2020-08-31 02:30:44" itemprop="dateCreated datePublished" datetime="2020-08-31T02:30:44+08:00">2020-08-31</time>
+              <time title="创建时间：2019-10-13 13:59:50" itemprop="dateCreated datePublished" datetime="2019-10-13T13:59:50+08:00">2019-10-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>自从半年前装了 <strong>VS Code</strong> (下称 <strong>VSC</strong> ) 以后，只用 <strong>VSC</strong> 来写一些<code>yml</code>,<code>json</code>,<code>html</code>啥的。从来没有用过来写<code>cpp</code>。</p>
+<p>这几天突然心血来潮，在家里配置了一下 <strong>VSC</strong> ，现在可以在家使用 <strong>VSC</strong> 写代码了。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/VSCode配置二三事/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/Sqrt-Tree-学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/Sqrt-Tree-学习笔记/" class="post-title-link" itemprop="http://okazakiyumemi.github.io/page/13/index.html">Sqrt-Tree 学习笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-22 21:51:39" itemprop="dateCreated datePublished" datetime="2019-08-22T21:51:39+08:00">2019-08-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><del>神仙<a href="https://www.cnblogs.com/p-b-p-b/p/11397441.html" style="color:rgb(255,0,0); font-weight:bold; text-decoration:none" target="_blank" rel="noopener"><span style="color:rgb(0,0,0)">p</span>_b_p_b</a>发现了一种神奇的分块思路，然后发现给别人造了轮子。</del></p>
+<p>给你一个长度为 $n$ 的序列 $\left\langle a _i\right\rangle^{n} _{i=1}$和一个满足结合律的运算 $\circ$ 。Sqrt Tree可以在 $O(n \log_2\log_2n)$ 的时间内预处理，并在 $O(1)$ 的时间回答计算 $a _l\circ a _{l+1}\circ\cdots\circ a _r$ 的询问。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/Sqrt-Tree-学习笔记/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/强制在线不带修区间众数相关-学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/强制在线不带修区间众数相关-学习笔记/" class="post-title-link" itemprop="http://okazakiyumemi.github.io/page/13/index.html">强制在线不带修区间众数相关 学习笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-10 23:53:23" itemprop="dateCreated datePublished" datetime="2019-08-10T23:53:23+08:00">2019-08-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>区间众数是和分块脱不了干系的。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/强制在线不带修区间众数相关-学习笔记/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/「数列分块入门」系列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/「数列分块入门」系列/" class="post-title-link" itemprop="http://okazakiyumemi.github.io/page/13/index.html">「数列分块入门」系列</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-03 21:37:26" itemprop="dateCreated datePublished" datetime="2019-08-03T21:37:26+08:00">2019-08-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>谈到分块，不得不说说 $\text{hzwer}$ 学长的「数列分块入门」系列。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/「数列分块入门」系列/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/20190801/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/20190801/" class="post-title-link" itemprop="http://okazakiyumemi.github.io/page/13/index.html">漫无止境的八月计划</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-01T00:00:00+08:00">2019-08-01</time>
             
 
             
@@ -463,7 +1176,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -478,13 +1191,6 @@
           
           
 
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             阅读次数： 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
           
 
           
@@ -504,28 +1210,18 @@
       
 
       
-        <h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p><a href="https://www.codechef.com/problems/TRIPS" target="_blank" rel="noopener">CodeChef TRIPS</a></p>
-<p>一棵树，边有 $1$ 或 $2$ 的边权，多次询问从点 $u$ 到 $v$，每次移动最多能走 $w$（不能在两点之间停下），要几次才能到达。<br>$n, m\le 10^5$。</p>
-<a id="more"></a>
-
-<h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><p>这个题感觉有一车 $O(n\sqrt{n})$ 做法？这里介绍一种在线的树分块做法。<br>设 $M = \sqrt{n}$。<br>先钦定根，定义点 $u$ 的深度 $dep(u)$ 为到根路径上的边数。</p>
-<p>那么我们将 $M | dep(u)$ 的节点设为关键点，于是这棵树就被分为若干块（关键点属于其下面的块）。（若一块大小不足 $M$ 跟上面的块合并。）</p>
-<p>这样每个块的大小就不小于 $M$，个数就不大于 $M$，且直径最大为 $2M$（此处直径指连通块中两点路径间最多的边的数量）。</p>
-<p>显然对于询问 $(u, v, w)$，从两个人两边出发直到碰头所用的总步数和单人走完是相同的。</p>
-<p>那么若 $u, v$ 在同一块中，则直接暴力每次将较深的一个往上<strong>跳一条边</strong>就行了。</p>
-<p>若在不同块中，则由于块数量也为 $O(M)$，我们希望一次能够令一个点上<strong>跳一个块</strong>。</p>
-<p>假设点 $u$，一次走的距离为 $i$（$i\le 2M$）。<br>设 $db(u)$ 为到最近的不同块的祖先的距离，$du(u)$ 为到父亲的距离；<br>$rc(u, i)$ 为向上走一次能到达的最远的点；<br>$sp(u, i)$ 表示向上走最少几次能跳出块，$rm(u, i)$ 为最后一次会剩余多少未使用距离。</p>
-<p>考虑步长为 $w$，当前向上跳的点为 $u$，根号分治：</p>
-<ul>
-<li>对 $w\le 2M$，由于处理了 $sp, rm$，一次可以<strong>直接跳出一个块</strong>；</li>
-<li>对 $w &gt; 2M$，由于块数 $O(M)$，可以把一次移动<strong>拆成多次长为 $2M$ 的移动</strong>，一步只跳一个块。</li>
-</ul>
-<p>预处理？对 $rc$，继承父亲的；对 $sp, rm$ 继承 $rc(u, i)$ 的。<br>嘛还有些讨论细节啥的，不过不重要。</p>
-<p>反正这样就 $O(n\sqrt{n})$ 了。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><div><div class="fold_hider"><div class="close hider_title"> </div></div><div class="fold">
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std &#123;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, a, b) for (register int i = (a), ed_##i = (b); i &lt;= ed_##i; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ROF(i, a, b) for (register int i = (a), ed_##i = (b); i &gt;= ed_##i; --i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GO(x, e, i, v) for (register int i = head[x], v; i; i = e[i].link)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Templ(T) template <span class="meta-string">&lt;typename T&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    reg <span class="keyword">int</span> ans = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    reg <span class="keyword">char</span> c = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c)) f ^= (c == <span class="string">'-'</span>), c = getchar();</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = getchar()) ans = (ans &lt;&lt; <span class="number">1</span>) + (ans &lt;&lt; <span class="number">3</span>) + (c ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? ans : -ans;</span><br><span class="line">&#125;</span><br><span class="line">Templ(_Tp) <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">chkmin</span><span class="params">(_Tp &amp;x, _Tp y)</span> </span>&#123; <span class="keyword">return</span> x &gt; y ? x = y, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line">Templ(_Tp) <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">chkmax</span><span class="params">(_Tp &amp;x, _Tp y)</span> </span>&#123; <span class="keyword">return</span> x &lt; y ? x = y, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line">&#125; <span class="comment">// namespace my_std</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BN 350</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 317</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M2 634</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> swap(a, b) (a ^= b ^= a ^= b)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> link, to, wgh;</span><br><span class="line">&#125;e[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> ecnt, head[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">A_E</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++ecnt] = (Edge)&#123;head[u], v, w&#125;;</span><br><span class="line">    head[u] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> fth[N], du[N], dep[N], siz[N];</span><br><span class="line"><span class="keyword">int</span> key[BN], bc, bl[N];</span><br><span class="line"><span class="keyword">int</span> sk[N], st;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TB(u) key[bl[u]]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs0</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    siz[u] = <span class="number">1</span>;</span><br><span class="line">    sk[st++] = u;</span><br><span class="line">    GO(u, e, i, v)&#123;</span><br><span class="line">        v = e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v == fth[u]) <span class="keyword">continue</span>;</span><br><span class="line">        fth[v] = u, du[v] = e[i].wgh;</span><br><span class="line">        dep[v] = dep[u] + <span class="number">1</span>;</span><br><span class="line">        dfs0(v);</span><br><span class="line">        siz[u] += siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!(dep[u] % M) &amp;&amp; siz[u] &gt;= M)&#123;</span><br><span class="line">        key[++bc] = u, bl[u] = bc;</span><br><span class="line">        <span class="keyword">while</span>(sk[--st] != u)&#123;</span><br><span class="line">            bl[sk[st]] = bc;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> rc[N][BN &lt;&lt; <span class="number">1</span>], db[N], sp[N][BN &lt;&lt; <span class="number">1</span>], rm[N][BN &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="comment">//点 u，跳一次距离 i：</span></span><br><span class="line"><span class="comment">//到达的点；与最近的块外祖先距离；跳几步能跳出块；最后一步会剩下多少；</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    reg const int d(du[u]), f(fth[u]);</span><br><span class="line">    rc[u][<span class="number">0</span>] = u;</span><br><span class="line">    rc[u][<span class="number">1</span>] = d == <span class="number">1</span> ? f : u;</span><br><span class="line">    FOR(i, <span class="number">2</span>, M2)&#123;</span><br><span class="line">        rc[u][i] = (i &gt;= d) ? rc[f][i - d] : f;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(bl[u] == bl[f])&#123;</span><br><span class="line">        Rint v;</span><br><span class="line">        FOR(i, <span class="number">2</span>, M2)&#123;</span><br><span class="line">            v = rc[u][i];</span><br><span class="line">            <span class="keyword">if</span>(bl[u] == bl[v])&#123;</span><br><span class="line">                sp[u][i] = sp[v][i] + <span class="number">1</span>;</span><br><span class="line">                rm[u][i] = rm[v][i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                sp[u][i] = <span class="number">1</span>;</span><br><span class="line">                rm[u][i] = rm[f][i] - d;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        db[u] = db[f] + d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        FOR(i, <span class="number">2</span>, M2)&#123;</span><br><span class="line">            sp[u][i] = <span class="number">1</span>;</span><br><span class="line">            rm[u][i] = i - d;</span><br><span class="line">        &#125;</span><br><span class="line">        db[u] = d;</span><br><span class="line">    &#125;</span><br><span class="line">    GO(u, e, i, v)&#123;</span><br><span class="line">        v = e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v != f) dfs1(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read();</span><br><span class="line">    Rint u, v, w;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n - <span class="number">1</span>)&#123;</span><br><span class="line">        u = read(), v = read(), w = read();</span><br><span class="line">        A_E(u, v, w), A_E(v, u, w);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs0(<span class="number">1</span>);</span><br><span class="line">    dfs1(<span class="number">1</span>);</span><br><span class="line">    m = read();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//同一块中暴力跳</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">queryb</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">int</span> *s, <span class="keyword">const</span> <span class="keyword">int</span> &amp;p)</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ans</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">while</span>(u[<span class="number">0</span>] != u[<span class="number">1</span>])&#123;</span><br><span class="line">        <span class="keyword">if</span>(dep[u[<span class="number">0</span>]] &lt; dep[u[<span class="number">1</span>]]) swap(u[<span class="number">0</span>], u[<span class="number">1</span>]), swap(s[<span class="number">0</span>], s[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span>(*s &gt;= du[*u]) *s -= du[*u];</span><br><span class="line">        <span class="keyword">else</span> *s = p - du[*u], ++ans;</span><br><span class="line">        *u = fth[*u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(s[<span class="number">0</span>] + s[<span class="number">1</span>] &gt;= p) --ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不同块，步长小，一步跳一块</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query0</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">const</span> <span class="keyword">int</span> &amp;p)</span></span>&#123;</span><br><span class="line">    int ans(0), s[2] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">while</span>(bl[u[<span class="number">0</span>]] != bl[u[<span class="number">1</span>]])&#123;</span><br><span class="line">        <span class="keyword">if</span>(bl[u[<span class="number">0</span>]] &gt; bl[u[<span class="number">1</span>]]) swap(u[<span class="number">0</span>], u[<span class="number">1</span>]), swap(s[<span class="number">0</span>], s[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span>(db[*u] &gt; *s)&#123;</span><br><span class="line">            *u = rc[*u][*s];</span><br><span class="line">            ans += sp[*u][p], *s = rm[*u][p];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> *s = rm[*u][*s];</span><br><span class="line">        *u = fth[TB(*u)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans + queryb(u, s, p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不同块，步长大，一步跳一块</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query1</span><span class="params">(<span class="keyword">int</span> *u, <span class="keyword">const</span> <span class="keyword">int</span> &amp;p)</span></span>&#123;</span><br><span class="line">    int ans(0), s[2] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">while</span>(bl[u[<span class="number">0</span>]] != bl[u[<span class="number">1</span>]])&#123;</span><br><span class="line">        <span class="keyword">if</span>(bl[u[<span class="number">0</span>]] &gt; bl[u[<span class="number">1</span>]]) swap(u[<span class="number">0</span>], u[<span class="number">1</span>]), swap(s[<span class="number">0</span>], s[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span>(db[*u] &lt;= *s) *s -= db[*u], *u = fth[TB(*u)];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(*s &gt; M2)&#123;</span><br><span class="line">                *s -= M2 - (rc[*u][M2] == rc[*u][M2 - <span class="number">1</span>]);</span><br><span class="line">                *u = rc[*u][M2];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> *u = rc[*u][*s], ++ans, *s = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans + queryb(u, s, p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    Rint u[<span class="number">2</span>], w;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        u[<span class="number">0</span>] = read(), u[<span class="number">1</span>] = read(), w = read();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (w &lt;= M ? query0 : query1)(u, w));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div></div>
+        
+          <p>八月来了。秉着鸽子的本能，写一个计划安排。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/20190801/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
       
     </div>
 
@@ -546,46 +1242,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/CodeChef/" rel="tag"># CodeChef</a>
-          
-            <a href="/tags/树论/" rel="tag"># 树论</a>
-          
-            <a href="/tags/树分块/" rel="tag"># 树分块</a>
-          
-            <a href="/tags/根号分治/" rel="tag"># 根号分治</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/blog/ARC070D/" rel="next" title="「ARC070D」HonestOrUnkind">
-                <i class="fa fa-chevron-left"></i> 「ARC070D」HonestOrUnkind
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/20200904/" rel="prev" title="《西哈诺》小感">
-                《西哈诺》小感 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -595,19 +1259,197 @@
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/Hello-World/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/Hello-World/" class="post-title-link" itemprop="http://okazakiyumemi.github.io/page/13/index.html">Hello_World</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-21 19:50:20" itemprop="dateCreated datePublished" datetime="2019-07-21T19:50:20+08:00">2019-07-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>瞎搞了一整天终于大概搞好了。</p>
+<p>首先感谢<a href="https://ouuan.github.io/hexo博客搭建指北/" target="_blank" rel="noopener">ouuan的博客</a>给我提供了大量美化教程。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/Hello-World/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-    <div id="gitalk-container">
-    </div>
-    
-  
-
-
 
         </div>
         
@@ -628,17 +1470,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -655,7 +1488,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">115</span>
+                    <span class="site-state-item-count">126</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -805,7 +1638,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">57</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1049,22 +1888,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意简述"><span class="nav-number">1.</span> <span class="nav-text">题意简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要思路"><span class="nav-number">2.</span> <span class="nav-text">主要思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
         <div class="back-to-top">
@@ -1085,7 +1908,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1219,10 +2042,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
-
-
 
   
 
@@ -1245,32 +2064,6 @@
 
 
 
-
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-
-  
-  
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-    
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '6db7c68ddd3c276bde37',
-          clientSecret: '1974844dbe21a5dd8a900b8db524c7dc37012021',
-          repo: 'okazakiyumemi.github.io',
-          owner: 'OkazakiYumemi',
-          admin: ['OkazakiYumemi'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
 
   
 
@@ -1610,6 +2403,20 @@
   
 
   
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   
 
   
