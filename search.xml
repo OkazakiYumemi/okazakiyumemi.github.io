@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[卯花骤开，惊醒春梦]]></title>
+    <url>%2Fblog%2F20210411%2F</url>
+    <content type="text"><![CDATA[原来卯月的来由是当月卯花盛开吗。 省选在深圳耀华中学，去瞻仰了曹原的同时顺便还走了一遭深中。 由于 noip 和 wc 都挂了，所以省选真的是去玩的。考场配的宿舍好差，还好我滚到外面住去了。见到几个之前很想认识的人，但都没有去面，大概是考得丢人造成的社交厌倦？btw 认识的几个常在深圳的人都出省玩去了，于是根本没人面基。]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>感想</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[转区软件 Locale Emulator 简介]]></title>
     <url>%2Fblog%2FLocale-Emulator%2F</url>
     <content type="text"><![CDATA[由于 App Locale 本身就有一堆 bug，也有可能是我不会搞，反正是从来没有能用过。 于是在 GitHub 上找了找，总算找到个好使的转区软件。 xupefei/Locale-Emulator，以 GPL v3.0 开源。 star 好多（ 然后操作很方便，这里就不加叙述了。 有兴趣的话可以自己编译一个？ 有一说一 latest commit 记录比 latest release 晚了一年多，不知道修了什么 bug。 发现真没啥东西能写的，于是本篇博客大概就是这样一个小作品了。]]></content>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[又一个弥生月，近况报告]]></title>
     <url>%2Fblog%2F20210226%2F</url>
-    <content type="text"><![CDATA[已逝世。 本人未来几个月（？）的规划；本博客未来的规划；碎碎念。 20210228这个博客该修了。 应当大改 categories 和 tags，将 oi 题解等创建的大量 tags 处理掉，并将 oi 相关内容移至统一 category 内。 至于怎么处理掉 tags，由于 hexo next 自身的局限性，即 tags 无法嵌套，categories 无法并列，暂时只能想到删去 tags 并在每篇文章末尾或开头加入摘要，通过搜索访问之前相同 tag 中的文章。 oi 还搞不搞的问题现在也还没有定论。总之还是暂且勉强跟一下集训罢，只要不停课就行。 放不下 oi 的主要原因，可能是我对自己文化课的不自信。所以手上如果拿着个 ag，不知道能多拿到多少优势呢。而且你省毕竟高考大省，，，我这种文科拉垮壬有什么资本和别人拼文化课呢？ 当然也可以提前躺平。但是你愿意接受吗？反内卷斗士最终还是得成为自己最讨厌的样子。]]></content>
+    <content type="text"><![CDATA[已逝世。 本人未来几个月（？）的规划；本博客未来的规划；碎碎念。 20210228这个博客该修了。 应当大改 categories 和 tags，将 oi 题解等创建的大量 tags 处理掉，并将 oi 相关内容移至统一 category 内。 至于怎么处理掉 tags，由于 hexo next 自身的局限性，即 tags 无法嵌套，categories 无法并列，暂时只能想到删去 tags 并在每篇文章末尾或开头加入摘要，通过搜索访问之前相同 tag 中的文章。 oi 还搞不搞的问题现在也还没有定论。总之还是暂且勉强跟一下集训罢，只要不停课就行。 放不下 oi 的主要原因，可能是我对自己文化课的不自信。所以手上如果拿着个 ag，不知道能多拿到多少优势呢。而且你省毕竟高考大省，，，我这种文科拉垮壬有什么资本和别人拼文化课呢？ 当然也可以提前躺平。但是你愿意接受吗？反内卷斗士最终还是得成为自己最讨厌的样子。 20210303语文怎么要背的篇目这么多。这两天背「今陛下致昆山之玉，有随、和之宝，垂明月之珠，服太阿之剑，乘纤离之马，建翠凤之旗，树灵鼍之鼓」已经疯了。 20210309你校初三人停课了。和学长谈了谈，对明年再冲的信心基本回归虚无，，，可能什么时候就真虚无了罢。唉，文化课也没什么不好的。 20210311yhx blog 观看体验好差，把背景颜色改成#b0e0e6，宽度改为800px之后稍微好了一些。 12window.document.body.style.backgroundColor="#b0e0e6"window.document.body.style.width="800px" 20210314居然开始认真看正则了，草。 然后犯了一个非常愚蠢的错误：试图用A\d+\.(jpg|png)来获取所有合法文件，实际上应该写成(A\d+\.)(jpg|png)然后把两个 group 合并一下。 20210320rclone 同步 onedrive 真方便。 而且 sharepoint 好快啊（（ 20210327怎么要月考，好烦。]]></content>
       <categories>
         <category>随笔</category>
       </categories>
@@ -205,8 +216,8 @@
       </categories>
       <tags>
         <tag>log数据结构</tag>
-        <tag>线段树</tag>
         <tag>CodeChef</tag>
+        <tag>线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -585,8 +596,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>猜结论</tag>
         <tag>图论</tag>
+        <tag>猜结论</tag>
         <tag>AtCoder</tag>
       </tags>
   </entry>
@@ -985,8 +996,8 @@
       </categories>
       <tags>
         <tag>Codeforces</tag>
-        <tag>dp</tag>
         <tag>图论</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -1381,8 +1392,8 @@
       </categories>
       <tags>
         <tag>Codeforces</tag>
-        <tag>猜结论</tag>
         <tag>dp</tag>
+        <tag>猜结论</tag>
       </tags>
   </entry>
   <entry>
@@ -1405,8 +1416,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>猜结论</tag>
         <tag>dp</tag>
+        <tag>猜结论</tag>
         <tag>找规律</tag>
       </tags>
   </entry>
