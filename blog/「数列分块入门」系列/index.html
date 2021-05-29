@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="谈到分块，不得不说说 $\text{hzwer}$ 学长的「数列分块入门」系列。">
+<meta name="keywords" content="分块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「数列分块入门」系列">
+<meta property="og:url" content="http://okazakiyumemi.github.io/blog/「数列分块入门」系列/index.html">
+<meta property="og:site_name" content="Okazaki Yumemi&#39;s blog">
+<meta property="og:description" content="谈到分块，不得不说说 $\text{hzwer}$ 学长的「数列分块入门」系列。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-08-18T16:04:12.143Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「数列分块入门」系列">
+<meta name="twitter:description" content="谈到分块，不得不说说 $\text{hzwer}$ 学长的「数列分块入门」系列。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://okazakiyumemi.github.io/blog/「数列分块入门」系列/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>「数列分块入门」系列 | Okazaki Yumemi's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Okazaki Yumemi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">冈崎梦美的实验室</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/「数列分块入门」系列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「数列分块入门」系列
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-03 21:37:26" itemprop="dateCreated datePublished" datetime="2019-08-03T21:37:26+08:00">2019-08-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-19 00:04:12" itemprop="dateModified" datetime="2020-08-19T00:04:12+08:00">2020-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>谈到分块，不得不说说 $\text{hzwer}$ 学长的「数列分块入门」系列。</p>
+<a id="more"></a>
+
+<p>若未特别指出$\text{ML}$或$\text{TL}$，则$\text{ML:256MB,TL:500ms}$。</p>
+<h1 id="数列分块入门-1"><a href="#数列分块入门-1" class="headerlink" title="数列分块入门 1"></a>数列分块入门 1</h1><p><a href="https://loj.ac/problem/6277" target="_blank" rel="noopener">[LOJ 6277]</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，有$n$个操作，操作涉及区间加法，单点查值。</p>
+<p>$1\leq l\leq r\leq n\leq 50000$，输入的所有数均为$\text{int}$范围的整数。</p>
+<p>$\text{TL:100ms}$</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>啥？这题还要思路？</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div><div class="fold_hider"><div class="close hider_title">码风丑见谅：</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">50010</span> , SN = <span class="number">230</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo;</span><br><span class="line"><span class="keyword">int</span> a[N],bl[N],tag[SN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    Rint tem = min(bl[l] * blo , r);</span><br><span class="line">    FOR(i,l,tem) a[i] += x;</span><br><span class="line">    <span class="keyword">if</span>(bl[l] != bl[r]) FOR(i,(bl[r] - <span class="number">1</span>) * blo + <span class="number">1</span>,r) a[i] += x;</span><br><span class="line">    FOR(i,bl[l] + <span class="number">1</span>,bl[r] - <span class="number">1</span>) tag[i] += x;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read(),blo = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) a[i] = read();</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) bl[i] = (i - <span class="number">1</span>)/blo + <span class="number">1</span>;</span><br><span class="line">    Rint opt,l,r,c;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        opt = read() , l = read() , r = read() , c = read();</span><br><span class="line">        opt ? (<span class="keyword">void</span>)(<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[r] + tag[bl[r]])) : update(l,r,c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h1 id="数列分块入门-2"><a href="#数列分块入门-2" class="headerlink" title="数列分块入门 2"></a>数列分块入门 2</h1><p><a href="https://loj.ac/problem/6278" target="_blank" rel="noopener">[LOJ 6278]</a></p>
+<h2 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h2><p>给出一个长度为$n$的数列，以及$n$个操作，操作涉及区间加法，询问区间内小于某个值$x$的元素个数。</p>
+<p>$1\leq l\leq r\leq n\leq 50000$，输入的所有数均为$\text{int}$范围的整数。</p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>将数列分成长为$S$的块。</p>
+<p>修改就对整块打$\text{tag}$，对不完整的块暴力修改、排序，复杂度$O(\lfloor\frac{n}{S}\rfloor+S\log_2S)$。</p>
+<p>询问就对整块$\text{lower_bound}$，对不完整的块暴力，复杂度$O(\lfloor\frac{n}{S}\rfloor\log_2S+S)$。</p>
+<p>然后平衡一下，$S$ 取$\sqrt{n}$就好了。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><div><div class="fold_hider"><div class="close hider_title">こ↑こ↓</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">50010</span> , SN = <span class="number">250</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo,bl[N],bid[SN];</span><br><span class="line">LL a[N],b[N],tag[SN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,LL val)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r] , res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,l,r) res += a[i] &lt; (val - tag[lb]);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>) res += lower_bound(b + bid[i - <span class="number">1</span>] + <span class="number">1</span>,b + bid[i] + <span class="number">1</span>,val - tag[i]) - b - bid[i - <span class="number">1</span>] - <span class="number">1</span>;</span><br><span class="line">    FOR(i,l,bid[lb]) res += a[i] &lt; (val - tag[lb]);</span><br><span class="line">    ROF(i,r,bid[rb - <span class="number">1</span>] + <span class="number">1</span>) res += a[i] &lt; (val - tag[rb]);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,LL val)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r];</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,bid[lb - <span class="number">1</span>] + <span class="number">1</span>,bid[lb])&#123;</span><br><span class="line">            <span class="keyword">if</span>(l &lt;= i &amp;&amp; i &lt;= r) a[i] += val;</span><br><span class="line">            b[i] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sort(b + bid[lb - <span class="number">1</span>] + <span class="number">1</span>,b + bid[lb] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>) tag[i] += val;</span><br><span class="line">    FOR(i,bid[lb - <span class="number">1</span>] + <span class="number">1</span>,bid[lb])&#123;</span><br><span class="line">        <span class="keyword">if</span>(l &lt;= i) a[i] += val;</span><br><span class="line">        b[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,bid[rb - <span class="number">1</span>] + <span class="number">1</span>,bid[rb])&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt;= r) a[i] += val;</span><br><span class="line">        b[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sort(b + bid[lb - <span class="number">1</span>] + <span class="number">1</span>,b + bid[lb] + <span class="number">1</span>),sort(b + bid[rb - <span class="number">1</span>] + <span class="number">1</span>,b + bid[rb] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read() , blo = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) b[i] = a[i] = read();</span><br><span class="line">    Rint opt,l,r,c = <span class="number">1</span>;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n - <span class="number">1</span>)&#123;</span><br><span class="line">        bl[i] = c;</span><br><span class="line">        <span class="keyword">if</span>(!(i % blo)) bid[c++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    bl[n] = c , bid[c] = n;</span><br><span class="line">    FOR(i,<span class="number">1</span>,c) sort(b + bid[i - <span class="number">1</span>] + <span class="number">1</span>,b + bid[i] + <span class="number">1</span>);</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        opt = read() , l = read() , r = read() , c = read();</span><br><span class="line">        <span class="keyword">if</span>(opt) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(l,r,<span class="number">1l</span>l * c * c));</span><br><span class="line">        <span class="keyword">else</span> update(l,r,<span class="number">1l</span>l * c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h1 id="数列分块入门-3"><a href="#数列分块入门-3" class="headerlink" title="数列分块入门 3"></a>数列分块入门 3</h1><p><a href="https://loj.ac/problem/6279" target="_blank" rel="noopener">[LOJ 6279]</a></p>
+<h2 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，以及$n$个操作，操作涉及区间加法，询问区间内$x$的前驱。</p>
+<p>$1\leq l\leq r\leq n\leq 100000$，输入的所有数均为$\text{int}$范围的整数。</p>
+<p>$\text{TL:1500ms}$</p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>基本同上「数列分块入门 2」，但是不能直接排序（复杂度$O(n\sqrt{n}\log_2n)$）而是需要用一些数据结构存储每个块的信息。</p>
+<p>本人代码使用$set$存储每个块的信息。</p>
+<p>微妙地调整块大小应该可以过吧……本人代码采用的是$S=n^{0.612}$</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><div><div class="fold_hider"><div class="close hider_title">こ↑こ↓</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">100010</span> , SN = <span class="number">330</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo,a[N],bl[N],bid[SN],tag[SN];</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s[SN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r];</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,l,r)&#123;</span><br><span class="line">            s[lb].erase(a[i]);</span><br><span class="line">            a[i] += v;</span><br><span class="line">            s[lb].insert(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>) tag[i] += v;</span><br><span class="line">    FOR(i,l,bid[lb])     s[lb].erase(a[i]),a[i] += v,s[lb].insert(a[i]);</span><br><span class="line">    ROF(i,r,bid[rb<span class="number">-1</span>]+<span class="number">1</span>) s[rb].erase(a[i]),a[i] += v,s[rb].insert(a[i]);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r] , ans = INT_MIN;</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,l,r) <span class="keyword">if</span>(a[i] + tag[lb] &lt; v &amp;&amp; ans &lt; a[i] + tag[lb]) ans = a[i] + tag[lb];</span><br><span class="line">        <span class="keyword">return</span> ans &gt; INT_MIN ? ans : <span class="number">-1</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>)&#123;</span><br><span class="line">        reg <span class="keyword">auto</span> it = s[i].lower_bound(v - tag[i]);<span class="comment">//set&lt;int&gt;::iterator</span></span><br><span class="line">        <span class="keyword">if</span>(it == s[i].begin()) <span class="keyword">continue</span>;</span><br><span class="line">        --it;</span><br><span class="line">        <span class="keyword">if</span>(ans &lt; *it + tag[i]) ans = *it + tag[i];</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,l,bid[lb])     <span class="keyword">if</span>(a[i] + tag[lb] &lt; v &amp;&amp; ans &lt; a[i] + tag[lb]) ans = a[i] + tag[lb];</span><br><span class="line">    ROF(i,r,bid[rb<span class="number">-1</span>]+<span class="number">1</span>) <span class="keyword">if</span>(a[i] + tag[rb] &lt; v &amp;&amp; ans &lt; a[i] + tag[rb]) ans = a[i] + tag[rb];</span><br><span class="line">    <span class="keyword">return</span> ans &gt; INT_MIN ? ans : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read() , blo = <span class="built_in">ceil</span>(<span class="built_in">pow</span>(n,<span class="number">0.612</span>));</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) a[i] = read();</span><br><span class="line">    Rint opt,l,r,c = <span class="number">1</span>;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n - <span class="number">1</span>)&#123;</span><br><span class="line">        bl[i] = c;</span><br><span class="line">        <span class="keyword">if</span>(!(i % blo)) bid[c++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    bl[n] = c , bid[c] = n;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) s[bl[i]].insert(a[i]);</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        opt = read() , l = read() , r = read() , c = read();</span><br><span class="line">        <span class="keyword">if</span>(opt) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(l,r,c));</span><br><span class="line">        <span class="keyword">else</span> update(l,r,c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h1 id="数列分块入门-4"><a href="#数列分块入门-4" class="headerlink" title="数列分块入门 4"></a>数列分块入门 4</h1><p><a href="https://loj.ac/problem/6280" target="_blank" rel="noopener">[LOJ 6280]</a></p>
+<h2 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，以及$n$个操作，操作涉及区间加法，区间求和并对$c$取模(每个询问给出)。</p>
+<p>$1\leq l\leq r\leq n\leq 50000,c&gt;0$,输入的所有数均为$\text{int}$范围的整数。</p>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>经典问题，经典中的经典。</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><div><div class="fold_hider"><div class="close hider_title">こ↑こ↓</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">50010</span> , SN = <span class="number">250</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo,bl[N],bid[SN];</span><br><span class="line">LL a[N],tag[SN],sum[SN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,LL p)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r];</span><br><span class="line">    reg LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,l,r) ans += a[i] + tag[lb];</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)(((ans %= (p + <span class="number">1</span>)) &lt; <span class="number">0</span>) ? ans + p + <span class="number">1</span> : ans);</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>) ans += sum[i];</span><br><span class="line">    FOR(i,l,bid[lb])     ans += a[i] + tag[lb];</span><br><span class="line">    ROF(i,r,bid[rb<span class="number">-1</span>]+<span class="number">1</span>) ans += a[i] + tag[rb];</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(((ans %= (p + <span class="number">1</span>)) &lt; <span class="number">0</span>) ? ans + p + <span class="number">1</span> : ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,LL val)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r];</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,l,r) a[i] += val , sum[lb] += val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>) tag[i] += val , sum[i] += val * blo;</span><br><span class="line">    FOR(i,l,bid[lb])     a[i] += val , sum[lb] += val;</span><br><span class="line">    ROF(i,r,bid[rb<span class="number">-1</span>]+<span class="number">1</span>) a[i] += val , sum[rb] += val;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	FILE("a13");</span></span><br><span class="line">    n = read() , blo = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) a[i] = read();</span><br><span class="line">    Rint opt,l,r,c = <span class="number">1</span>;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n - <span class="number">1</span>)&#123;</span><br><span class="line">        bl[i] = c;</span><br><span class="line">        <span class="keyword">if</span>(!(i % blo)) bid[c++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    bl[n] = c,bid[c] = n;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) i[bl][sum] += a[i];</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        opt = read() , l = read() , r = read() , c = read();</span><br><span class="line">        opt ? (<span class="keyword">void</span>)(<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(l,r,(LL)c))) : update(l,r,(LL)c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h1 id="数列分块入门-5"><a href="#数列分块入门-5" class="headerlink" title="数列分块入门 5"></a>数列分块入门 5</h1><p><a href="https://loj.ac/problem/6281" target="_blank" rel="noopener">[LOJ 6281]</a></p>
+<h2 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，以及$n$个操作，操作涉及区间开方，区间求和。</p>
+<p>$1\leq l\leq r\leq n\leq 50000$,输入的所有数均为$\text{int}$范围的自然数。</p>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p><del>什么这不是线段树题吗</del></p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><p><del>只写了线段树的代码，就不放了……</del></p>
+<h1 id="数列分块入门-6"><a href="#数列分块入门-6" class="headerlink" title="数列分块入门 6"></a>数列分块入门 6</h1><p><a href="https://loj.ac/problem/6282" target="_blank" rel="noopener">[LOJ 6282]</a></p>
+<h2 id="题意-5"><a href="#题意-5" class="headerlink" title="题意"></a>题意</h2><p>给出一个长度为$n$的数列，以及$n$个操作，操作涉及单点插入，单点查询。</p>
+<p>$1\leq l\leq r\leq n\leq 100000$,输入的所有数均为$\text{int}$范围的整数。</p>
+<div><div class="fold_hider"><div class="close hider_title">输入输出：</div></div><div class="fold">
+<p>第一行，一个数字$n$。</p>
+<p>第二行$n$个数字，第$i$个数字为$a_i$。</p>
+<p>接下来$n$行操作，每组操作输入四个数字$opt,l,r,c$。</p>
+<p>若$opt=0$，表示在第$l$个数字前插入数字$r$。</p>
+<p>若$opt=1$，表示询问$a_r$的值。</p>
+<p>对每组$opt=1$的询问，输出一行一个整数，为$a_r$的值。</p>
+<p><del>什么？你问我c干啥用的？我也想知道</del></p>
+
+</div></div>
+
+<h2 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h2><p>先把原序列分块，块大小$S$，块数$Bl$。</p>
+<p>使用$\text{vector}$存储每一块信息。插入时暴力插入，将该块后面的元素都后移一位，复杂度$O(S)$；查询也是暴力，复杂度$O(Bl)$。</p>
+<p>但是可能在一个块里有大量插入，此时该块大小将远远超过$S$，复杂度退化。</p>
+<p>可以当某个块过大时，将该块分为两个，暴力重构，时间复杂度$O(n)$（若使用链表，可以锐减至$O(S+Bl)$。）</p>
+<p>也可以考虑每$m$次插入后对序列进行重构，复杂度也为$O(n)$。</p>
+<p><del>喂这种要”保持平衡”的思想不是和平衡树差不多吗你怎么不写棵平衡树</del></p>
+<h2 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h2><p>本人采用的是$S=\sqrt{n}$，在块大小不小于$2S$时将该块分为两个，暴力拆块，复杂度$O(n)$。</p>
+<p>由于最多只会拆$\sqrt{n}$次块，拆块复杂度$O(n\sqrt{n})$，可以通过此题。</p>
+<div><div class="fold_hider"><div class="close hider_title">指针恐惧症慎入。</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">200010</span> , SN = <span class="number">650</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo,bn;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;a[SN];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rsiz(h) ((int)((h)-&gt;size()))</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> t,<span class="keyword">int</span> val)</span></span>&#123;<span class="comment">//在序号t的数后面插入数val </span></span><br><span class="line">    reg <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; *k = a;</span><br><span class="line">    <span class="keyword">while</span>(rsiz(k + <span class="number">1</span>) &lt;= t &amp;&amp; (k - a) &lt; bn) ++k,t -= rsiz(k);</span><br><span class="line">    ++k;</span><br><span class="line">    <span class="keyword">if</span>((k - a) &gt; bn) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(t &lt; <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">    k -&gt; insert((k -&gt; begin()) + t,val);</span><br><span class="line">    <span class="keyword">if</span>(rsiz(k) &gt;= <span class="number">2</span> * blo)&#123;</span><br><span class="line">        ROF(i,bn,k - a + <span class="number">1</span>) a[i + <span class="number">1</span>] = a[i];</span><br><span class="line">        (k + <span class="number">1</span>) -&gt; clear();</span><br><span class="line">        FOR(i,blo,rsiz(k) - <span class="number">1</span>) (k + <span class="number">1</span>) -&gt; pb((*k)[i]);</span><br><span class="line">        <span class="keyword">while</span>(rsiz(k) &gt; blo) k -&gt; erase((k -&gt; end()) - <span class="number">1</span>);</span><br><span class="line">        ++bn;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> t)</span></span>&#123;<span class="comment">//查找序号为t的数 </span></span><br><span class="line">    --t; </span><br><span class="line">    reg <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; *k = a;</span><br><span class="line">    <span class="keyword">while</span>(rsiz(k + <span class="number">1</span>) &lt;= t &amp;&amp; (k - a) &lt; bn) ++k,t -= rsiz(k);</span><br><span class="line">    ++k;</span><br><span class="line">    <span class="keyword">if</span>((k - a) &gt; bn) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(t &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> (*k)[t];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read() , blo = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    Rint opt,l,r = <span class="number">0</span>,c = <span class="number">1</span>;</span><br><span class="line">    bn = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(n));</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        a[c].pb(read());</span><br><span class="line">        ++r;</span><br><span class="line">        <span class="keyword">if</span>(r == blo) ++c,r = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        opt = read() , l = read() , r = read() , read();</span><br><span class="line">        opt ? (<span class="keyword">void</span>)(<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(r))) : update(l - <span class="number">1</span>,r);</span><br><span class="line"><span class="comment">//		printf("Siz : "); FOR(i,1,bn) printf("%d ",rsiz(a + i)); puts("");</span></span><br><span class="line"><span class="comment">//		FOR(i,1,bn)&#123; printf("a[%d] : ",i); FOR(j,0,rsiz(a + i) - 1) printf("%d ",a[i][j]); puts(""); &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h1 id="数列分块入门-7"><a href="#数列分块入门-7" class="headerlink" title="数列分块入门 7"></a>数列分块入门 7</h1><p><a href="https://loj.ac/problem/6283" target="_blank" rel="noopener">[LOJ 6283]</a></p>
+<h2 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，以及$n$操作，操作涉及区间加法，区间乘法，单点询问。</p>
+<p>$1\leq l\leq r\leq n\leq 100000$,输入的所有数均为$\text{int}$范围的整数，询问对$10007$取模。</p>
+<p><del>所以为什么不是查询区间和</del></p>
+<h2 id="思路-6"><a href="#思路-6" class="headerlink" title="思路"></a>思路</h2><p><del>右转线段树模板，请</del></p>
+<p><del>反正分块的思路基本相同，只是tag不用下传</del></p>
+<h2 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h2><p>只写了线段树，所以不贴了。</p>
+<h1 id="数列分块入门-8"><a href="#数列分块入门-8" class="headerlink" title="数列分块入门 8"></a>数列分块入门 8</h1><p><a href="https://loj.ac/problem/6284" target="_blank" rel="noopener">[LOJ 6284]</a></p>
+<h2 id="题意-7"><a href="#题意-7" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，以及$n$个操作，操作涉及区间询问等于一个数  的元素，并将这个区间的所有元素改为$c$。</p>
+<p>$1\leq l\leq r\leq n\leq 100000$,输入的所有数均为$\text{int}$范围的整数。</p>
+<div><div class="fold_hider"><div class="close hider_title">输入输出：</div></div><div class="fold">
+<p>第一行，一个数字$n$。</p>
+<p>第二行，$n$个数字，第$i$个为$a_i$。</p>
+<p>接下来输入$n$行询问，每行三个数字$l,r,c$。</p>
+<p>表示先查询位于$[l,r]$的数字有多少个是$c$，再将$[l,r]$内的数字都改为$c$。</p>
+<p><strong>数据不随机。</strong></p>
+
+</div></div>
+
+<h2 id="思路-7"><a href="#思路-7" class="headerlink" title="思路"></a>思路</h2><p>分块，块大小$\sqrt{n}$，每块记录一下是否全部相等，若是则$O(1)$处理，不是则暴力扫一遍。不完整的块也暴力处理。</p>
+<p>这样复杂度看上去最坏是$O(n)$的。然而，当经过了一次$O(n)$的询问后，几乎所有块都变得相等了。而一次操作最多将$2$个块变得不等，所以至少需要$\sqrt{n}$次操作后才可能再次出现$O(n)$的最坏复杂度。综合一下，可得复杂度是$O(n\sqrt{n})$，可以通过此题。</p>
+<p><strong>本人的说法可能不够严谨，希望有人可以提供更好的解释方法！</strong></p>
+<h2 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h2><div><div class="fold_hider"><div class="close hider_title">こ↑こ↓</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">100010</span> , SN = <span class="number">450</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo,a[N],sam[SN],bl[N],bid[SN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> b)</span></span>&#123;<span class="comment">//更新某个块状态 </span></span><br><span class="line">    <span class="keyword">if</span>(!sam[b]) <span class="keyword">return</span>;</span><br><span class="line">    FOR(i,bid[b - <span class="number">1</span>] + <span class="number">1</span>,bid[b] - <span class="number">1</span>) a[i] = b[bid][a];</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">void</span>)(sam[b] = <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">slove</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r] , res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        update(lb);</span><br><span class="line">        FOR(i,l,r) (a[i] == val) ? (++res) : (a[i] = val) ;</span><br><span class="line">        sam[lb] = (l == bid[lb - <span class="number">1</span>] + <span class="number">1</span> &amp;&amp; r == bid[lb]);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    update(lb);</span><br><span class="line">    ROF(i,bid[lb],l)     (a[i] == val) ? (++res) : (a[i] = val) ;</span><br><span class="line">    sam[lb] = (l == bid[lb - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">    update(rb);</span><br><span class="line">    FOR(i,bid[rb<span class="number">-1</span>]+<span class="number">1</span>,r) (a[i] == val) ? (++res) : (a[i] = val) ;</span><br><span class="line">    sam[rb] = (r == bid[rb]);</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(sam[i])&#123;</span><br><span class="line">            (i[bid][a] == val) ? (res += blo) : (i[bid][a] = val);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        FOR(j,bid[i - <span class="number">1</span>] + <span class="number">1</span>,bid[i]) (a[j] == val) ? ++res : a[j] = val ;</span><br><span class="line">        sam[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read() , blo = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    Rint l,r,c = <span class="number">1</span>;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n - <span class="number">1</span>)&#123;</span><br><span class="line">        a[i] = read() , bl[i] = c;</span><br><span class="line">        <span class="keyword">if</span>(!(i % blo)) sam[c] = <span class="number">1</span>,bid[c++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    a[n] = read() , bl[n] = c , bid[c] = n;</span><br><span class="line">    FOR(i,<span class="number">1</span>,c) FOR(j,bid[i<span class="number">-1</span>] + <span class="number">1</span>,bid[i] - <span class="number">1</span>) <span class="keyword">if</span>(a[j] != i[bid][a])&#123; sam[i] = <span class="number">0</span>; <span class="keyword">break</span>; &#125;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        l = read() , r = read() , c = read();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,slove(l,r,c));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h2 id="加强"><a href="#加强" class="headerlink" title="加强"></a>加强</h2><p>啊说起来本题还可以加强的来着。</p>
+<p>给出一个长为$n$的数列，以及$n$个操作，操作涉及区间询问等于一个数  的元素，或将这个区间的所有元素改为$c$。</p>
+<div><div class="fold_hider"><div class="close hider_title">具体地：</div></div><div class="fold">
+<p>第一行，一个整数$n$。</p>
+<p>第二行，$n$个整数，第$i$个为$a_i$。</p>
+<p>接下来输入$n$行询问，每行四个整数$opt,l,r,c$。</p>
+<p>若$opt=0$，表示将$[l,r]$内的所有数改为$c$。</p>
+<p>若$opt=1$，输出一行一个整数，表示$[l,r]$内有多少个数是$c$。</p>
+<p><strong>数据不随机</strong>。</p>
+
+</div></div>
+
+<ol>
+<li>$1\leq l\leq r\leq n\leq 100000$，所有输入的数均在$\text{int}$范围内，不强制在线。</li>
+<li>$1\leq l\leq r\leq n\leq 50000$，所有输入的数均在$\text{int}$范围内，<strong>强制在线</strong>。</li>
+</ol>
+<p>$\text{TL:1000ms}$</p>
+<h3 id="思路-8"><a href="#思路-8" class="headerlink" title="思路"></a>思路</h3><p>好像和原题没什么关系了……</p>
+<p>不强制在线的话，可以先离散化，然后分成$\sqrt{n}$大小的块。</p>
+<p>每个块用$O(n)$的空间存储每种数的数量，如果全部相同则打$\text{tag}$。</p>
+<p>首先，单点修改是$O(1)$的（某种数的数量$+1$，某种数的数量$-1$），整块修改也是$O(1)$的（打$\text{tag}$）。</p>
+<p>不完整的块的修改则是$O(\sqrt{n})$的（可能需要拆$\text{tag}$，拆掉后相当于整个块进行修改，也是$O(\sqrt{n})$的）。</p>
+<p>查询时，显然对于整块是$O(1)$的，对于不完整的块暴力是$O(\sqrt{n})$的。</p>
+<p>所以时间复杂度和空间复杂度都是$O(n\sqrt{n})$，可以通过此题。</p>
+<p>强制在线的话，可以用$\text{map}$来使空间复杂度保持$O(n\sqrt{n})$，而时间复杂度将变为$O(n\sqrt{n}\log_2n)$，<del>大概应该或许能通过此题</del>。</p>
+<p><strong>因加强版未找到题目，对于强制在线的时间复杂度，若能在保证空间的情况下做到更优，欢迎在评论区指出或私信本人！</strong></p>
+<h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h3><div><div class="fold_hider"><div class="close hider_title">こ↑こ↓</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> my_std&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Rint register int</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(register int i=(a);i&lt;=(b);++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROF(i,a,b) for(register int i=(a);i&gt;=(b);--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FORit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)+1;++i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ROFit(templ,arr,i,a,b) for(register templ *i=(arr)+(a);i!=(arr)+(b)-1;--i)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> GO(x,p,e,i,v) for(register int i=p[x].head,v;i;i=e[i].link)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MEM(x,v) memset(x,v,sizeof(x))</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pq priority_queue</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> DB;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> c=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123; f^=(c==<span class="string">'-'</span>); c=getchar(); &#125;</span><br><span class="line">        <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) ans=(ans&lt;&lt;<span class="number">1</span>)+(ans&lt;&lt;<span class="number">3</span>)+(c^<span class="number">48</span>); <span class="keyword">return</span> f?ans:-ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span> , N = <span class="number">100010</span> , SN = <span class="number">280</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span>&#123; x+=y; <span class="keyword">if</span>(x&gt;=mod) x-=mod; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> x,LL y)</span></span>&#123; <span class="keyword">int</span> res=<span class="number">1</span>; <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=<span class="number">1l</span>l*x*x%mod) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%mod; <span class="keyword">return</span> res;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; <span class="keyword">if</span>(x&lt;y) swap(x,y); <span class="keyword">return</span> y?gcd(y,x%y):x; &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> FILE(s) freopen(s<span class="meta-string">".in"</span>,<span class="meta-string">"r"</span>,stdin),freopen(s<span class="meta-string">".out"</span>,<span class="meta-string">"w"</span>,stdout)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> my_std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,blo,a[N],b[N &lt;&lt; <span class="number">1</span>],bl[N],bid[SN],siz,sam[SN];</span><br><span class="line"><span class="keyword">int</span> num[SN][N &lt;&lt; <span class="number">1</span>],ql[N],qr[N],qc[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!sam[b]) <span class="keyword">return</span>;</span><br><span class="line">    Rint v = b[bid][a];</span><br><span class="line">    FOR(i,bid[b - <span class="number">1</span>] + <span class="number">1</span>,bid[b] - <span class="number">1</span>) --num[b][a[i]] , a[i] = v , ++num[b][v];</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r] , res = <span class="number">0</span>;</span><br><span class="line">    check(lb);</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        FOR(i,l,r) res += (a[i] == val);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    check(rb);</span><br><span class="line">    FOR(i,l,bid[lb])     res += (a[i] == val);</span><br><span class="line">    ROF(i,r,bid[rb<span class="number">-1</span>]+<span class="number">1</span>) res += (a[i] == val);</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>) res += sam[i] ? ((i[bid][a] == val) ? blo : <span class="number">0</span>) : num[i][val] ;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    Rint lb = bl[l] , rb = bl[r];</span><br><span class="line">    <span class="keyword">if</span>(lb == rb)&#123;</span><br><span class="line">        <span class="keyword">if</span>(sam[lb])&#123;</span><br><span class="line">            FOR(i,bid[lb - <span class="number">1</span>] + <span class="number">1</span>,bid[lb])&#123;</span><br><span class="line">                --num[lb][a[i]];</span><br><span class="line">                a[i] = (l &lt;= i &amp;&amp; i &lt;= r) ? val : lb[bid][a] ;</span><br><span class="line">                ++num[lb][a[i]];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">void</span>)(sam[lb] = (l == bid[lb - <span class="number">1</span>] + <span class="number">1</span> &amp;&amp; r == bid[lb]));</span><br><span class="line">        &#125;</span><br><span class="line">        FOR(i,l,r) --num[lb][a[i]] , a[i] = val , ++num[lb][a[i]];</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">void</span>)(sam[lb] = (l == bid[lb - <span class="number">1</span>] + <span class="number">1</span> &amp;&amp; r == bid[lb]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(sam[lb])&#123;</span><br><span class="line">        FOR(i,bid[lb - <span class="number">1</span>] + <span class="number">1</span>,bid[lb]) --num[lb][a[i]] , a[i] = ((l &lt;= i) ? val : lb[bid][a]) , ++num[lb][a[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> FOR(i,l,bid[lb])     --num[lb][a[i]] , a[i] = val , ++num[lb][val];</span><br><span class="line">    <span class="keyword">if</span>(sam[rb])&#123;</span><br><span class="line">        FOR(i,bid[rb - <span class="number">1</span>] + <span class="number">1</span>,bid[rb]) --num[rb][a[i]] , a[i] = ((i &lt;= r) ? val : rb[bid][a]) , ++num[rb][a[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> FOR(i,bid[rb<span class="number">-1</span>]+<span class="number">1</span>,r) --num[rb][a[i]] , a[i] = val , ++num[rb][val];</span><br><span class="line">    sam[lb] = (l == bid[lb - <span class="number">1</span>] + <span class="number">1</span>) , sam[rb] = (r == bid[rb]);</span><br><span class="line">    FOR(i,lb + <span class="number">1</span>,rb - <span class="number">1</span>)&#123;</span><br><span class="line">        sam[i] = <span class="number">1</span>;</span><br><span class="line">        --num[i][i[bid][a]] , i[bid][a] = val , ++num[i][val];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read() , blo = <span class="built_in">ceil</span>(<span class="built_in">pow</span>(n,<span class="number">0.514</span>)) , siz = n;</span><br><span class="line"><span class="comment">//	return printf("%d %d\n",blo,(int)(ceil(n / (DB)blo))),0;</span></span><br><span class="line">    Rint t = <span class="number">1</span>;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n - <span class="number">1</span>)&#123;</span><br><span class="line">        b[i] = a[i] = read() , bl[i] = t;</span><br><span class="line">        <span class="keyword">if</span>(!(i % blo)) bid[t++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    b[n] = a[n] = read() , bl[n] = t , bid[t] = n;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n) ql[i] = read() , qr[i] = read() , qc[i] = read() , b[++siz] = qc[i];</span><br><span class="line">    sort(b + <span class="number">1</span>,b + siz + <span class="number">1</span>);</span><br><span class="line">    siz = unique(b + <span class="number">1</span>,b + siz + <span class="number">1</span>) - b - <span class="number">1</span>;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        a[i] = lower_bound(b + <span class="number">1</span>,b + siz + <span class="number">1</span>,a[i]) - b;</span><br><span class="line">        qc[i] = lower_bound(b + <span class="number">1</span>,b + siz + <span class="number">1</span>,qc[i]) - b;</span><br><span class="line">        t = bl[i];</span><br><span class="line">        num[t][a[i]]++;</span><br><span class="line">        <span class="keyword">if</span>(i == bid[t] &amp;&amp; num[t][a[i]] == bid[t] - bid[t - <span class="number">1</span>]) sam[t] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(ql[i],qr[i],qc[i]));</span><br><span class="line">        update(ql[i],qr[i],qc[i]);</span><br><span class="line">        <span class="meta">#<span class="meta-keyword">ifdef</span> NTF_AK_IOI</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Maybe the array : "</span>); FOR(i,<span class="number">1</span>,n) <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]); <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">        FOR(i,<span class="number">1</span>,bl[n])&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"block[%d] : "</span>,i);</span><br><span class="line">            <span class="keyword">if</span>(sam[i])&#123; <span class="built_in">printf</span>(<span class="string">"same %d\n"</span>,i[bid][a]); <span class="keyword">continue</span>; &#125;</span><br><span class="line">            FOR(j,<span class="number">1</span>,siz) <span class="built_in">printf</span>(<span class="string">"%d "</span>,num[i][j]); <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h1 id="数列分块入门-9"><a href="#数列分块入门-9" class="headerlink" title="数列分块入门 9"></a>数列分块入门 9</h1><p><a href="https://loj.ac/problem/6285" target="_blank" rel="noopener">[LOJ 6285]</a></p>
+<h2 id="题意-8"><a href="#题意-8" class="headerlink" title="题意"></a>题意</h2><p>给出一个长为$n$的数列，以及$n$个询问，询问涉及求区间最小众数。</p>
+<p>$1\leq l\leq r\leq n\leq 100000$,输入的所有数均为$\text{int}$范围的整数，<strong>不强制在线</strong>。</p>
+<h2 id="思路-9"><a href="#思路-9" class="headerlink" title="思路"></a>思路</h2><p>离线下来，做个莫队，块大小$\lfloor\frac{n}{\sqrt{n\log_2n}}\rfloor$。</p>
+<p>具体实现我不会……啊啊我好菜</p>
+<h2 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h2><p><del>我不会啊</del></p>
+<h2 id="加强-1"><a href="#加强-1" class="headerlink" title="加强"></a>加强</h2><p><strong>强制在线</strong>。见<a href="../强制在线不带修区间众数相关-学习笔记">强制在线不带修区间众数</a>。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分块/" rel="tag"># 分块</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/20190801/" rel="next" title="漫无止境的八月计划">
+                <i class="fa fa-chevron-left"></i> 漫无止境的八月计划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/强制在线不带修区间众数相关-学习笔记/" rel="prev" title="强制在线不带修区间众数相关 学习笔记">
+                强制在线不带修区间众数相关 学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Okazaki Yumemi">
+            
+              <p class="site-author-name" itemprop="name">Okazaki Yumemi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/OkazakiYumemi" title="GitHub &rarr; https://github.com/OkazakiYumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.luogu.org/space/show?uid=76107" title="洛谷 &rarr; https://www.luogu.org/space/show?uid=76107" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>洛谷</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://codeforces.com/profile/Okazaki_Yumemi" title="Codeforces &rarr; https://codeforces.com/profile/Okazaki_Yumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Codeforces</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://atcoder.jp/users/OkazakiYumemi" title="Atcoder &rarr; https://atcoder.jp/users/OkazakiYumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Atcoder</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Following
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mcfx.us/" title="https://mcfx.us/" rel="noopener" target="_blank">mcfx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://negiizhao.blog.uoj.ac/archive" title="http://negiizhao.blog.uoj.ac/archive" rel="noopener" target="_blank">negiizhao</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://olddrivertree.blog.uoj.ac/archive/" title="http://olddrivertree.blog.uoj.ac/archive/" rel="noopener" target="_blank">ODT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://memset0.cn/" title="https://memset0.cn/" rel="noopener" target="_blank">memset0</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://studyingfather.blog.luogu.org/" title="https://studyingfather.blog.luogu.org/" rel="noopener" target="_blank">studyingfather</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://min-25.hatenablog.com/" title="https://min-25.hatenablog.com/" rel="noopener" target="_blank">min_25</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://nikaidou-shinku.github.io/" title="https://nikaidou-shinku.github.io/" rel="noopener" target="_blank">yurzhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qq_38609262https://blog.csdn.net/qq_38609262" title="https://blog.csdn.net/qq_38609262https://blog.csdn.net/qq_38609262" rel="noopener" target="_blank">mayaohua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yfzcsc/" title="https://blog.csdn.net/yfzcsc/" rel="noopener" target="_blank">yfzcsc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/suwakow/" title="https://www.cnblogs.com/suwakow/" rel="noopener" target="_blank">suwakow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">deco</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xht37.com/" title="https://www.xht37.com/" rel="noopener" target="_blank">xht37</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ccz181078/" title="https://www.cnblogs.com/ccz181078/" rel="noopener" target="_blank">ccz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="https://www.cnblogs.com/cjyyb/" rel="noopener" target="_blank">yyb</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/PinkRabbit/" title="https://www.cnblogs.com/PinkRabbit/" rel="noopener" target="_blank">PinkRabbit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.com.cn/blog/wucstdio/" title="https://www.luogu.com.cn/blog/wucstdio/" rel="noopener" target="_blank">wucstdio</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/NaCly-Fish-blog/" title="https://www.luogu.org/blog/NaCly-Fish-blog/" rel="noopener" target="_blank">NaCly_Fish</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://rqy.moe/" title="https://rqy.moe/" rel="noopener" target="_blank">rqy</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/yzhang-rp-inf/" title="https://www.cnblogs.com/yzhang-rp-inf/" rel="noopener" target="_blank">yzhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/EI_Captain" title="https://blog.csdn.net/EI_Captain" rel="noopener" target="_blank">EI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mrsrz.github.io/" title="https://mrsrz.github.io/" rel="noopener" target="_blank">mrsrz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/LJC00118/" title="https://www.cnblogs.com/LJC00118/" rel="noopener" target="_blank">LJC00118</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/1000Suns/" title="https://www.cnblogs.com/1000Suns/" rel="noopener" target="_blank">AThousandSuns</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.yznheya.top/blog/" title="http://www.yznheya.top/blog/" rel="noopener" target="_blank">朝田诗乃</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.com.cn/blog/command-block/" title="https://www.luogu.com.cn/blog/command-block/" rel="noopener" target="_blank">command_block</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ouuan.github.io" title="https://ouuan.github.io" rel="noopener" target="_blank">ouuan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/owencodeisking" title="https://www.cnblogs.com/owencodeisking" rel="noopener" target="_blank">owencodeisking</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/p-b-p-b/" title="https://www.cnblogs.com/p-b-p-b/" rel="noopener" target="_blank">p_b_p_b</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ustze.cn/" title="http://www.ustze.cn/" rel="noopener" target="_blank">ustze</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://foreverlasting1202.github.io/" title="https://foreverlasting1202.github.io/" rel="noopener" target="_blank">foreverlasting</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/bztMinamoto/" title="https://www.cnblogs.com/bztMinamoto/" rel="noopener" target="_blank">bztMinamoto</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://flower233pks.github.io/" title="https://flower233pks.github.io/" rel="noopener" target="_blank">皎月半洒花</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjjsb/" title="https://www.cnblogs.com/cjjsb/" rel="noopener" target="_blank">hl666</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/ShadowassIIXVIIIIV/" title="https://www.luogu.org/blog/ShadowassIIXVIIIIV/" rel="noopener" target="_blank">shadowice</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zory.ink/" title="https://zory.ink/" rel="noopener" target="_blank">zory</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qiuly.xyz/" title="https://qiuly.xyz/" rel="noopener" target="_blank">qiuly</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/AThousandMoons/" title="https://www.cnblogs.com/AThousandMoons/" rel="noopener" target="_blank">AThousandMoons</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://m-sea-blog.com/" title="http://m-sea-blog.com/" rel="noopener" target="_blank">M_sea</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://venusnero.github.io" title="https://venusnero.github.io" rel="noopener" target="_blank">Venus</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/chen-zhe/" title="https://www.luogu.org/blog/chen-zhe/" rel="noopener" target="_blank">chen_zhe</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-1"><span class="nav-number">1.</span> <span class="nav-text">数列分块入门 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-2"><span class="nav-number">2.</span> <span class="nav-text">数列分块入门 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-3"><span class="nav-number">3.</span> <span class="nav-text">数列分块入门 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-4"><span class="nav-number">4.</span> <span class="nav-text">数列分块入门 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-3"><span class="nav-number">4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-3"><span class="nav-number">4.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-5"><span class="nav-number">5.</span> <span class="nav-text">数列分块入门 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-4"><span class="nav-number">5.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-4"><span class="nav-number">5.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-4"><span class="nav-number">5.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-6"><span class="nav-number">6.</span> <span class="nav-text">数列分块入门 6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-5"><span class="nav-number">6.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-5"><span class="nav-number">6.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-5"><span class="nav-number">6.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-7"><span class="nav-number">7.</span> <span class="nav-text">数列分块入门 7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-6"><span class="nav-number">7.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-6"><span class="nav-number">7.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-6"><span class="nav-number">7.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-8"><span class="nav-number">8.</span> <span class="nav-text">数列分块入门 8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-7"><span class="nav-number">8.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-7"><span class="nav-number">8.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-7"><span class="nav-number">8.3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加强"><span class="nav-number">8.4.</span> <span class="nav-text">加强</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-8"><span class="nav-number">8.4.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-8"><span class="nav-number">8.4.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数列分块入门-9"><span class="nav-number">9.</span> <span class="nav-text">数列分块入门 9</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意-8"><span class="nav-number">9.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-9"><span class="nav-number">9.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-9"><span class="nav-number">9.3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加强-1"><span class="nav-number">9.4.</span> <span class="nav-text">加强</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Okazaki Yumemi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '6db7c68ddd3c276bde37',
+          clientSecret: '1974844dbe21a5dd8a900b8db524c7dc37012021',
+          repo: 'okazakiyumemi.github.io',
+          owner: 'OkazakiYumemi',
+          admin: ['OkazakiYumemi'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
