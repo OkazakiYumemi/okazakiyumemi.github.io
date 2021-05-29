@@ -3,7 +3,7 @@ title: 转区软件 Locale Emulator 简介
 urlname: Locale-Emulator
 date: 2021-02-28 13:25:37
 tags:
-- 配置
+- 工具
 categories:
 - 技术
 top:

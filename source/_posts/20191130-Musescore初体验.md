@@ -1,7 +1,9 @@
 ---
 title: Musescore初体验
 date: 2019-11-30 12:39:33
-tags: 配置
+tags:
+- 配置
+- 工具
 categories: 技术
 top:
 urlname: Musescore初体验
