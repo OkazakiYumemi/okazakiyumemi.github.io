@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ffmpeg 小记]]></title>
     <url>%2Fblog%2Fffmpeg-%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[被 myy 送退役了，于是这个 blog 以后可能大部分都是这些内容了。 ——2020.12.6 您是有多能咕…… 本文仅为个人使用笔记，不保证可读性。 安装ffmpeg 首先安装。Linux 用户显然会自己搞。 Windows 人得去下编译好的包，gyan.dev和BtbN不知道有什么区别。 然后ffmpeg --help就可以看到简短的帮助了。想看到完整的帮助可以ffmpeg -h full（长约 1MB 警告）。 简要介绍开始，随便输入一条指令：ffmpeg -i input.mp3 output.ogg。 这就是 ffmpeg 最基本的使用方式。 速查ffmpeg -codecs：查看 ffmpeg 支持的所有编码格式。 ffmpeg -help encoder=[code]：查看一个编码格式的详细信息和参数。 ffmpeg -formats：查看 ffmpeg 支持的所有封装格式。 ffmpeg -help muxer=[format]：查看一个编码格式的详细信息和参数。 ffmpeg -i [input_file]：查看关于input_file的格式信息。 -c用来指定输出文件流的编码。-c:v指定所有视频流的编码，-c:a指定所有音频流的编码。如果有多个流，亦可以采用-c:v:1来指定第 2 个视频流的编码。 偶尔可能会被要求加-strict -2。 -vn, -an, -sn禁用所有视频流、所有音频流、所有字幕流。还有一个-dn不会用。 当然使用-map可以解决上述所有功能，但是它们胜在比较短。 -ar, -r-ar指定音频流的采样率，以 Hz 为单位。比如-ar 32000指定音频流采样率为 32000 Hz。 -r指定视频流的帧率，以 Hz 为单位（就是平时说的「帧每秒(FPS)」啦）。 -s这个选项可以指定视频的尺寸，以像素为单位。例如-s 1280x720指定流视频流尺寸为 720P。 -t, -ss-t用来指定输出文件的持续时间，-ss用来指定输出文件相对于输入文件的开始时间。 比如-ss 12:25 -t 8:02会截取输入文件的 12 分 25 秒至 20 分 27 秒。 另外，可以写小数点，所以-t 1:14.514之类的参数是合法的。 -metadata用来设置输出文件的元数据。类似于-c，-metadata:a:0 title=&quot;my title&quot;之类的参数是合法的。 -b用来指定输出文件流的比特率。类似于-c，-b:a:0 128k之类的参数是合法的。 -map -map用来选择哪些流应该被包含到输出文件中。 上面那张图片解释得非常清楚了。 -map_metadata选择将某些流的元数据复制到输出文件的某些流中。（没用过，口胡的） 本人目前仅使用过-map_metadata -1，就是使输出文件不包含任何元数据。 -disposition选择流的处理方式。 有以下可选处理方式： 123456789101112131415defaultduboriginalcommentlyricskaraokeforcedhearing_impairedvisual_impairedclean_effectsattached_piccaptionsdescriptionsdependentmetadata 类似-c和-map_metadata，-disposition:1 default和-disposition:v:1 attached_pic等参数是合法的。 本人只用来给音频添加封面，然后发现直接ffmpeg -i in.mp3 -i pic.jpg -map 0 -map 1 -c copy out.mp3和另加上-disposition:1 attached_pic效果没有区别，因为只有一个视频流。 -threads字面意思，例如-threads 8指定开 8 个线程同时跑。 本人使用例curl下载网课（分段.ts）并用ffmpeg合并我比较菜找不到.m3u8，然后恰好某网站的.ts又是顺序排列的，于是直接请求到返回404为止，再ffmpeg合并就好了。 颇具 oi 风格的码风，坏 12345678910111213141516171819#!/bin/bashS="https://example.com/"rm list.infor ((i=0;$i&lt;=9999;i+=1))do j=$((i+10000))"" j=$&#123;j:1:4&#125; # echo $j info=`curl -I $S$j.ts` code=`echo $info|grep "HTTP"|awk '&#123;print $2&#125;'` if [ "$code" == "200" ]; then curl -O $S$j.ts echo file \'$j.ts\' &gt;&gt; list.in fidoneffmpeg -f concat -i list.in demo.mp4 参考资料ffmpeg Documentaion ffmpeg 中文手册]]></content>
+    <content type="text"><![CDATA[被 myy 送退役了，于是这个 blog 以后可能大部分都是这些内容了。 ——2020.12.6 您是有多能咕…… 本文仅为个人使用笔记，不保证可读性。 安装ffmpeg 首先安装。Linux 用户显然会自己搞。 Windows 人得去下编译好的包，gyan.dev和BtbN不知道有什么区别。 然后ffmpeg --help就可以看到简短的帮助了。想看到完整的帮助可以ffmpeg -h full（长约 1MB 警告）。 简要介绍开始，随便输入一条指令：ffmpeg -i input.mp3 output.ogg。 这就是 ffmpeg 最基本的使用方式。 速查ffmpeg -codecs：查看 ffmpeg 支持的所有编码格式。 ffmpeg -help encoder=[code]：查看一个编码格式的详细信息和参数。 ffmpeg -formats：查看 ffmpeg 支持的所有封装格式。 ffmpeg -help muxer=[format]：查看一个编码格式的详细信息和参数。 ffmpeg -i [input_file]：查看关于input_file的格式信息。 -c用来指定输出文件流的编码。-c:v指定所有视频流的编码，-c:a指定所有音频流的编码。如果有多个流，亦可以采用-c:v:1来指定第 2 个视频流的编码。 偶尔可能会被要求加-strict -2。 -vn, -an, -sn禁用所有视频流、所有音频流、所有字幕流。还有一个-dn不会用。 当然使用-map可以解决上述所有功能，但是它们胜在比较短。 -ar, -r-ar指定音频流的采样率，以 Hz 为单位。比如-ar 32000指定音频流采样率为 32000 Hz。 -r指定视频流的帧率，以 Hz 为单位（就是平时说的「帧每秒(FPS)」啦）。 -s这个选项可以指定视频的尺寸，以像素为单位。例如-s 1280x720指定流视频流尺寸为 720P。 -t, -ss-t用来指定输出文件的持续时间，-ss用来指定输出文件相对于输入文件的开始时间。 比如-ss 12:25 -t 8:02会截取输入文件的 12 分 25 秒至 20 分 27 秒。 另外，可以写小数点，所以-t 1:14.514之类的参数是合法的。 -metadata用来设置输出文件的元数据。类似于-c，-metadata:a:0 title=&quot;my title&quot;之类的参数是合法的。 -b用来指定输出文件流的比特率。类似于-c，-b:a:0 128k之类的参数是合法的。 -map -map用来选择哪些流应该被包含到输出文件中。 上面那张图片解释得非常清楚了。 -map_metadata选择将某些流的元数据复制到输出文件的某些流中。（没用过，口胡的） 本人目前仅使用过-map_metadata -1，就是使输出文件不包含任何元数据。 -disposition选择流的处理方式。 有以下可选处理方式： 123456789101112131415defaultduboriginalcommentlyricskaraokeforcedhearing_impairedvisual_impairedclean_effectsattached_piccaptionsdescriptionsdependentmetadata 类似-c和-map_metadata，-disposition:1 default和-disposition:v:1 attached_pic等参数是合法的。 本人只用来给音频添加封面，然后发现直接ffmpeg -i in.mp3 -i pic.jpg -map 0 -map 1 -c copy out.mp3和另加上-disposition:1 attached_pic效果没有区别，因为只有一个视频流。 -threads字面意思，例如-threads 8指定开 8 个线程同时跑。 本人使用例curl下载网课（分段.ts）并用ffmpeg合并我比较菜找不到.m3u8，然后恰好某网站的.ts又是顺序排列的，于是直接请求到返回404为止，再ffmpeg合并就好了。 颇具 oi 风格的码风，坏 12345678910111213141516171819#!/bin/bashS="https://example.com/"rm list.infor ((i=0;$i&lt;=9999;i+=1))do j=$((i+10000))"" j=$&#123;j:1:4&#125; # echo $j info=`curl -I $S$j.ts` code=`echo $info|grep "HTTP"|awk '&#123;print $2&#125;'` if [ "$code" == "200" ]; then curl -O $S$j.ts echo file \'$j.ts\' &gt;&gt; list.in fidoneffmpeg -f concat -i list.in demo.mp4 youtube-dl下载视频并转为.mp3文件12345678from os import system as ssF = open("list.in", "r")S = F.read().split()for s in S: cmd = 'youtube-dl --proxy 127.0.0.1:7890 -x --audio-format mp3 ' + s ss(cmd) 参考资料ffmpeg Documentaion ffmpeg 中文手册]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -89,8 +89,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
         <tag>交互题</tag>
       </tags>
   </entry>
@@ -102,8 +102,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>猜结论</tag>
+        <tag>构造</tag>
         <tag>树论</tag>
         <tag>GYM</tag>
       </tags>
@@ -166,8 +166,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>找规律</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -203,8 +203,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>猜结论</tag>
+        <tag>Codeforces</tag>
         <tag>数学</tag>
       </tags>
   </entry>
@@ -228,8 +228,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
         <tag>找规律</tag>
       </tags>
   </entry>
@@ -242,8 +242,8 @@
       </categories>
       <tags>
         <tag>log数据结构</tag>
-        <tag>CodeChef</tag>
         <tag>线段树</tag>
+        <tag>CodeChef</tag>
       </tags>
   </entry>
   <entry>
@@ -346,8 +346,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>猜结论</tag>
+        <tag>构造</tag>
         <tag>GYM</tag>
       </tags>
   </entry>
@@ -371,8 +371,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -735,8 +735,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -760,9 +760,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1013,8 +1013,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -1063,8 +1063,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -1175,8 +1175,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>字符串</tag>
         <tag>AtCoder</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1188,8 +1188,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>找规律</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -1295,8 +1295,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1342,8 +1342,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1411,9 +1411,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>猜结论</tag>
         <tag>dp</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -1424,8 +1424,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
