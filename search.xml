@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[用 ssh 连接你的设备]]></title>
-    <url>%2Fblog%2Fssh-link-your-chicken%2F</url>
-    <content type="text"><![CDATA[感谢某位老哥的辛勤付出，现在 oi 圈 ssh 这个名字 dssq 可能性微存。 ssh 主要用于远程登录，登录了目标远程主机后就可以用 ssh 来进行命令处理了。 基本用法只需要一条命令，就可以以用户名user，登录目标主机host： 1ssh user@host 默认端口是 22，但我买的灵车 vps 给的 ssh 端口是 66103。此时就需要用-p参数来修改端口了。 1ssh -p 66103 user@host 安全隐患第一次登录目标主机时，会提示「无法确认目标主机真实性」，并附注其公钥指纹（的 md5 值）。用户自行核对后（当然实际上我们一般显然不会这么做），就可以输入密码，正确则登录成功。 远程主机的公钥在第一次登录后会被保存在~/.ssh/known_hosts中，下次登录时就不会再警告目标真实性问题。 公钥登录密码登录太烦人，可以使用公钥登录来免去输入密码。 原理大概是用户把公钥放在目标主机上，登录时主机发给用户一个随机字符串，用用户的私钥加密后返回再用主机拥有的公钥解密，成功则认为用户可信，允许登录。 按理来说直接用下面的命令可以将公钥传到远程主机上： 1ssh-copy-id user@host 但是我的小鸡它不行，于是检查远程主机的/etc/ssh/sshd_config，把下面几行前的注释（#）删掉： 123 RSAAuthentication yes PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys 然后重启远程主机的 ssh，ubuntu 用service ssh restart，debian 用/etc/init.d/ssh restart。再尝试ssh-copy-id，怎么还是不行。 怒了，直接下面一条： 1ssh user@host 'mkdir -p .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys' &lt; ~/.ssh/id_rsa.pub 直接写入远程主机~/.ssh/authorized_keys，终于现在可以使用公钥登录了。]]></content>
+    <title><![CDATA[ffmpeg 小记]]></title>
+    <url>%2Fblog%2Fffmpeg-%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[被 myy 送退役了，于是这个 blog 以后可能大部分都是这些内容了。 ——2020.12.6 您是有多能咕…… 本文仅为个人使用笔记，不保证可读性。 安装ffmpeg 首先安装。Linux 用户显然会自己搞。 Windows 人得去下编译好的包，gyan.dev和BtbN不知道有什么区别。 然后ffmpeg --help就可以看到简短的帮助了。想看到完整的帮助可以ffmpeg -h full（长约 1MB 警告）。 简要介绍开始，随便输入一条指令：ffmpeg -i input.mp3 output.ogg。 这就是 ffmpeg 最基本的使用方式。 速查ffmpeg -codecs：查看 ffmpeg 支持的所有编码格式。 ffmpeg -help encoder=[code]：查看一个编码格式的详细信息和参数。 ffmpeg -formats：查看 ffmpeg 支持的所有封装格式。 ffmpeg -help muxer=[format]：查看一个编码格式的详细信息和参数。 ffmpeg -i [input_file]：查看关于input_file的格式信息。 -c用来指定输出文件流的编码。-c:v指定所有视频流的编码，-c:a指定所有音频流的编码。如果有多个流，亦可以采用-c:v:1来指定第 2 个视频流的编码。 偶尔可能会被要求加-strict -2。 -vn, -an, -sn禁用所有视频流、所有音频流、所有字幕流。还有一个-dn不会用。 当然使用-map可以解决上述所有功能，但是它们胜在比较短。 -ar, -r-ar指定音频流的采样率，以 Hz 为单位。比如-ar 32000指定音频流采样率为 32000 Hz。 -r指定视频流的帧率，以 Hz 为单位（就是平时说的「帧每秒(FPS)」啦）。 -s这个选项可以指定视频的尺寸，以像素为单位。例如-s 1280x720指定流视频流尺寸为 720P。 -t, -ss-t用来指定输出文件的持续时间，-ss用来指定输出文件相对于输入文件的开始时间。 比如-ss 12:25 -t 8:02会截取输入文件的 12 分 25 秒至 20 分 27 秒。 另外，可以写小数点，所以-t 1:14.514之类的参数是合法的。 -metadata用来设置输出文件的元数据。类似于-c，-metadata:a:0 title=&quot;my title&quot;之类的参数是合法的。 -b用来指定输出文件流的比特率。类似于-c，-b:a:0 128k之类的参数是合法的。 -map -map用来选择哪些流应该被包含到输出文件中。 上面那张图片解释得非常清楚了。 -map_metadata选择将某些流的元数据复制到输出文件的某些流中。（没用过，口胡的） 本人目前仅使用过-map_metadata -1，就是使输出文件不包含任何元数据。 -disposition选择流的处理方式。 有以下可选处理方式： 123456789101112131415defaultduboriginalcommentlyricskaraokeforcedhearing_impairedvisual_impairedclean_effectsattached_piccaptionsdescriptionsdependentmetadata 类似-c和-map_metadata，-disposition:1 default和-disposition:v:1 attached_pic等参数是合法的。 本人只用来给音频添加封面，然后发现直接ffmpeg -i in.mp3 -i pic.jpg -map 0 -map 1 -c copy out.mp3和另加上-disposition:1 attached_pic效果没有区别，因为只有一个视频流。 -threads字面意思，例如-threads 8指定开 8 个线程同时跑。 本人使用例curl下载网课（分段.ts）并用ffmpeg合并我比较菜找不到.m3u8，然后恰好某网站的.ts又是顺序排列的，于是直接请求到返回404为止，再ffmpeg合并就好了。 颇具 oi 风格的码风，坏 12345678910111213141516171819#!/bin/bashS="https://example.com/"rm list.infor ((i=0;$i&lt;=9999;i+=1))do j=$((i+10000))"" j=$&#123;j:1:4&#125; # echo $j info=`curl -I $S$j.ts` code=`echo $info|grep "HTTP"|awk '&#123;print $2&#125;'` if [ "$code" == "200" ]; then curl -O $S$j.ts echo file \'$j.ts\' &gt;&gt; list.in fidoneffmpeg -f concat -i list.in demo.mp4 参考资料ffmpeg Documentaion ffmpeg 中文手册]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -13,14 +13,27 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[维特根斯坦《哲学研究》阅读笔记]]></title>
-    <url>%2Fblog%2FWittgenstein-PI%2F</url>
-    <content type="text"><![CDATA[最近刚开始看维特根斯坦，接着在不到五天的时间里数十次将其名字读成「维根特斯坦」。 《逻辑哲学论》感觉奇奇怪怪，暂且搁置了；于是先看《哲学研究》。 虽然本人持有纸质版本，但是《哲学研究》找不到此版本（李步楼译，陈维杭校）的质量更好的扫图让我非常恼火。 总之这篇博客用来更新笔记。当然大概会咕的。 本人哲学造诣不深，有不妥指出欢迎指正。 注：本人的笔记和维特根斯坦《逻辑哲学论》的样式会保持大抵一致，即A.B.C.D.E表示对A.B.C.D的注云云。为书写方便，下面在不引起混淆时，皆以「Witt」指代维特根斯坦。Witt 在书中运用的「（2）」和「&#167; 2」等标注方式在本文中也会出现。注意&amp;#167;和&amp;sect;可以方便地打出该符号。由于一些原因，会标注记录的日期。记录格式：&lt;YYYYMMDD&gt;。 1Witt 认为奥古斯丁（在《忏悔录》I, 8）中关于语言本质的描述有缺陷：他没有谈到词的种类的区别。「递给水果摊主『五个红苹果』的纸条」一例中「五」这个词谈不上有意义，在这个过程中只体现了「五」这个词是被如何使用的。&lt;20210523&gt; 2Witt 在此定义了一种「完全的原始语言」（你可以这样认为）：只有「石块」、「石柱」、「石板」、「石梁」等词，建筑工 A 叫出词（例如「石板！」）则助手 B 把应当递送的石料递上。&lt;20210523&gt; 3Witt 认为奥古斯丁的确描述了一个语言系统，但并不是所有我们称之为语言的东西都属这个系统。即，「者是恰当的，但仅仅对于这个狭窄地限定了的范围而言。」&lt;20210526&gt; 4Witt 指出，奥古斯丁的语言观类似一种过分简单的文字概念，比如只关注一种文字中字母的对应声音的功能。&lt;20210526&gt; 5Witt 认为，&sect; 1 中的例子不能清晰地描述语言起作用的方式；我们应当通过语言应用的原始类型来研究语言现象，才能看清词的目标和功能。&lt;20210526&gt; 6想象 &sect; 2 中的语言是一个部落的全部语言。考虑人们训练儿童从事这些活动时：教师指着对象，引导孩子注意所指，同时说出一个词来。Witt 把这称之为「实指教词」(ostensive teaching of words)。&lt;20210526&gt; 6.1这种实指教词可被说成在词和东西之间建立起一种联系。人们多半会想到，儿童训练后听到这个词头脑里便有了这个东西的图画。它可能是这个词的目的（想象声音系列的词的运用），但是在 &sect; 2 中词的目的并不是唤起意象（当然 Witt 并不否认这会有助于达到本来的目的）。 但是如果实指教词具有这种效果，是否能够说它导致了对词的理解呢？Witt 认为实指教词有助于实现这一点，但只有在和一种特定的训练一起进行时才有可能。「如果进行不同的训练，对这些词的同样的实指施教就会导致完全不同的理解。」&lt;20210526&gt; 6.2一个刹车杠杆可以是一个刹车杠杆，假定其他机械装置是给定的。但如果它不和这些机械装置一起，它连杠杆都不是。它可以什么都是或者什么都不是。&lt;20210526&gt; 7Witt 认为（2）中与（6）中的过程都类似于语言的过程。 Witt 在本节中给出了「语言游戏」的定义：&sect; 2 中使用词的整个过程可以看作是儿童学习他们的母语时的种种游戏中的一种。把这些游戏称之为「语言游戏」，并有时把原始语言也说成是语言游戏。给石料命名、跟着某人重复词也可以叫语言游戏。由语言与行动所组成的整体也可以称为「语言游戏」。&lt;20210526&gt; 8本节 Witt 定义了一种扩展的语言（2）：增加了用作数词的字母（a, b, c, etc.）；还包括「那儿」和「这个」；还有一些颜色样本（注意这些并不是词）。同样地，A 下一个命令，比如「d-石板-那儿」，同时给助手 B 看一种色样，并在说「那儿」时手指向某个地方。&lt;20210527&gt; 8.1注意刚才我说「颜色样本并不是词」，这些内容我们将在（16）再次讨论。&lt;20210527&gt; 9儿童学习这种语言（指（8））时，要背出「数词」，学会数字的使用。这种训练是否包括实指教词呢？「对数词的实指施教，所教的数词不是用来点数，而是用来指一眼便能看清的对象组的数词。」 另外，想象一下用手指一些地方和东西来施教「那儿」和「这个」——这种情况下指点也发生在词的使用之中。&lt;20210527&gt; 10那么这一语言中的词到底表示什么呢？ 当然我们可以对「石板」一词的使用的描述「减省」为说这个词表示这个对象；也可以说「a」、「b」等记号表示数字。（例如我们说：「『c』意味着这个数而不是那个数」，「『石板』表示这种东西而不是那种」 ） 但是这种方式使对词的使用的描述相互类同，并不能使他们的使用本身产生更多的相同之处。词的用法是绝对不同的。&lt;20210527&gt; 10.1「『石板』表示这种东西而不是那种」 这种做法，需要这种「指称」的种类和方式，即这些词在其他方面的使用，需是已知的。&lt;20210527&gt; 11词的功能就像工具箱中的工具的功能，是多种多样的。 但是我们在听到词被说出来、看到词被印出来时，他们却有着统一的外貌——词的应用并不清楚地在我们面前呈现。&lt;20210527&gt; 12一些简单的关于（11）的例子。&lt;20210527&gt; 13Witt 认为「语言中每个词都表示某种东西」这种表述实际上并没有说出任何东西；除非我们确切说明了我们希望作出的区别。&lt;20210527&gt; 13.1当然我们也可能想要把（8）中语言中的词同刘易斯·卡罗尔诗句中「没有意义」的词区别。&lt;20210527&gt; 14（13）中提到的论述就和「所有工具都是用来改变事物的」一样牵强附会。比如，尺子、钉子改变了什么呢？&lt;20210527&gt; 15Witt 认为，「表示」的最直接使用方式也许就是把被表示的对象用该记号标出，正如在哲学上有用的一个做法：「命名」东西就像给一件东西贴上一个标签。&lt;20210527&gt; 16（8）中的「颜色样本」算不算词？算不算语言的一部分？的确他们不算「词」；但设想你对别人说「请读出『这』这个词」，「这」就是这个语句的一部分。这里「这」所起的作用和（8）中「颜色样本」所起的作用很相似，它也是一个别人要说的东西的「样本」。&lt;20210527&gt; 17（8）中有不同种类的词。的确「石板」和「石块」要比「石板」和「d」在功能上更为相似。但分类词不可能不取决于分类的目标。&lt;20210527&gt; 18不要因为（2）和（8）中的语言仅由命令构成而不安：我们自己的语言，在化学符号系统和复杂的数学演算符号进入前，是否完全呢？&lt;20210527&gt; 19但是，（2）中「石板！」这样的叫唤到底是一个语句还是一个词？它如果作为词则必然和我们日常语言中那个词的意义不同；如果作为语句也不属于我们语言中的「石板！」这样一个省略句。但它确实是「给我拿一块石板来！」这个语句的缩简形式，而（2）中并没有这样的语句。 但是为什么我们不能将后者理解为「石板！」这个语句的加长呢？咕。]]></content>
+    <title><![CDATA[frp 初探]]></title>
+    <url>%2Fblog%2Ffrp-server%2F</url>
+    <content type="text"><![CDATA[最近由于个人原因离校一段时间，但机房电脑数据太多懒得处理。遂花了半小时左右搭建了 frp 服务器。 准备工作frp 就是 fast reverse proxy。（目前笔者用到的）功能就是借助一台有公网 ip 的服务器作为中转，把内外网的流量连接起来。 Github - fatedier/frp 先买了台小鸡来充当公网主机（服务端）。 确保机房的设备，也就是内网主机（客户端）网络畅通。 测试了内网主机能够直连公网主机。 服务端搭建先自行下载解压 frp。 12345mkdir -p /etc/frp/cd /etc/frp/wget "https://github.com/fatedier/frp/releases/download/vx.y.z/frp_x.y.z_linux_amd64.tar.gz"tar xzvf frp_x.y.z_linux_amd64.tar.gzmv frp_x.y.z_linux_amd64/* . 服务器端使用的是可执行文件是frps，配置文件是frps.ini。 最简单的配置就是这样。 123# frps.ini[common]bind_port = 7000 可以参考frps_full.ini，内附有注释。 下面假设我的服务器 ipv4 地址为114.51.41.9，可使用的端口为11450~11466。目前我自己写的配置如下： 1234567[common]bind_port = 11450token = c9a4a645-dd52-44b6-9c63-551ef4412074authentication_timeout = 5000dashboard_port = 11451dashboard_user = admindashboard_pwd = this-is-a-weak-password bind_port 即用客户端连接到服务端的端口，需要保证其被服务端 firewall 放行。 dashboard 相关的几条，开启了一个 http://[server_addr]:11451 的 dashboard，可以查看客户端的连接状态。 直接./frps -c frps.ini启动 frp。 开机启动作为把裤子都卖给 systemd 的壬，本人用 systemd 来启动 frps 服务。 v0.37.0 压缩包下附带一个 ./systemd/ 文件夹，内附有 frps.service。 但是实际上不太能直接用，得自己改改。 1234vim ./systemd/frps.servicecp ./systemd/frps.service /etc/systemd/system/killall frpssystemctl enable frps.service 客户端搭建客户端使用的是可执行文件是frpc，配置文件是frpc.ini。 12345678910111213[common]server_addr = 114.51.41.9server_port = 11450token = c9a4a645-dd52-44b6-9c63-551ef4412074user = pc-with-no-name[ssh]type = tcplocal_ip = 127.0.0.1local_port = 22remote_port = 11455use_encryption = trueuse_compression = true common中的token需要和服务端frps.ini中common下token一致。user的设定是为避免多个客户端 proxy 重名导致的连接失败。 此时，我们就可以使用ssh -p 11455 user@114.51.41.9来使用ssh登录到客户端了。 注意，这里local_ip也可以为客户端内网中其他可访问 ip。 当然先要./frpc -c frpc.ini启动 frp。 开机启动Windows 的开机启动很奇怪，我们直接用 winsw 注册一个系统服务实现开机自启。 下载 release 中的.exe文件，任意改名，下以startfrpc.exe为例。 放入和 frp 相同的目录中，在同一个目录里创建一个 utf8 编码的文本文件，改名为startfrpc.xml，填入以下内容： 1234567891011&lt;service&gt; &lt;id&gt;frpc&lt;/id&gt; &lt;name&gt;Frp Client&lt;/name&gt; &lt;description&gt;My Frp Client&lt;/description&gt; &lt;executable&gt;frpc.exe&lt;/executable&gt; &lt;arguments&gt;-c frpc.ini&lt;/arguments&gt; &lt;!-- &lt;onfailure action="restart" delay="60 sec"/&gt; --&gt; &lt;!-- &lt;onfailure action="restart" delay="120 sec"/&gt; --&gt; &lt;!-- &lt;logmode&gt;reset&lt;/logmode&gt; --&gt;&lt;/service&gt; name与description字段分别是服务的名称与介绍。 以管理员权限执行命令： 12startfrpc.exe installstartfrpc.exe start 如果要卸载该服务，则执行： 12startfrpc.exe stopstartfrpc.exe uninstall]]></content>
       <categories>
-        <category>随笔</category>
+        <category>技术</category>
       </categories>
       <tags>
-        <tag>感想</tag>
+        <tag>配置</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用 ssh 连接你的设备]]></title>
+    <url>%2Fblog%2Fssh-link-your-chicken%2F</url>
+    <content type="text"><![CDATA[感谢某位老哥的辛勤付出，现在 oi 圈 ssh 这个名字 dssq 可能性微存。 ssh 主要用于远程登录，登录了目标远程主机后就可以用 ssh 来进行命令处理了。 基本用法只需要一条命令，就可以以用户名user，登录目标主机host： 1ssh user@host 默认端口是 22，但我买的灵车 vps 给的 ssh 端口是 66103。此时就需要用-p参数来修改端口了。 1ssh -p 66103 user@host 安全隐患第一次登录目标主机时，会提示「无法确认目标主机真实性」，并附注其公钥指纹（的 md5 值）。用户自行核对后（当然实际上我们一般显然不会这么做），就可以输入密码，正确则登录成功。 远程主机的公钥在第一次登录后会被保存在~/.ssh/known_hosts中，下次登录时就不会再警告目标真实性问题。 公钥登录密码登录太烦人，可以使用公钥登录来免去输入密码。 原理大概是用户把公钥放在目标主机上，登录时主机发给用户一个随机字符串，用用户的私钥加密后返回再用主机拥有的公钥解密，成功则认为用户可信，允许登录。 按理来说直接用下面的命令可以将公钥传到远程主机上： 1ssh-copy-id user@host 但是我的小鸡它不行，于是检查远程主机的/etc/ssh/sshd_config，把下面几行前的注释（#）删掉： 123 RSAAuthentication yes PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys 然后重启远程主机的 ssh，ubuntu 用service ssh restart，debian 用/etc/init.d/ssh restart。再尝试ssh-copy-id，怎么还是不行。 怒了，直接下面一条： 1ssh user@host 'mkdir -p .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys' &lt; ~/.ssh/id_rsa.pub 直接写入远程主机~/.ssh/authorized_keys，终于现在可以使用公钥登录了。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -153,8 +166,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>找规律</tag>
         <tag>AtCoder</tag>
+        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
@@ -167,18 +180,6 @@
       <tags>
         <tag>AtCoder</tag>
         <tag>计数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ffmpeg 小记]]></title>
-    <url>%2Fblog%2Fffmpeg-%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[被 myy 送退役了，于是这个 blog 以后可能大部分都是这些内容了。 安装首先安装。Linux 用户显然会自己搞。Windows 人得去下编译好的包，gyan.dev和BtbN不知道有什么区别。 然后ffmpeg --help就可以看到简短的帮助了。想看到完整的帮助可以ffmpeg -h full（长约 1MB 警告）。 简要介绍咕了。 使用例curl下载网课（分段.ts）并用ffmpeg合并我比较菜找不到.m3u8，然后恰好某网站的.ts又是顺序排列的，于是直接请求到返回404为止，再ffmpeg合并就好了。 颇具 oi 风格的码风，坏 12345678910111213141516171819#!/bin/bashS="https://example.com/"rm list.infor ((i=0;$i&lt;=9999;i+=1))do j=$((i+10000))"" j=$&#123;j:1:4&#125; # echo $j info=`curl -I $S$j.ts` code=`echo $info|grep "HTTP"|awk '&#123;print $2&#125;'` if [ "$code" == "200" ]; then curl -O $S$j.ts echo file \'$j.ts\' &gt;&gt; list.in fidoneffmpeg -f concat -i list.in demo.mp4]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>配置</tag>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1174,8 +1175,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>AtCoder</tag>
         <tag>字符串</tag>
+        <tag>AtCoder</tag>
       </tags>
   </entry>
   <entry>
@@ -1187,8 +1188,8 @@
       </categories>
       <tags>
         <tag>猜结论</tag>
-        <tag>找规律</tag>
         <tag>AtCoder</tag>
+        <tag>找规律</tag>
       </tags>
   </entry>
   <entry>
