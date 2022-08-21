@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[修复GIMP界面乱码]]></title>
     <url>%2Fblog%2F%E4%BF%AE%E5%A4%8DGIMP%E7%95%8C%E9%9D%A2%E4%B9%B1%E7%A0%81%2F</url>
-    <content type="text"><![CDATA[在我的 Windows 10 机器上，GIMP 的界面中总是出现一些乱码。于是我研究了一下怎么改掉界面字体来解决这个问题。 从结论上来讲，只要把 GIMP 安装目录下的./etc/gimp/2.0/gtkrc在末尾插入下面一行代码即可： 1style &quot;user-font&quot; &#123;font_name = &quot;Sarasa UI SC 10&quot;&#125; class &quot;*&quot; style &quot;user-font&quot; 然后本来这里应该研究一下 GTK 到底是怎么回事，但是我懒了。 而且直接写一句gtk-font-name=“Sarasa UI SC 10”好像对顶栏没用？反正最后还是用了上面那个方案。 （好久没更blog，差点都忘记咋弄了……） （为什么 deploy 上去之后变白屏了？神秘） 参见： 如何设置gtk程序中字体的大小 设置KDE 4里GTK程序字体大小 GTK (简体中文) - ArchWiki]]></content>
+    <content type="text"><![CDATA[在我的 Windows 10 机器上，GIMP 的界面中总是出现一些乱码。于是我研究了一下怎么改掉界面字体来解决这个问题。 从结论上来讲，只要把 GIMP 安装目录下的./etc/gimp/2.0/gtkrc在末尾插入下面一行代码即可： 1style &quot;user-font&quot; &#123;font_name = &quot;Sarasa UI SC 10&quot;&#125; class &quot;*&quot; style &quot;user-font&quot; 然后本来这里应该研究一下 GTK 到底是怎么回事，但是我懒了。 而且直接写一句gtk-font-name=“Sarasa UI SC 10”好像对顶栏没用？反正最后还是用了上面那个方案。 （好久没更blog，差点都忘记咋弄了……） （为什么 deploy 上去之后变白屏了？神秘。我先把 node.js 滚回 12.16.2 试试……） 参见： 如何设置gtk程序中字体的大小 设置KDE 4里GTK程序字体大小 GTK (简体中文) - ArchWiki]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -111,8 +111,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
         <tag>交互题</tag>
       </tags>
   </entry>
@@ -251,8 +251,8 @@
       </categories>
       <tags>
         <tag>找规律</tag>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -757,8 +757,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -783,8 +783,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1317,8 +1317,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1364,8 +1364,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1446,8 +1446,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>Codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
