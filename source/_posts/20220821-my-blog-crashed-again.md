@@ -49,3 +49,9 @@ unicode: 12.1
 ~~不过这个博客也没啥内容，是不是先保持能用就行……~~
 
 哦对，我之前说要把 oi 遗留的东西处理一下，是不是也还没开始动啊。怎么这么烦（
+
+参见：
+
+[Hexo+Github博客移植及白屏问题 | TEN-Z'S BLOG](https://ten-z.github.io/2022/03/17/Hexo-Github%E5%8D%9A%E5%AE%A2%E7%A7%BB%E6%A4%8D%E5%8F%8A%E7%99%BD%E5%B1%8F%E9%97%AE%E9%A2%98/)
+
+[记录下多年未更新博客的后遗症 | Ephen's Blog](https://ephen.me/2022/blog-sequela/)
