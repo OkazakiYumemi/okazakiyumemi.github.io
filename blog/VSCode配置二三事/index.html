@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="自从半年前装了 VS Code (下称 VSC ) 以后，只用 VSC 来写一些yml,json,html啥的。从来没有用过来写cpp。 这几天突然心血来潮，在家里配置了一下 VSC ，现在可以在家使用 VSC 写代码了。">
+<meta name="keywords" content="配置,工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode配置二三事">
+<meta property="og:url" content="http://okazakiyumemi.github.io/blog/VSCode配置二三事/index.html">
+<meta property="og:site_name" content="Okazaki Yumemi&#39;s blog">
+<meta property="og:description" content="自从半年前装了 VS Code (下称 VSC ) 以后，只用 VSC 来写一些yml,json,html啥的。从来没有用过来写cpp。 这几天突然心血来潮，在家里配置了一下 VSC ，现在可以在家使用 VSC 写代码了。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-05-29T13:41:36.372Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VSCode配置二三事">
+<meta name="twitter:description" content="自从半年前装了 VS Code (下称 VSC ) 以后，只用 VSC 来写一些yml,json,html啥的。从来没有用过来写cpp。 这几天突然心血来潮，在家里配置了一下 VSC ，现在可以在家使用 VSC 写代码了。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://okazakiyumemi.github.io/blog/VSCode配置二三事/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>VSCode配置二三事 | Okazaki Yumemi's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Okazaki Yumemi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">冈崎梦美的实验室</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://okazakiyumemi.github.io/blog/VSCode配置二三事/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Okazaki Yumemi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Okazaki Yumemi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VSCode配置二三事
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-13 13:59:50" itemprop="dateCreated datePublished" datetime="2019-10-13T13:59:50+08:00">2019-10-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-05-29 21:41:36" itemprop="dateModified" datetime="2021-05-29T21:41:36+08:00">2021-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自从半年前装了 <strong>VS Code</strong> (下称 <strong>VSC</strong> ) 以后，只用 <strong>VSC</strong> 来写一些<code>yml</code>,<code>json</code>,<code>html</code>啥的。从来没有用过来写<code>cpp</code>。</p>
+<p>这几天突然心血来潮，在家里配置了一下 <strong>VSC</strong> ，现在可以在家使用 <strong>VSC</strong> 写代码了。</p>
+<a id="more"></a>
+
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>首先将<code>MinGW-w64</code>中<code>bin</code>的位置加入环境变量里的<code>Path</code>里。我个人由于以前都在用 <strong>Dev-C++</strong> 所以直接添加了<code>Dev-C++\Dev-Cpp\MinGW64\bin</code>。</p>
+<p>添加后就可以在<code>cmd</code>中使用<code>g++ -o test test.cpp</code>之类的命令来编译<code>cpp</code>文件了。</p>
+<p>因为要写<code>cpp</code>，故在 <strong>VSC</strong> 的扩展商店( <strong>Extensions</strong> )里下载扩展<code>C/C++</code>，这个扩展是官方的<code>C/C++</code>扩展。</p>
+<p>然后把<code>User Settings</code>随便改一改就进入正文了。</p>
+<h2 id="键盘快捷键"><a href="#键盘快捷键" class="headerlink" title="键盘快捷键"></a>键盘快捷键</h2><p>等等忘记说快捷键了。 <strong>VSC</strong> 的快捷键和 <strong>Dev-C++</strong> 的不太一样，所以这里指出一些常用快捷键。</p>
+<h3 id="编辑器与窗口管理"><a href="#编辑器与窗口管理" class="headerlink" title="编辑器与窗口管理"></a>编辑器与窗口管理</h3><ul>
+<li>打开 <code>Ctrl+O</code></li>
+<li>新窗口 <code>Ctrl+Shift+N</code></li>
+<li>新标签页 <code>Ctrl+N</code></li>
+<li>关闭整个 <strong>VSC</strong> 窗口 <code>Ctrl+Shift+W</code></li>
+<li>关闭当前标签页 <code>Ctrl+W</code></li>
+<li>重新打开刚刚关闭的标签页 <code>Ctrl+Shift+T</code></li>
+<li>切换标签页 <code>Ctrl+Tab</code></li>
+<li>创建一个新编辑器并将当前页面复制过去 <code>Ctrl+\</code></li>
+<li>在前三个编辑器之间切换 <code>Ctrl+1 2 3</code></li>
+<li>将焦点编辑器移动位置 先按下 <code>Ctrl+K</code> 左下角出现提示后用 <code>← →</code> 移动 或者可以 <code>Ctrl+Alt+←→</code></li>
+<li>在标签页之间切换 <code>Alt+1~9</code></li>
+</ul>
+<h3 id="代码编辑"><a href="#代码编辑" class="headerlink" title="代码编辑"></a>代码编辑</h3><ul>
+<li>搜索 <code>Ctrl+F</code></li>
+<li>替换 <code>Ctrl+H</code></li>
+<li>复制光标所在行 只需<code>Ctrl+C</code></li>
+<li>去掉行尾空格 <code>Ctrl+K</code> 然后 <code>Ctrl+X</code></li>
+<li>切换行注释 <code>Ctrl+/</code></li>
+<li>代码缩进 <code>Ctrl+[</code> 与 <code>Ctrl+]</code></li>
+<li>当前行上下移动 <code>Alt+↑↓</code></li>
+<li>当前行后插入一行 <code>Ctrl+Enter</code></li>
+<li>当前行前插入一行 <code>Ctrl+Shift+Enter</code></li>
+<li>选中下一行 <code>Ctrl+i</code></li>
+<li>撤销光标上次移动 <code>Ctrl+U</code></li>
+<li>选中下个高亮的匹配项 <code>Ctrl+D</code></li>
+<li>多光标模式 <code>Atl+鼠标单击</code>即可在单击处创建新的光标</li>
+<li>速览定义 <code>Alt+F12</code></li>
+<li>转到定义 <code>F12</code></li>
+<li>Zen模式(一个奇怪的类似全屏的模式) <code>Ctrl+K</code> 然后 <code>Z</code></li>
+<li>打开自动保存 <code>Ctrl+Shift+P</code>之后输入<code>AutoSave</code>，选中，按下回车。</li>
+<li>打开终端 <code>Ctrl+~</code></li>
+</ul>
+<h1 id="配置-json-文件"><a href="#配置-json-文件" class="headerlink" title="配置 .json 文件"></a>配置 .json 文件</h1><p>首先我搞了个文件夹做工作区。</p>
+<p>在工作区里新建名为<code>.vscode</code>的文件夹，在里面创建<code>launch.json</code>,<code>tasks.json</code>,<code>settings.json</code>三个<code>.json</code>文件。</p>
+<h2 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a>launch.json</h2><p>由于学疏才浅，这个文件(包括下面的其他文件)基本是直接从<code>参考资料</code>里抄的……</p>
+<div><div class="fold_hider"><div class="close hider_title">个人配置：</div></div><div class="fold">
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"internalConsoleOptions"</span>: <span class="string">"neverOpen"</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">false</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h2 id="tasks-json"><a href="#tasks-json" class="headerlink" title="tasks.json"></a>tasks.json</h2><div><div class="fold_hider"><div class="close hider_title">个人配置：</div></div><div class="fold">
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            "command": "g++", //本人直接用的 g++ 编译</span><br><span class="line">            "args": [</span><br><span class="line">                "$&#123;file&#125;",</span><br><span class="line">                "-o",</span><br><span class="line">                "$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe", //这东西必须要加，不然编译出来全是a.exe</span><br><span class="line">                "-g",</span><br><span class="line">                "-Wall",</span><br><span class="line">                // "-static-libgcc",</span><br><span class="line">                // "--target=x86_64-w64-mingw",</span><br><span class="line">                "-std=c++11", //这里用 g++11 会出现不明错误，原因未知</span><br><span class="line">                "-O2",</span><br><span class="line">                "-Wl,--stack=67108864",</span><br><span class="line">                "-DVSC_Compile",</span><br><span class="line">            ],</span><br><span class="line">            "type": "process",</span><br><span class="line">            "group": &#123;</span><br><span class="line">                "kind": "build",</span><br><span class="line">                "isDefault": true</span><br><span class="line">            &#125;,</span><br><span class="line">            "presentation": &#123;</span><br><span class="line">                "echo": true,</span><br><span class="line">                "reveal": "always",</span><br><span class="line">                "focus": false,</span><br><span class="line">                "panel": "shared"</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<p>至今不明白为什么使用<code>std=g++11</code>指令会不明错误。</p>
+<h2 id="setting-json"><a href="#setting-json" class="headerlink" title="setting.json"></a>setting.json</h2><p>配置了前两个<code>.json</code>文件后已经可以正常<code>F5</code>编译运行工作区的<code>cpp</code>文件了。原因本人未知，或许是因为我用的是<code>g++</code>？</p>
+<p>但是基本所有教程都有配置此文件，故本人也搞了一个。</p>
+<div><div class="fold_hider"><div class="close hider_title">个人配置：</div></div><div class="fold">
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"files.defaultLanguage"</span>: <span class="string">"cpp"</span>,</span><br><span class="line">    <span class="attr">"code-runner.executorMap"</span>: &#123;</span><br><span class="line">        <span class="attr">"c"</span>: <span class="string">"cd $dir &amp;&amp; clang $fileName -o $fileNameWithoutExt.exe -Wall -g -O2 -static-libgcc --target=x86_64-w64-mingw -std=c11 &amp;&amp; $dir$fileNameWithoutExt"</span>,</span><br><span class="line">        <span class="attr">"cpp"</span>: <span class="string">"cd $dir &amp;&amp; clang++ $fileName -o $fileNameWithoutExt.exe -Wall -g -O2 -static-libgcc --target=x86_64-w64-mingw -std=c++11 &amp;&amp; $dir$fileNameWithoutExt"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"code-runner.saveFileBeforeRun"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"code-runner.preserveFocus"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"code-runner.clearPreviousOutput"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"code-runner.ignoreSelection"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"C_Cpp.clang_format_sortIncludes"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>因为搞完前三个(其实是前两个)之后已经可以正常编译，<code>compile_flags.txt</code>等文件并未配置。</p>
+<h1 id="使用反馈"><a href="#使用反馈" class="headerlink" title="使用反馈"></a>使用反馈</h1><p>可能由于是刚开始使用，感觉并没有很方便。</p>
+<p>也许用着用着就习惯了？</p>
+<h1 id="参考资料及鸣谢"><a href="#参考资料及鸣谢" class="headerlink" title="参考资料及鸣谢"></a>参考资料及鸣谢</h1><p><a href="https://www.zhihu.com/question/30315894/answer/154979413" target="_blank" rel="noopener">知乎 谭九鼎</a></p>
+<p><a href="https://www.luogu.org/blog/GNAQ/VSC-guide" target="_blank" rel="noopener">洛谷日报 现代编辑器食用指北-VSCode</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/配置/" rel="tag"># 配置</a>
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/Sqrt-Tree-学习笔记/" rel="next" title="Sqrt-Tree 学习笔记">
+                <i class="fa fa-chevron-left"></i> Sqrt-Tree 学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/Ynoi2018-未来日记/" rel="prev" title="「Ynoi2018」未来日记">
+                「Ynoi2018」未来日记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Okazaki Yumemi">
+            
+              <p class="site-author-name" itemprop="name">Okazaki Yumemi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/OkazakiYumemi" title="GitHub &rarr; https://github.com/OkazakiYumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.luogu.org/space/show?uid=76107" title="洛谷 &rarr; https://www.luogu.org/space/show?uid=76107" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>洛谷</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://codeforces.com/profile/Okazaki_Yumemi" title="Codeforces &rarr; https://codeforces.com/profile/Okazaki_Yumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Codeforces</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://atcoder.jp/users/OkazakiYumemi" title="Atcoder &rarr; https://atcoder.jp/users/OkazakiYumemi" rel="noopener" target="_blank"><i class="fa fa-fw fa-code"></i>Atcoder</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Following
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mcfx.us/" title="https://mcfx.us/" rel="noopener" target="_blank">mcfx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.zenithal.me/" title="https://blog.zenithal.me/" rel="noopener" target="_blank">zenithal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://etaoinwu.com/" title="https://etaoinwu.com/" rel="noopener" target="_blank">etaoinwu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.t123yh.xyz:2/" title="https://blog.t123yh.xyz:2/" rel="noopener" target="_blank">t123yh</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ranwen.de/" title="https://ranwen.de/" rel="noopener" target="_blank">ranwen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://miaotony.xyz/" title="https://miaotony.xyz/" rel="noopener" target="_blank">miaotony</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.slanterns.net/" title="https://blog.slanterns.net/" rel="noopener" target="_blank">slanterns</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://negiizhao.blog.uoj.ac/archive" title="http://negiizhao.blog.uoj.ac/archive" rel="noopener" target="_blank">negiizhao</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://olddrivertree.blog.uoj.ac/archive/" title="http://olddrivertree.blog.uoj.ac/archive/" rel="noopener" target="_blank">ODT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://studyingfather.com/" title="https://studyingfather.com/" rel="noopener" target="_blank">studyingfather</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://min-25.hatenablog.com/" title="https://min-25.hatenablog.com/" rel="noopener" target="_blank">min_25</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mnihyc.com/blog/" title="https://mnihyc.com/blog/" rel="noopener" target="_blank">mnihyc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://nikaidou-shinku.github.io/" title="https://nikaidou-shinku.github.io/" rel="noopener" target="_blank">yurzhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qq_38609262" title="https://blog.csdn.net/qq_38609262" rel="noopener" target="_blank">mayaohua</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/yfzcsc/" title="https://blog.csdn.net/yfzcsc/" rel="noopener" target="_blank">yfzcsc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/suwakow/" title="https://www.cnblogs.com/suwakow/" rel="noopener" target="_blank">suwakow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">deco</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xht37.com/" title="https://www.xht37.com/" rel="noopener" target="_blank">xht37</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ccz181078/" title="https://www.cnblogs.com/ccz181078/" rel="noopener" target="_blank">ccz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="https://www.cnblogs.com/cjyyb/" rel="noopener" target="_blank">yyb</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.com.cn/blog/wucstdio/" title="https://www.luogu.com.cn/blog/wucstdio/" rel="noopener" target="_blank">wucstdio</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/yzhang-rp-inf/" title="https://www.cnblogs.com/yzhang-rp-inf/" rel="noopener" target="_blank">yzhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/EI_Captain" title="https://blog.csdn.net/EI_Captain" rel="noopener" target="_blank">EI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mrsrz.github.io/" title="https://mrsrz.github.io/" rel="noopener" target="_blank">mrsrz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ouuan.github.io" title="https://ouuan.github.io" rel="noopener" target="_blank">ouuan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/owencodeisking" title="https://www.cnblogs.com/owencodeisking" rel="noopener" target="_blank">owencodeisking</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/Mr-Spade/" title="https://www.cnblogs.com/Mr-Spade/" rel="noopener" target="_blank">Mr_Spade</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/p-b-p-b/" title="https://www.cnblogs.com/p-b-p-b/" rel="noopener" target="_blank">p_b_p_b</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://foreverlasting1202.github.io/" title="https://foreverlasting1202.github.io/" rel="noopener" target="_blank">foreverlasting</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/bztMinamoto/" title="https://www.cnblogs.com/bztMinamoto/" rel="noopener" target="_blank">bztMinamoto</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjjsb/" title="https://www.cnblogs.com/cjjsb/" rel="noopener" target="_blank">hl666</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.luogu.org/blog/ShadowassIIXVIIIIV/" title="https://www.luogu.org/blog/ShadowassIIXVIIIIV/" rel="noopener" target="_blank">shadowice</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://zory.ink/" title="https://zory.ink/" rel="noopener" target="_blank">zory</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qiuly.xyz/" title="https://qiuly.xyz/" rel="noopener" target="_blank">qiuly</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://m-sea-blog.com/" title="http://m-sea-blog.com/" rel="noopener" target="_blank">M_sea</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://venusnero.github.io" title="https://venusnero.github.io" rel="noopener" target="_blank">Venus</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#键盘快捷键"><span class="nav-number">1.1.</span> <span class="nav-text">键盘快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑器与窗口管理"><span class="nav-number">1.1.1.</span> <span class="nav-text">编辑器与窗口管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码编辑"><span class="nav-number">1.1.2.</span> <span class="nav-text">代码编辑</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-json-文件"><span class="nav-number">2.</span> <span class="nav-text">配置 .json 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#launch-json"><span class="nav-number">2.1.</span> <span class="nav-text">launch.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tasks-json"><span class="nav-number">2.2.</span> <span class="nav-text">tasks.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setting-json"><span class="nav-number">2.3.</span> <span class="nav-text">setting.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用反馈"><span class="nav-number">3.</span> <span class="nav-text">使用反馈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料及鸣谢"><span class="nav-number">4.</span> <span class="nav-text">参考资料及鸣谢</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Okazaki Yumemi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '6db7c68ddd3c276bde37',
+          clientSecret: '1974844dbe21a5dd8a900b8db524c7dc37012021',
+          repo: 'okazakiyumemi.github.io',
+          owner: 'OkazakiYumemi',
+          admin: ['OkazakiYumemi'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
