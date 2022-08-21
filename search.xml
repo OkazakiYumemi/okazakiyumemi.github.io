@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[更博半篇，Hexo加剧了我的精神内耗]]></title>
     <url>%2Fblog%2F%E6%9B%B4%E5%8D%9A%E5%8D%8A%E7%AF%87%EF%BC%8CHexo%E5%8A%A0%E5%89%A7%E4%BA%86%E6%88%91%E7%9A%84%E7%B2%BE%E7%A5%9E%E5%86%85%E8%80%97%2F</url>
-    <content type="text"><![CDATA[那天，我只是因为手贱更新了一下 node.js 版本……然后我的 Hexo 博客就挂了。 好吧，后来经人点醒，我直接把 node.js 滚回 12.16.2……然后就好了。 但这种解决方法显然并不优美，所以我想是时候更新一下这一整套工具了。 然而我很忙，估计占了坑之后就不会填了（ 首先看看版本，，， 1234567891011121314151617181920$ hexo -vhexo: 3.9.0hexo-cli: 4.3.0os: win32 10.0.19042node: 12.16.2v8: 7.8.279.23-node.34uv: 1.34.2zlib: 1.2.11brotli: 1.0.7ares: 1.15.0modules: 72nghttp2: 1.40.0napi: 5llhttp: 2.0.4http_parser: 2.9.3openssl: 1.1.1ecldr: 36.0icu: 65.1tz: 2019cunicode: 12.1 3.9.0？？我直接打开 Github，一看，怎么都更新到 v6.2.0 了。真是的，怎么有人开 blog 三年不更新版本的啊。 然后 github-pages 那边似乎也有很多新玩法？不懂。 不过这个博客也没啥内容，是不是先保持能用就行…… 哦对，我之前说要把 oi 遗留的东西处理一下，是不是也还没开始动啊。怎么这么烦（]]></content>
+    <content type="text"><![CDATA[那天，我只是因为手贱更新了一下 node.js 版本……然后我的 Hexo 博客就挂了。 好吧，后来经人点醒，我直接把 node.js 滚回 12.16.2……然后就好了。 但这种解决方法显然并不优美，所以我想是时候更新一下这一整套工具了。 然而我很忙，估计占了坑之后就不会填了（ 首先看看版本，，， 1234567891011121314151617181920$ hexo -vhexo: 3.9.0hexo-cli: 4.3.0os: win32 10.0.19042node: 12.16.2v8: 7.8.279.23-node.34uv: 1.34.2zlib: 1.2.11brotli: 1.0.7ares: 1.15.0modules: 72nghttp2: 1.40.0napi: 5llhttp: 2.0.4http_parser: 2.9.3openssl: 1.1.1ecldr: 36.0icu: 65.1tz: 2019cunicode: 12.1 3.9.0？？我直接打开 Github，一看，怎么都更新到 v6.2.0 了。真是的，怎么有人开 blog 三年不更新版本的啊。 然后 github-pages 那边似乎也有很多新玩法？不懂。 不过这个博客也没啥内容，是不是先保持能用就行…… 哦对，我之前说要把 oi 遗留的东西处理一下，是不是也还没开始动啊。怎么这么烦（ 参见： Hexo+Github博客移植及白屏问题 | TEN-Z’S BLOG 记录下多年未更新博客的后遗症 | Ephen’s Blog]]></content>
       <categories>
         <category>技术</category>
       </categories>
